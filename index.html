@@ -3,131 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heritmap – Discover China's Cultural Heritage</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <title>Heritmap – A Cultural Tribute</title>
   <style>
-  body {
-    margin: 0;
-    font-family: 'Times New Roman', serif;
-    background: #f9f9f9;
-    color: #333;
-  }
+    body {
+      margin: 0;
+      background-color: #ffffff;
+      font-family: 'Times New Roman', serif;
+      color: #000000;
+    }
 
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333333; /* Dark gray */
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+    /* Navbar styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333333;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
 
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff; /* White text */
-    font-family: 'Times New Roman', serif;
-  }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffffff;
+      font-family: 'Times New Roman', serif;
+    }
 
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    font-family: 'Times New Roman', serif;
-  }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      font-family: 'Times New Roman', serif;
+    }
 
-  .nav-links a {
-    text-decoration: none;
-    color: #ffffff; /* White text */
-    font-weight: 500;
-  }
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+    }
 
-  .nav-links a:hover {
-    color: #dddddd; /* Lighter gray on hover */
-  }
+    .nav-links a:hover {
+      color: #dddddd;
+    }
 
-  header h1 {
-    margin: 1rem 0;
-    font-size: 2.5rem;
-    text-align: center;
-    font-family: 'Times New Roman', serif;
-  }
+    /* Centered content */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
 
-  #map {
-    width: 100%;
-    height: 80vh;
-  }
+    .main-text {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
 
-  .popup {
-    font-size: 14px;
-  }
-</style>
+    .sub-text {
+      font-size: 1rem;
+      color: #333333;
+    }
+  </style>
 </head>
 <body>
 
   <!-- Navbar -->
   <nav class="navbar">
-  <div class="logo">Heritmap</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="map.html">Map View & Explore</a></li> <!-- NEW -->
-    <li><a href="vacation.html">Vacation Plans</a></li>
-    <li><a href="heritage.html">Heritage Sites</a></li>
-    <li><a href="about.html">About</a></li>
-  </ul>
-</nav>
+    <div class="logo">Heritmap</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="map.html">Map View & Explore</a></li>
+      <li><a href="vacation.html">Vacation Plans</a></li>
+      <li><a href="heritage.html">Heritage Sites</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
 
-  <!-- Page Title -->
-  <header>
-    <h1>Map View & Explore</h1>
-  </header>
+  <!-- Hero Text -->
+  <div class="hero">
+    <div class="main-text">
+      This website is made by Jerry Sun, founded to preserve culture and humanity.
+    </div>
+    <div class="sub-text">
+      The webpage is still under development, so there may be mistakes. We apologize for any inconvenience.
+    </div>
+  </div>
 
-  <!-- Map Container -->
-  <div id="map"></div>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    const map = L.map('map', {
-      center: [35.8617, 104.1954], // Center on China
-      zoom: 5,
-      worldCopyJump: false,
-      maxBounds: [[-85, -180], [85, 180]],
-      maxBoundsViscosity: 1.0,
-      maxZoom: 10,
-      minZoom: 3,
-      zoomSnap: 0.5,
-      zoomDelta: 0.5,
-      inertia: false,
-      dragging: true
-    });
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    const sites = [
-      {
-        name: "Terracotta Army",
-        coords: [34.3846, 109.2732],
-        description: "A famous archaeological site in Xi'an, Shaanxi Province."
-      },
-      {
-        name: "The Forbidden City",
-        coords: [39.9163, 116.3971],
-        description: "The former Chinese imperial palace from the Ming to the Qing dynasty."
-      },
-      {
-        name: "Mogao Caves",
-        coords: [40.0459, 94.8091],
-        description: "Also known as the Thousand Buddha Grottoes, located in Dunhuang."
-      }
-    ];
-
-    sites.forEach(site => {
-      L.marker(site.coords).addTo(map)
-        .bindPopup(`<div class='popup'><strong>${site.name}</strong><br>${site.description}</div>`);
-    });
-  </script>
 </body>
 </html>
