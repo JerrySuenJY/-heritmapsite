@@ -10,6 +10,9 @@
       background-color: #ffffff;
       font-family: 'Times New Roman', serif;
       color: #000000;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Navbar styling */
@@ -46,19 +49,20 @@
       color: #dddddd;
     }
 
-    /* Centered content */
+    /* Hero section styling */
     .hero {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 5rem 2rem;
+      padding: 0 2rem;
     }
 
     .main-text {
       font-size: 2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 4rem;
     }
 
     .sub-text {
@@ -82,14 +86,14 @@
   </nav>
 
   <!-- Hero Text -->
- <div class="hero">
-  <div class="main-text" style="font-size: 2rem; margin-bottom: 2.5rem;">
-    This website is made by Jerry Sun, founded to preserve culture and humanity.
+  <div class="hero">
+    <div class="main-text">
+      This website is made by Jerry Sun, founded to preserve culture and humanity.
+    </div>
+    <div class="sub-text">
+      The webpage is still under development, so there may be mistakes. We apologize for any inconvenience.
+    </div>
   </div>
-  <div class="sub-text">
-    The webpage is still under development, so there may be mistakes. We apologize for any inconvenience.
-  </div>
-</div>
-  
+
 </body>
 </html>
