@@ -41,7 +41,16 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([34.2, 108.9], 5);
+   const map = L.map('map', {
+  center: [35.8617, 104.1954],
+  zoom: 5,
+  worldCopyJump: true,
+  maxBounds: [
+    [-90, -180],
+    [90, 180]
+  ],
+  maxBoundsViscosity: 1.0
+});
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
