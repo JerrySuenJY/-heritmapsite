@@ -41,15 +41,21 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-   const map = L.map('map', {
-  center: [35.8617, 104.1954],
+ const map = L.map('map', {
+  center: [35.8617, 104.1954], // Center on China
   zoom: 5,
-  worldCopyJump: true,
-  maxBounds: [
-    [-90, -180],
-    [90, 180]
+  worldCopyJump: false,        // disable jumping between copies
+  maxBounds: [                 // restrict map panning bounds
+    [-85, -180],
+    [85, 180]
   ],
-  maxBoundsViscosity: 1.0
+  maxBoundsViscosity: 1.0,     // makes max bounds strict
+  maxZoom: 10,
+  minZoom: 3,
+  zoomSnap: 0.5,
+  zoomDelta: 0.5,
+  inertia: false,              // optional: disables "momentum" drag
+  dragging: true
 });
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
