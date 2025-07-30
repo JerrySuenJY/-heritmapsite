@@ -1,43 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="icon" href="/favicon-new.png" type="image/png">
+<head>
   <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon-new.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Heritmap – Preserve Culture & Humanity</title>
-  <meta name="description" content="Discover and explore China's cultural heritage through interactive maps and stories of ancient sites.">
-  <meta name="robots" content="index, follow">
-
-  <meta property="og:title" content="Heritmap – Explore China's Cultural Heritage">
-  <meta property="og:description" content="Interactive heritage map of China with stories, history, and images.">
-  <meta property="og:image" content="/map.jpg"> <!-- You can change this to your real image -->
-  <meta property="og:url" content="https://heritmap.org">
-  <meta name="twitter:card" content="summary_large_image">
   <style>
     body {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: 'Times New Roman', serif;
-      color: #000000;
-      height: 100vh;
+      color: white;
+      background-color: black;
+      height: 100%;
       display: flex;
       flex-direction: column;
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('indexbackground.jpg') no-repeat center center fixed;
-      background-size: cover;
-      opacity: 0.2;
-      z-index: -1;
-    }
-
-    
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -47,66 +29,89 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
+
     .logo img {
-      height: 100px;         
-     transform: scale(2); 
-      margin-top: -10px;     
+      height: 40px;         
+      transform: scale(2); 
+      margin-top: -10px;
     }
 
     .nav-links {
       list-style: none;
       display: flex;
       gap: 1.5rem;
-      font-family: 'Times New Roman', serif;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: #ffffff;
-      font-weight: 500;
+      color: #fff;
+      font-weight: bold;
     }
 
-    .nav-links a:hover {
-      color: #dddddd;
-    }
-
-    
     .hero {
-      flex: 1;
+      position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
-      padding: 0 2rem;
+      z-index: 10;
     }
 
-    .main-text {
-      font-size: 3rem;
-      margin-bottom: 4rem;
+    .campfire-image {
+      width: 300px;
+      border-radius: 20px;
+      transition: opacity 0.3s ease-out;
+      margin-bottom: 2.5rem;
     }
 
-    .sub-text {
-      font-size: 1.5rem;
-      color: #333333;
+    .hero-text {
+      font-size: 1.8rem;
+      padding: 0 1rem;
+      max-width: 700px;
+      margin-bottom: 10rem;
     }
 
-    .note-text {
+    .background-fade {
+      background-image: url('indexbackground.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 185vh;
+      opacity: 0;
+      transition: opacity 0.6s ease-out;
+      z-index: -1;
+    }
+
+    .after-scroll {
+      background-color: transparent;
       text-align: center;
-      font-size: 1.5rem;
-      color: #333333;
-      margin-top: 2rem; 
-      font-family: 'Times New Roman', serif;
+      color: rgb(255, 255, 255);
+      padding: 10vh 2rem 0;
     }
-  
+
+    .after-scroll h1 {
+      font-size: 2.5rem;
+      margin-bottom: 6rem;
+    }
+
+    .after-scroll p {
+      font-size: 1.2rem;
+      margin: 0.2rem;
+    }
   </style>
 </head>
 <body>
+  <div class="background-fade" id="bgFade"></div>
 
-  
   <nav class="navbar">
     <a href="index.html" class="logo">
-      <img src="logo.svg" alt="Heritmap Logo" style="height: 40px;" />
+      <img src="logo.svg" alt="Heritmap Logo" />
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -117,21 +122,37 @@
     </ul>
   </nav>
 
-  
-  <div class="hero">
-    <div class="main-text">
-      This website is founded by Jerry Sun, aiming to preserve culture and humanity.
+  <section class="hero">
+    <img src="campfire.png" alt="Campfire" class="campfire-image" id="campfire" />
+    <div class="hero-text">
+      Heritmap is not a museum. It’s a campfire. Around it, students tell the stories they think deserve to be remembered.
     </div>
-    <div class="sub-text">
-      <strong>This webpage is for reviews and subjective comments on cultural heritage in P.R. China, any fact-seeker should redirect to <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> for double check.</strong>
-    </div>
-    <div class="note-text">
-    Some webpages are still under development, so there may be mistakes. We apologize for any inconvenience.
-    </div>
-    <div class="note-text">
-    Features temporarily not available: Vacation Plans.
-    </div>
-  </div>
+  </section>
 
+  <section class="after-scroll">
+    <h1>This website is founded by Jerry Sun, aiming to preserve culture and humanity.</h1>
+    <p> <strong>This webpage is for reviews and subjective comments on cultural heritage in P.R. China, any fact-seeker should redirect to <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> for double check.</strong></p>
+    <p>Some webpages are still under development, so there may be mistakes. We apologize for any inconvenience.</p>
+    <p>Features temporarily not available: Vacation Plans.</p>
+  </section>
+
+  <script>
+    const campfire = document.getElementById('campfire');
+    const bg = document.getElementById('bgFade');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const fadeOutPoint = 150;
+
+
+      if (scrollY < fadeOutPoint) {
+        campfire.style.opacity = 1 - (scrollY / fadeOutPoint);
+      } else {
+        campfire.style.opacity = 0;
+      }
+
+      bg.style.opacity = Math.min(scrollY / 400, 0.3);
+    });
+  </script>
 </body>
 </html>
