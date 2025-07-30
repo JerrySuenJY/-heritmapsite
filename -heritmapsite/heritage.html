@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heritmap – Heritage Sites</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #f2f2f2;
+      font-family: 'Times New Roman', serif;
+      color: #000;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo img {
+      height: 100px;         
+     transform: scale(2); 
+      margin-top: -10px;     
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #ccc;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 2rem;
+    }
+
+    #searchInput {
+      width: 80%;
+      max-width: 400px;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .section {
+      padding: 6rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 1.5rem;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section p {
+      max-width: 700px;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .learn-more {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #0070f3;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="logo.svg" alt="Heritmap Logo" style="height: 40px;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="map.html">Map View & Explore</a></li>
+      <li><a href="vacation.html">Vacation Plans</a></li>
+      <li><a href="heritage.html">Heritage Sites</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search heritage sites here...">
+  </div>
+
+  
+  <section class="section">
+    <h2>Terracotta Army</h2>
+    <p>A famous archaeological site in Xi'an, Shaanxi Province, discovered in 1974. Thousands of life-sized terracotta soldiers were buried with the first emperor of China.</p>
+    <img src="terracotta.jpg" alt="TerracottaArmy">
+    <a class="learn-more" href="terracottaarmy.html">Learn more →</a>
+  </section>
+
+  <section class="section">
+    <h2>The Forbidden City</h2>
+    <p>The imperial palace of Ming and Qing dynasties in Beijing, with over 900 buildings and centuries of Chinese history behind its red walls.</p>
+    <img src="forbidden.jpg" alt="ForbiddenCity">
+    <a class="learn-more" href="forbiddencity.html">Learn more →</a>
+  </section>
+
+  <section class="section">
+    <h2>Mogao Caves</h2>
+    <p>Located in Dunhuang, the Mogao Caves house an enormous collection of Buddhist artwork, murals, and scriptures dating back over a thousand years.</p>
+    <img src="mogao.jpg" alt="MogaoCaves">
+    <a class="learn-more" href="mogaocaves.html">Learn more →</a>
+  </section>
+
+  <section class="section">
+    <h2>Sanxingdui</h2>
+    <p>Sanxingdui is a Bronze Age archaeological site in Sichuan, known for its mysterious and sophisticated ancient relics.</p>
+    <img src="sanxingdui.jpg" alt="Sanxingdui">
+    <a class="learn-more" href="sanxingdui.html">Learn more →</a>
+  </section>
+
+  <section class="section">
+    <h2>Sun Yat-sen Mausoleum</h2>
+    <p>The resting place of Dr. Sun Yat-sen, located at the foot of Purple Mountain in Nanjing.</p>
+    <img src="SunYatsenMausoleum.jpg" alt="SunYatsenMausoleum">
+    <a class="learn-more" href="sunyatsenmausoleum.html">Learn more →</a>
+  </section>
+
+  
+  <script>
+    
+    const sections = document.querySelectorAll('.section');
+    const options = { threshold: 0.3 };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    
+    const input = document.getElementById('searchInput');
+    input.addEventListener('input', () => {
+      const filter = input.value.toLowerCase();
+      sections.forEach(section => {
+        const title = section.querySelector('h2').textContent.toLowerCase();
+        section.style.display = title.includes(filter) ? 'flex' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
