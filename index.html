@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heritmap – A Cultural Tribute</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', serif;
+      color: #000000;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('indexbackground.jpg') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333333;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .logo img {
+      height: 100px;         
+     transform: scale(2); 
+      margin-top: -10px;     
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #dddddd;
+    }
+
+    
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    .main-text {
+      font-size: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .sub-text {
+      font-size: 1.5rem;
+      color: #333333;
+    }
+
+    .note-text {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #333333;
+      margin-top: 2rem; 
+      font-family: 'Times New Roman', serif;
+    }
+  
+  </style>
+</head>
+<body>
+
+  
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="logo.svg" alt="Heritmap Logo" style="height: 40px;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="map.html">Map View & Explore</a></li>
+      <li><a href="vacation.html">Vacation Plans</a></li>
+      <li><a href="heritage.html">Heritage Sites</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  
+  <div class="hero">
+    <div class="main-text">
+      This website is founded by Jerry Sun, aiming to preserve culture and humanity.
+    </div>
+    <div class="sub-text">
+      <strong>This webpage is for reviews and subjective comments on cultural heritage in P.R. China, any fact-seeker should redirect to <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> for double check.</strong>
+    </div>
+    <div class="note-text">
+    Some webpages are still under development, so there may be mistakes. We apologize for any inconvenience.
+    </div>
+    <div class="note-text">
+    Features temporarily not available: Vacation Plans.
+    </div>
+  </div>
+
+</body>
+</html>
