@@ -14,9 +14,6 @@
       color: white;
       background-color: black;
       height: 100%;
-      display: flex;
-      flex-direction: column;
-      position: relative;
       overflow-x: hidden;
     }
 
@@ -27,8 +24,9 @@
       background-color: #333333;
       padding: 1rem 2rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 100;
     }
-
 
     .logo img {
       height: 40px;         
@@ -50,20 +48,29 @@
 
     .hero {
       position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
       text-align: center;
+      transition: opacity 0.3s ease-out;
       z-index: 10;
     }
 
     .campfire-image {
       width: 300px;
       border-radius: 20px;
-      transition: opacity 0.3s ease-out;
-      margin-bottom: 2.5rem;
+      margin-top: 20rem;
+      margin-bottom: 2rem;
     }
 
     .hero-text {
@@ -72,12 +79,12 @@
       max-width: 700px;
       margin-bottom: 2.5rem;
     }
-    
+
     .hero-text .subtext {
       font-size: 0.5em; 
       color: inherit;   
       margin-top: 1rem;
-      margin-bottom: 10rem;
+      margin-bottom: 13rem;
     }
 
     .background-fade {
@@ -100,16 +107,18 @@
       text-align: center;
       color: rgb(255, 255, 255);
       padding: 10vh 2rem 0;
+      position: relative;
+      z-index: 1;
     }
 
     .after-scroll h1 {
       font-size: 2.5rem;
-      margin-bottom: 5rem;
+      margin-bottom: 3rem;
     }
 
     .after-scroll p {
       font-size: 1.2rem;
-      margin: 0.2rem;
+      margin: 2rem;
     }
   </style>
 </head>
@@ -130,33 +139,34 @@
   </nav>
 
   <section class="hero">
-    <img src="campfire.png" alt="Campfire" class="campfire-image" id="campfire" />
-    <div class="hero-text">
-      Heritmap is not a museum. It’s a campfire. Around it, students tell stories about cultural heritage that deserve to be remembered.
-      <div class="subtext"> Scroll Down for More ↓</div>
+    <div class="hero-content" id="heroContent">
+      <img src="campfire.png" alt="Campfire" class="campfire-image" />
+      <div class="hero-text">
+        Heritmap is not a museum. It’s a campfire. Around it, students tell stories about cultural heritage that deserve to be remembered.
+        <div class="subtext">Scroll Down for More ↓</div>
+      </div>
     </div>
   </section>
 
   <section class="after-scroll">
     <h1>This website is founded by Jerry Sun, aiming to preserve culture and humanity.</h1>
-    <p> <strong>This webpage is for reviews and subjective comments on cultural heritage in P.R. China, any fact-seeker should redirect to <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> for double check.</strong></p>
+    <p><strong>This webpage is for reviews and subjective comments on cultural heritage in P.R. China, any fact-seeker should redirect to <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> for double check.</strong></p>
     <p>Some webpages are still under development, so there may be mistakes. We apologize for any inconvenience.</p>
     <p>Features temporarily not available: Vacation Plans.</p>
   </section>
 
   <script>
-    const campfire = document.getElementById('campfire');
+    const heroContent = document.getElementById('heroContent');
     const bg = document.getElementById('bgFade');
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       const fadeOutPoint = 150;
 
-
       if (scrollY < fadeOutPoint) {
-        campfire.style.opacity = 1 - (scrollY / fadeOutPoint);
+        heroContent.style.opacity = 1 - (scrollY / fadeOutPoint);
       } else {
-        campfire.style.opacity = 0;
+        heroContent.style.opacity = 0;
       }
 
       bg.style.opacity = Math.min(scrollY / 400, 0.3);
