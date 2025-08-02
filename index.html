@@ -103,21 +103,6 @@
       margin-bottom: 12rem;
     }
 
-    .background-fade {
-      background-image: url('indexbackground.jpg');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 198vh;
-      opacity: 0;
-      transition: opacity 0.6s ease-out;
-      z-index: -1;
-    }
-
     .after-scroll {
       background-color: transparent;
       text-align: center;
@@ -137,11 +122,43 @@
       margin: 2rem;
       margin-bottom: 0.2rem;
     }
+
+    .slideshow {
+      position: relative;
+      height: 800vh;
+      background-color: black;
+    }
+
+    .slide-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .slide-image {
+      width: 65vw;
+      height: 65vh;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .slide-caption {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: white;
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
-  <div class="background-fade" id="bgFade"></div>
-
   <nav class="navbar">
     <a href="index.html" class="logo">
       <img src="logo.svg" alt="Heritmap Logo" />
@@ -165,39 +182,69 @@
     </div>
   </section>
 
+  <section class="slideshow" id="slideshow">
+    <div style="height: 100vh;"></div>
+
+    <div class="slide-container">
+      <img src="pic1.jpg" class="slide-image" />
+      <div class="slide-caption">Echoes of heritage rise from ancient stone and memory.</div>
+    </div>
+    <div class="slide-container">
+      <img src="pic2.jpg" class="slide-image" />
+      <div class="slide-caption">A gateway not just to the past, but to identity itself.</div>
+    </div>
+    <div class="slide-container">
+      <img src="pic3.jpg" class="slide-image" />
+      <div class="slide-caption">Quiet craftsmanship speaks louder than centuries of change.</div>
+    </div>
+    <div class="slide-container">
+      <img src="pic4.jpg" class="slide-image" />
+      <div class="slide-caption">Tradition endures in every brick, beam, and breath of history.</div>
+    </div>
+
+    <div style="height: 150vh;" id="slideshow-buffer"></div>
+  </section>
+
   <section class="after-scroll">
     <h1>This website is founded by Jerry Sun, aiming to preserve culture and humanity.</h1>
     <div style="max-width: 600px; margin: 0 auto 80px auto; text-align: center; font-size: 0.95rem; line-height: 1.4;">
       <p><strong>This webpage is for reviews and subjective comments on cultural heritage in P.R. China, any fact-seeker should redirect to <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> for double check.</strong></p>
       <p>Some pages are still under development and may contain mistakes. Thanks for your understanding.</p>
-  
-      <p style="margin: 0.8em 0;">
-         <strong>
-            If you're a student, educator, or heritage enthusiast with a story to share, 
-            we welcome your ideas. Reach out via 
-            <a href="mailto:Jerry.SunJingyuan@outlook.com" style="color: #82c7ff;">email</a>.
-          </strong>
-      </p>
-  
+      <p style="margin: 0.8em 0;"><strong>If you're a student, educator, or heritage enthusiast with a story to share, we welcome your ideas. Reach out via <a href="mailto:Jerry.SunJingyuan@outlook.com" style="color: #82c7ff;">email</a>.</strong></p>
       <p style="opacity: 0.8;">Feature temporarily unavailable: Vacation Plans.</p>
     </div>
   </section>
 
   <script>
     const heroContent = document.getElementById('heroContent');
-    const bg = document.getElementById('bgFade');
+    const slideshowSection = document.getElementById('slideshow');
+    const slides = document.querySelectorAll('.slide-container');
+    const afterScrollSection = document.querySelector('.after-scroll');
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
+
       const fadeOutPoint = 150;
+      heroContent.style.opacity = scrollY < fadeOutPoint ? 1 - scrollY / fadeOutPoint : 0;
 
-      if (scrollY < fadeOutPoint) {
-        heroContent.style.opacity = 1 - (scrollY / fadeOutPoint);
-      } else {
-        heroContent.style.opacity = 0;
-      }
+      const sectionTop = slideshowSection.offsetTop;
+      const sectionHeight = slideshowSection.offsetHeight;
+      const scrollProgress = (scrollY - sectionTop) / sectionHeight;
+      const totalSlides = slides.length;
+      let activeIndex = Math.floor(scrollProgress * totalSlides);
+      if (activeIndex < 0) activeIndex = 0;
+      if (activeIndex >= totalSlides) activeIndex = totalSlides - 1;
 
-      bg.style.opacity = Math.min(scrollY / 400, 0.3);
+      const afterScrollTop = afterScrollSection.offsetTop;
+      const fadeOutStart = afterScrollTop - window.innerHeight * 1.2;
+
+      slides.forEach((slide, idx) => {
+        if (scrollY >= fadeOutStart || scrollY < sectionTop + window.innerHeight * 0.5) {
+          slide.style.opacity = 0;
+        } else {
+          slide.style.opacity = idx === activeIndex ? 1 : 0;
+        }
+      });
     });
   </script>
 </body>
