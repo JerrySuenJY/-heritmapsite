@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Xuanwu Lake – Heritmap</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', serif;
+      color: #000000;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-y: auto;
+    }
+
+  
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('guangyueloubackground.jpg') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333333;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+   .logo img {
+      height: 40px;         
+     transform: scale(2); 
+      margin-top: -10px;     
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #dddddd;
+    }
+
+    
+    .article-container {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 2rem 4rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-container h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .article-container img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .article-container p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 3rem;
+      color: #0070f3;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    
+    .image-credit {
+      color: #888888;         
+      font-size: 0.85rem;       
+      text-align: center;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .caption {
+      color: #888888;         
+      font-size: 0.8rem;       
+      text-align: right;
+      margin-top: 0.1rem;
+      margin-bottom: 2rem;
+      font-family: 'Times New Roman', serif;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="logo.svg" alt="Heritmap Logo" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="map.html">Map View & Explore</a></li>
+      <li><a href="vacation.html">Vacation Plans</a></li>
+      <li><a href="heritage.html">Heritage Sites</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  
+  <div class="article-container">
+    <h1>Xuanwu Lake</h1>
+    <img src="xuanwulake.jpg" alt="xuanwulake" />
+    <div class="caption">Image from Mary Ma, Xuanwu Lake</div>
+    <div class="image-credit">Written by Mary Ma</div>
+    <p>
+      六朝的风，吹过南京玄武湖千年。湖面涟漪轻晃，把王朝兴衰、市井烟火，都揉进波光里。湖岸垂柳摇曳，与远处建筑相映，古意和烟火气奇妙交融。
+    </p>
+    <p>
+      它是历史的容器，也是市民生活的背景。建议多设历史导览，让游客读懂湖畔典故；定期维护湖域生态，让水更清、景更活。
+    </p>
+    <p>
+      愿这汪湖水，继续串起过去与当下，成为南京人心里，始终温热的文化符号，附件为玄武湖实拍图，盼它永葆生机，讲未完的故事。
+    </p>
+    <p>
+      The winds of the Six Dynasties have blown across Nanjing's Xuanwu Lake for thousands of years. Ripples gently ripple the surface, capturing the rise and fall of dynasties and the bustling city life. Willows sway along the lakeshore, echoing with distant buildings in a wondrous blend of antiquity and the hustle and bustle of life.
+    </p>
+    <p>
+      It serves as a vessel of history and a backdrop for local life. We suggest offering more historical tours to help visitors understand the lake's history, and regular maintenance of the lake's ecology to enhance its clarity and vitality.
+    </p>
+    <p>
+      May this lake continue to connect the past and present, becoming a cultural symbol that remains a warm memory in the hearts of Nanjing residents. Attached are photos of Xuanwu Lake. May it remain vibrant and tell its unfinished story.
+    </p>
+    <a class="back-link" href="heritage.html">← Back to Heritage Sites</a>
+  </div>
+
+</body>
+</html>
