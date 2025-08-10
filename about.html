@@ -2,191 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="mylogo.png" type="image/png">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="msvalidate.01" content="29A0BD10E768F58281D02E4319968850" />
-  <title>Heritmap – Culture & Stories</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Discover stories of Chinese cultural heritage, told by students. Explore traditions, historical sites, and cultural insights across China.">
   <meta name="keywords" content="heritage, culture, China, Chinese culture, student stories, traditional sites, UNESCO, cultural preservation">
   <meta name="robots" content="index, follow">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Heritmap",
-    "url": "https://heritmap.org",
-    "logo": "https://heritmap.org/mylogo.png"
-  }
-  </script>
+  <title>Heritmap – About</title>
   <style>
-    * { box-sizing: border-box; }
-    :root { color-scheme: dark; }
     body {
       margin: 0;
+      background-color: #1e1e1e;
       font-family: 'Times New Roman', serif;
-      color: #fff;
-      background: #000;
-      overflow-x: hidden;
-      min-height: 100%;
+      color: white;
     }
 
     .navbar {
-      position: fixed;        
-      top: 0; left: 0; right: 0;
-      height: 75px;          
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 2rem;        
-      background-color: #333; 
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      z-index: 1001;  
+      background-color: #333;
+      padding: 1rem 2rem;
     }
+
     .logo img {
-      height: 40px;
+      height: 100px;
       transform: scale(2);
-      margin-top: 0px;
+      margin-top: -10px;
     }
+
     .nav-links {
       list-style: none;
       display: flex;
       gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-      margin-top: 10px;
     }
+
     .nav-links a {
       text-decoration: none;
       color: #fff;
       font-weight: bold;
       transition: color 0.3s ease, transform 0.3s ease;
     }
+    
     .nav-links a:hover {
       color: #ffcc00;
       transform: translateY(-2px);
     }
 
-    
-    .stage { position: relative; }
-
-    
-    .hero-layer {
-      position: fixed;
-      inset: 0;
-      height: 100svh;           
-      width: 100vw;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      z-index: 10;
-      pointer-events: none;     
-      opacity: 1;               
-      transition: opacity 0.2s linear;
-    }
-    .hero-text {
-      font-size: clamp(1.25rem, 2.5vw, 1.8rem);
-      line-height: 1.35;
+    .container {
+      max-width: 800px;
+      margin: 3rem auto;
       padding: 0 1rem;
-      max-width: 760px;
-      text-wrap: balance;
-      margin-top: 90px;
-    }
-    .hero-text .subtext {
-      font-size: 0.55em;
-      color: #ffcc00;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 1rem;
     }
 
-    
-    .intro-spacer {
-      height: 160svh; 
-    }
-
-    .slideshow {
-      position: relative;
-      height: 600svh; 
-      background: #000;
-    }
-    .slide {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .team-photo {
       text-align: center;
-      opacity: 0;
-      transition: opacity 0.3s linear;
-      z-index: 5;
-      pointer-events: none;
-      will-change: opacity;
-    }
-    .slide img {
-      width: min(65vw, 1100px);
-      height: min(65vh, 70svh);
-      object-fit: cover;
-      border-radius: 20px;
-      display: block;
-      margin: 0 auto;
-      backface-visibility: hidden;
-      transform: translateZ(0); 
-      will-change: opacity, transform;
-    }
-    .caption {
-      margin-top: 1rem;
-      font-size: clamp(1rem, 1.5vw, 1.1rem);
-      font-style: italic;
-      color: #fff;
+      margin-bottom: 3rem;
     }
 
-    
-    .final {
-      position: relative;
-      height: 180svh; 
-      display: block;
-    }
-    .final-inner {
-      position: sticky;
-      top: 50%;
-      transform: translateY(-50%);
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 1rem;
-      text-align: center;
-      opacity: 0; 
-      transition: opacity 0.18s ease-out;
-      color: #ffffff;
-    }
-    .final h1 {
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      margin-bottom: 1.2rem;
-    }
-    .final p {
-      font-size: clamp(1rem, 1.5vw, 1.1rem);
-      line-height: 1.45;
-      margin: 0.8rem 0;
+    .team-photo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
-    
-    @media (max-width: 480px) {
-      .slide img { width: 88vw; height: 55vh; }
+    .accordion {
+      border-bottom: 1px solid #555;
     }
 
-    
-    @media (prefers-reduced-motion: reduce) {
-      .hero-layer,
-      .slide,
-      .final-inner { transition: none !important; }
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 0.8rem 0;
+      font-size: 2.5rem;
+    }
+
+    .accordion-header:hover {
+      color: #aaa;
+    }
+
+    .accordion-header .symbol {
+      font-size: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      font-size: 1.5rem;
+      line-height: 1.6;
+      padding-left: 0.5rem;
+    }
+
+    .accordion.active .accordion-content {
+      max-height: 450px;
+      margin-bottom: 0.5rem;
+    }
+
+    .accordion.active .symbol {
+      transform: rotate(45deg);
     }
   </style>
 </head>
 <body>
+
   <nav class="navbar">
-    <a href="index.html" class="logo" aria-label="Heritmap Home">
-      <img src="logo.svg" alt="Heritmap Logo" />
+    <a href="index.html" class="logo">
+      <img src="logo.svg" alt="Heritmap Logo" style="height: 40px;" />
     </a>
-    <ul class="nav-links" role="navigation" aria-label="Primary">
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="map.html">Map View & Explore</a></li>
       <li><a href="vacation.html">Vacation Plans</a></li>
@@ -195,172 +121,94 @@
     </ul>
   </nav>
 
-  <main class="stage" id="stage">
-    <div class="hero-layer" id="heroLayer" aria-hidden="true">
-      <div class="hero-text">
-        Heritmap is not a museum. It’s a campfire. Around it, students tell stories about cultural heritage that deserve to be remembered.
-        <div class="subtext">Scroll Down for More ↓</div>
+  <div class="container">    
+    <div class="team-photo">
+      <img src="team.jpg" alt="Founders of Heritmap" />
+    </div>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span> Mission & Vision</span>
+        <span class="symbol">+</span>
+      </div>
+      <div class="accordion-content">
+        <p>Heritmap is designed to tell stories about cultural heritage in China digitally in teenagers' eyes. Our mission is to advocate for preservation of cultural heritage and connect people with the beauty and significance of cultural sites through interactive tools like maps, photos, and stories.</p>
       </div>
     </div>
 
-    <div class="intro-spacer" id="introSpacer"></div>
-
-    <section class="slideshow" id="slideshow">
-      <div class="slide"><img src="pic1.jpg" alt="Cultural site 1"><div class="caption">Echoes of history rise from ancient stone and memory.</div></div>
-      <div class="slide"><img src="pic2.jpg" alt="Cultural site 2"><div class="caption">A great wall not just to the past, but to identity itself.</div></div>
-      <div class="slide"><img src="pic3.jpg" alt="Cultural site 3"><div class="caption">Quiet solemnity speaks louder than centuries of change.</div></div>
-      <div class="slide"><img src="pic4.jpg" alt="Cultural site 4"><div class="caption">Culture endures in every brick, beam, and breath of history.</div></div>
-    </section>
-
-    <section class="final" id="final">
-      <div class="final-inner" id="finalInner">
-        <h1>This website is founded by Jerry Sun, aiming to preserve culture and humanity.</h1>
-        <p><strong>This webpage is for reviews and subjective comments on cultural heritage in P.R. China; any fact‑seeker should double‑check on <a href="https://www.wikipedia.org" target="_blank" rel="noopener" style="color:#82c7ff;">Wikipedia</a>.</strong></p>
-        <p>Some pages are still under development and may contain mistakes. Thanks for your understanding.</p>
-        <p><strong>If you're a student, educator, or heritage enthusiast with a story to share, we welcome your ideas. Reach out via <a href="mailto:Jerry.SunJingyuan@outlook.com" style="color:#82c7ff;">email</a>.</strong></p>
-        <p style="opacity:.8;">Feature temporarily unavailable: Vacation Plans.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span> Educational Value</span>
+        <span class="symbol">+</span>
       </div>
-    </section>
-  </main>
+      <div class="accordion-content">
+        <p>This website is not only a digital archive but also a study tool. By describing both the advantage and giving advices to the management of historical sites, Heritmap provides a comprehensive viewpoint about preservation and offers reviews with real-experiences.</p>
+      </div>
+    </div>
 
+    <div class="accordion">
+      <div class="accordion-header">
+        <span> How It’s Built</span>
+        <span class="symbol">+</span>
+      </div>
+      <div class="accordion-content">
+        <p>This site is coded in HTML, CSS, and JavaScript under partial help from artificial intellegence*. Designed and managed by Jerry Sun, it uses interactive mapping and is hosted via Vercel.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header">
+        <span> What's The "BIG PLAN"?</span>
+        <span class="symbol">+</span>
+      </div>
+      <div class="accordion-content">
+        <p>By the time of our graduation (May, 2026), the goal is to complete some detailed heritage pages as well as a whole-functioning web. Future plans include adding a user-submitted gallery (promote own experience), multilingual support (languages other than Chinese and English), and vacation planning features.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header">
+        <span>Source Citation</span>
+        <span class="symbol">+</span>
+      </div>
+      <div class="accordion-content">
+        <p>Specifically, individually listed if exit.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header">
+        <span>Credits and Copyrights</span>
+        <span class="symbol">+</span>
+      </div>
+      <div class="accordion-content">
+        <p>This website is created by Sun Jingyuan (Jerry Sun) with partial help from ChatGPT<sup>*</sup> (OpenAI).</p>
+        <ul style="padding-left: 1.5rem; font-size: 1.4rem;">
+          <li><strong>Mapping Credit:</strong> Leaflet</li>
+          <li><strong>Article Contributions:</strong> Niu Yiwen (Corrine Niu), Guo Tianyang (Craig Guo), Qi Lin (Kirin Qi), Yin Huijie (Charlie Yin), Liu Yuxin (Camile Liu), Li Xinyan (Eliana Li), Ma Yidan (Mary Ma), Cao Zhuo...[Still Expanding]</li>
+          <li><strong>Information & Data:</strong> Wikipedia, Google Scholar (sources stated specifically)</li>
+          <li><strong>Images:</strong> Specifically Cited under Individual Image</li>
+          <li><strong>Logo:</strong> Designed and Refined by Niu Yiwen (Corrine Niu) with Full-Credit and Copyrights®</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr style="margin: 3rem auto; width: 60%; border: 0.5px solid #444;" />
+    <p style="text-align: center; font-style: italic; color: #aaa;">
+      “Where shall we go next? The answer is the same as it was 100 years ago: beyond, far beyond.”<br/>
+      — <span style="font-weight: bold;">National Geographic</span>
+    </p>
+  </div>
+
+  
   <script>
-    const CFG = {
-      heroHold: 0.6,        
-      heroFade: 1.0,        
-      slideWindow: 1.4,     
-      slideFadePortion: 0.35, 
-      finalFade: 0.4,       
-      finalHold: 0.9        
-    };
+    const accordions = document.querySelectorAll('.accordion');
 
-    const heroLayer = document.getElementById('heroLayer');
-    const introSpacer = document.getElementById('introSpacer');
-    const slideshow = document.getElementById('slideshow');
-    const slides = Array.from(document.querySelectorAll('.slide'));
-    const finalSection = document.getElementById('final');
-    const finalInner = document.getElementById('finalInner');
-
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function metrics() {
-      const vh = window.innerHeight;
-
-      const heroHoldEnd = CFG.heroHold * vh;
-      const heroFadeEnd = (CFG.heroHold + CFG.heroFade) * vh;
-
-      const slidesTop = heroFadeEnd;
-      const perSlide = CFG.slideWindow * vh;
-      const slidesEnd = slidesTop + perSlide * slides.length;
-
-      const finalStart = slidesEnd;
-      const finalFadeEnd = finalStart + CFG.finalFade * vh;
-      const finalEnd = finalFadeEnd + CFG.finalHold * vh;
-
-      introSpacer.style.height = `${(CFG.heroHold + CFG.heroFade) * 100}svh`;
-      slideshow.style.height = `${(CFG.slideWindow * slides.length) * 100}svh`;
-      finalSection.style.height = `${(CFG.finalFade + CFG.finalHold) * 100}svh`;
-
-      return {
-        vh,
-        heroHoldEnd,
-        heroFadeEnd,
-        slidesTop,
-        perSlide,
-        slidesEnd,
-        finalStart,
-        finalFadeEnd,
-        finalEnd
-      };
-    }
-
-    let M = metrics();
-    window.addEventListener('resize', () => { M = metrics(); onScroll(); });
-
-    const clamp01 = v => Math.max(0, Math.min(1, v));
-
-    function fadeProgress(scrollY, start, end) {
-      if (scrollY <= start) return 0;
-      if (scrollY >= end) return 1;
-      return (scrollY - start) / (end - start);
-    }
-
-    let ticking = false;
-    function onScroll() {
-      const y = window.scrollY;
-
-      
-      if (prefersReduced) {
-        heroLayer.style.opacity = 0;
-        heroLayer.style.display = 'none';
-      } else {
-        if (y <= M.heroHoldEnd) {
-          heroLayer.style.opacity = 1;
-          heroLayer.style.display = '';
-        } else if (y <= M.heroFadeEnd) {
-          const p = 1 - fadeProgress(y, M.heroHoldEnd, M.heroFadeEnd);
-          heroLayer.style.opacity = p;
-          heroLayer.style.display = '';
-        } else {
-          heroLayer.style.opacity = 0;
-          heroLayer.style.display = 'none'; 
-        }
-      }
-
-      const eps = 0.02;                       
-      const fadePortion = CFG.slideFadePortion;   
-      const holdStart = fadePortion;
-      const holdEnd = 1 - fadePortion;
-
-      if (y < M.slidesTop || y >= M.slidesEnd) {
-        slides.forEach(s => { s.style.opacity = 0; s.style.visibility = 'hidden'; });
-      } else {
-        const local = y - M.slidesTop;
-        const idx = Math.floor(local / M.perSlide);
-        const within = (local % M.perSlide) / M.perSlide;
-
-        slides.forEach((slide, i) => {
-          if (i !== idx) {
-            slide.style.opacity = 0;
-            slide.style.visibility = 'hidden';
-            return;
-          }
-
-          let op = 1;
-
-          if (within < holdStart - eps) {
-            op = Math.max(0, Math.min(1, within / (holdStart)));
-          } else if (within > holdEnd + eps) {
-            op = Math.max(0, Math.min(1, (1 - within) / (1 - holdEnd)));
-          } else {
-            op = 1;
-          }
-
-          slide.style.visibility = 'visible';
-          slide.style.opacity = op;
-        });
-      }
-
-      // Writing and fixing this shit is sooooooooo tiring 
-      if (y <= M.finalStart) {
-        finalInner.style.opacity = 0;
-      } else if (y <= M.finalFadeEnd) {
-        finalInner.style.opacity = fadeProgress(y, M.finalStart, M.finalFadeEnd);
-      } else {
-        finalInner.style.opacity = 1;
-      }
-
-      ticking = false;
-    }
-
-    function requestTick() {
-      if (!ticking) {
-        requestAnimationFrame(onScroll);
-        ticking = true;
-      }
-    }
-// FINALLY DONE !!!!
-    window.addEventListener('scroll', requestTick, { passive: true });
-    window.addEventListener('load', onScroll);
+    accordions.forEach(acc => {
+      acc.querySelector('.accordion-header').addEventListener('click', () => {
+        acc.classList.toggle('active');
+      });
+    });
   </script>
+
 </body>
 </html>
