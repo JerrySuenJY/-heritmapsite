@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="mylogo.png" type="image/png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="msvalidate.01" content="29A0BD10E768F58281D02E4319968850" />
   <title>Heritmap – Culture & Stories</title>
   <meta name="description" content="Discover stories of Chinese cultural heritage, told by students. Explore traditions, historical sites, and cultural insights across China.">
@@ -19,168 +19,172 @@
   }
   </script>
   <style>
+    * { box-sizing: border-box; }
+    :root { color-scheme: dark; }
     body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
       font-family: 'Times New Roman', serif;
-      color: white;
-      background-color: black;
-      height: 100%;
+      color: #fff;
+      background: #000;
       overflow-x: hidden;
+      min-height: 100%;
     }
 
+    
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #333333;
+      background: #333;
       padding: 1rem 2rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       position: relative;
       z-index: 100;
     }
-
     .logo img {
       height: 40px;
       transform: scale(2);
       margin-top: -10px;
     }
-
     .nav-links {
       list-style: none;
       display: flex;
       gap: 1.5rem;
+      margin: 0;
+      padding: 0;
     }
-
     .nav-links a {
       text-decoration: none;
       color: #fff;
       font-weight: bold;
       transition: color 0.3s ease, transform 0.3s ease;
     }
-
     .nav-links a:hover {
-      color: #ffcc00;
+      color: #727272;
       transform: translateY(-2px);
     }
 
-    .hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
+    
+    .stage { position: relative; }
 
-    .hero-content {
+    
+    .hero-layer {
       position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
+      inset: 0;
+      height: 100svh;           
       width: 100vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: grid;
+      place-items: center;
       text-align: center;
-      transition: opacity 0.3s ease-out;
       z-index: 10;
+      pointer-events: none;     
+      opacity: 1;               
+      transition: opacity 0.2s linear;
     }
-
-    .campfire-image {
-      width: 300px;
-      border-radius: 20px;
-      transition: opacity 0.8s ease-out;
-    }
-
     .hero-text {
-      font-size: 1.8rem;
+      font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+      line-height: 1.35;
       padding: 0 1rem;
-      max-width: 700px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      text-align: center;
+      max-width: 760px;
+      text-wrap: balance;
+      margin-top: 90px;
     }
-
-    .hero-text.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     .hero-text .subtext {
-      font-size: 0.5em;
+      font-size: 0.55em;
       color: #ffcc00;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-top: 1rem;
-      margin-bottom: 12rem;
     }
 
-    .after-scroll {
-      background-color: transparent;
-      text-align: center;
-      color: rgb(255, 255, 255);
-      padding: 10vh 2rem 0;
-      position: relative;
-      z-index: 20;
-    }
-
-    .after-scroll h1 {
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .after-scroll p {
-      font-size: 1.2rem;
-      margin: 2rem;
-      margin-bottom: 0.2rem;
+    
+    .intro-spacer {
+      height: 160svh; 
     }
 
     .slideshow {
       position: relative;
-      height: 800vh;
-      background-color: black;
+      height: 600svh; 
+      background: #000;
     }
-
-    .slide-container {
+    .slide {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
       opacity: 0;
-      transition: opacity 0.6s ease-in-out;
+      transition: opacity 0.3s linear;
       z-index: 5;
       pointer-events: none;
+      will-change: opacity;
     }
-
-    .slide-image {
-      width: 65vw;
-      height: 65vh;
+    .slide img {
+      width: min(65vw, 1100px);
+      height: min(65vh, 70svh);
       object-fit: cover;
       border-radius: 20px;
       display: block;
       margin: 0 auto;
+      backface-visibility: hidden;
+      transform: translateZ(0); 
+      will-change: opacity, transform;
+    }
+    .caption {
+      margin-top: 1rem;
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
+      font-style: italic;
+      color: #fff;
     }
 
-    .slide-caption {
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      color: white;
-      font-style: italic;
+    
+    .final {
+      position: relative;
+      height: 180svh; 
+      display: block;
+    }
+    .final-inner {
+      position: sticky;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      text-align: center;
+      opacity: 0; 
+      transition: opacity 0.18s ease-out;
+      color: #ffffff;
+    }
+    .final h1 {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: 1.2rem;
+    }
+    .final p {
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
+      line-height: 1.45;
+      margin: 0.8rem 0;
+    }
+
+    
+    @media (max-width: 480px) {
+      .slide img { width: 88vw; height: 55vh; }
+    }
+
+    
+    @media (prefers-reduced-motion: reduce) {
+      .hero-layer,
+      .slide,
+      .final-inner { transition: none !important; }
     }
   </style>
 </head>
 <body>
   <nav class="navbar">
-    <a href="index.html" class="logo">
+    <a href="index.html" class="logo" aria-label="Heritmap Home">
       <img src="logo.svg" alt="Heritmap Logo" />
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" role="navigation" aria-label="Primary">
       <li><a href="index.html">Home</a></li>
       <li><a href="map.html">Map View & Explore</a></li>
       <li><a href="vacation.html">Vacation Plans</a></li>
@@ -189,123 +193,172 @@
     </ul>
   </nav>
 
-  <section class="hero">
-    <div class="hero-content" id="heroContent">
-      <img src="campfire.png" alt="Campfire" class="campfire-image" id="campfireImage" />
-      <div class="hero-text" id="heroText">
+  <main class="stage" id="stage">
+    <div class="hero-layer" id="heroLayer" aria-hidden="true">
+      <div class="hero-text">
         Heritmap is not a museum. It’s a campfire. Around it, students tell stories about cultural heritage that deserve to be remembered.
         <div class="subtext">Scroll Down for More ↓</div>
       </div>
     </div>
-  </section>
 
-  <section class="slideshow" id="slideshow">
-    <div style="height: 100vh;"></div>
+    <div class="intro-spacer" id="introSpacer"></div>
 
-    <div class="slide-container">
-      <img src="pic1.jpg" class="slide-image" />
-      <div class="slide-caption">"Echoes of heritage rise from ancient stone and memory." (Forbidden City by Jerry Sun)</div>
-    </div>
-    <div class="slide-container">
-      <img src="pic2.jpg" class="slide-image" />
-      <div class="slide-caption">"A wall not just to the past, but to identity itself." (The Great Wall by Pexels)</div>
-    </div>
-    <div class="slide-container">
-      <img src="pic3.jpg" class="slide-image" />
-      <div class="slide-caption">"Quiet solemnity speaks louder than centuries of change." (Dr. Sun Yat-sen's Mausoleum by Jerry Sun)</div>
-    </div>
-    <div class="slide-container">
-      <img src="pic4.jpg" class="slide-image" />
-      <div class="slide-caption">"Culture endures in every brick, beam, and breath of history." (Terracotta Army by Pexels)</div>
-    </div>
+    <section class="slideshow" id="slideshow">
+      <div class="slide"><img src="pic1.jpg" alt="Cultural site 1"><div class="caption">Echoes of history rise from ancient stone and memory.</div></div>
+      <div class="slide"><img src="pic2.jpg" alt="Cultural site 2"><div class="caption">A great wall not just to the past, but to identity itself.</div></div>
+      <div class="slide"><img src="pic3.jpg" alt="Cultural site 3"><div class="caption">Quiet solemnity speaks louder than centuries of change.</div></div>
+      <div class="slide"><img src="pic4.jpg" alt="Cultural site 4"><div class="caption">Culture endures in every brick, beam, and breath of history.</div></div>
+    </section>
 
-    <div style="height: 250vh;" id="slideshow-buffer"></div>
-  </section>
+    <section class="final" id="final">
+      <div class="final-inner" id="finalInner">
+        <h1>This website is founded by Jerry Sun, aiming to preserve culture and humanity.</h1>
+        <p><strong>This webpage is for reviews and subjective comments on cultural heritage in P.R. China; any fact‑seeker should double‑check on <a href="https://www.wikipedia.org" target="_blank" rel="noopener" style="color:#82c7ff;">Wikipedia</a>.</strong></p>
+        <p>Some pages are still under development and may contain mistakes. Thanks for your understanding.</p>
+        <p><strong>If you're a student, educator, or heritage enthusiast with a story to share, we welcome your ideas. Reach out via <a href="mailto:Jerry.SunJingyuan@outlook.com" style="color:#82c7ff;">email</a>.</strong></p>
+        <p style="opacity:.8;">Feature temporarily unavailable: Vacation Plans.</p>
+      </div>
+    </section>
+  </main>
 
-  <section class="after-scroll">
-    <h1>This website is founded by Jerry Sun, aiming to preserve culture and humanity.</h1>
-    <div style="max-width: 600px; margin: 0 auto 80px auto; text-align: center; font-size: 0.95rem; line-height: 1.4;">
-      <p><strong>This webpage is for reviews and subjective comments on cultural heritage in P.R. China, any fact-seeker should redirect to <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> for double check.</strong></p>
-      <p>Some pages are still under development and may contain mistakes. Thanks for your understanding.</p>
-      <p style="margin: 0.8em 0;"><strong>If you're a student, educator, or heritage enthusiast with a story to share, we welcome your ideas. Reach out via <a href="mailto:Jerry.SunJingyuan@outlook.com" style="color: #82c7ff;">email</a>.</strong></p>
-      <p style="opacity: 0.8;">Feature temporarily unavailable: Vacation Plans.</p>
-    </div>
-  </section>
+  <script>
+    const CFG = {
+      heroHold: 0.6,        
+      heroFade: 1.0,        
+      slideWindow: 1.4,     
+      slideFadePortion: 0.35, 
+      finalFade: 0.4,       
+      finalHold: 0.9        
+    };
 
- <script>
-    const campfireImage = document.getElementById('campfireImage');
-    const heroText = document.getElementById('heroText');
-    const heroContent = document.getElementById('heroContent');
-    const slideshowSection = document.getElementById('slideshow');
-    const slides = document.querySelectorAll('.slide-container');
-    const afterScrollSection = document.querySelector('.after-scroll');
+    const heroLayer = document.getElementById('heroLayer');
+    const introSpacer = document.getElementById('introSpacer');
+    const slideshow = document.getElementById('slideshow');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const finalSection = document.getElementById('final');
+    const finalInner = document.getElementById('finalInner');
 
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function metrics() {
+      const vh = window.innerHeight;
+
+      const heroHoldEnd = CFG.heroHold * vh;
+      const heroFadeEnd = (CFG.heroHold + CFG.heroFade) * vh;
+
+      const slidesTop = heroFadeEnd;
+      const perSlide = CFG.slideWindow * vh;
+      const slidesEnd = slidesTop + perSlide * slides.length;
+
+      const finalStart = slidesEnd;
+      const finalFadeEnd = finalStart + CFG.finalFade * vh;
+      const finalEnd = finalFadeEnd + CFG.finalHold * vh;
+
+      introSpacer.style.height = `${(CFG.heroHold + CFG.heroFade) * 100}svh`;
+      slideshow.style.height = `${(CFG.slideWindow * slides.length) * 100}svh`;
+      finalSection.style.height = `${(CFG.finalFade + CFG.finalHold) * 100}svh`;
+
+      return {
+        vh,
+        heroHoldEnd,
+        heroFadeEnd,
+        slidesTop,
+        perSlide,
+        slidesEnd,
+        finalStart,
+        finalFadeEnd,
+        finalEnd
+      };
+    }
+
+    let M = metrics();
+    window.addEventListener('resize', () => { M = metrics(); onScroll(); });
+
+    const clamp01 = v => Math.max(0, Math.min(1, v));
+
+    function fadeProgress(scrollY, start, end) {
+      if (scrollY <= start) return 0;
+      if (scrollY >= end) return 1;
+      return (scrollY - start) / (end - start);
+    }
+
+    let ticking = false;
+    function onScroll() {
+      const y = window.scrollY;
 
       
-      const imageFadeOutStart = 70;
-      const imageFadeOutEnd = 180; 
-      const textFadeInStart = 183;
-      const textFadeInEnd = 210;
-      const visibleUntil = 760;
-      const fadeOutEnd = 780;
-
-      
-      if (scrollY < imageFadeOutStart) {
-        campfireImage.style.opacity = '1';
-      } else if (scrollY >= imageFadeOutStart && scrollY <= imageFadeOutEnd) {
-        let progress = (scrollY - imageFadeOutStart) / (imageFadeOutEnd - imageFadeOutStart);
-        campfireImage.style.opacity = (1 - progress).toString();
+      if (prefersReduced) {
+        heroLayer.style.opacity = 0;
+        heroLayer.style.display = 'none';
       } else {
-        campfireImage.style.opacity = '0';
-      }
-
-      
-      if (scrollY < textFadeInStart) {
-        heroText.style.opacity = '0';
-        heroText.style.transform = 'translate(-50%, 80px)';
-      } else if (scrollY >= textFadeInStart && scrollY <= textFadeInEnd) {
-        let progress = (scrollY - textFadeInStart) / (textFadeInEnd - textFadeInStart);
-        heroText.style.opacity = progress.toString();
-        heroText.style.transform = `translate(-50%, ${80 - 80 * progress}px)`;
-      } else if (scrollY > textFadeInEnd && scrollY <= visibleUntil) {
-        heroText.style.opacity = '1';
-        heroText.style.transform = 'translate(-50%, 0)';
-      } else if (scrollY > visibleUntil && scrollY <= fadeOutEnd) {
-        let progress = (scrollY - visibleUntil) / (fadeOutEnd - visibleUntil);
-        heroText.style.opacity = (1 - progress).toString();
-        heroText.style.transform = `translate(-50%, ${-80 * progress}px)`;
-      } else {
-        heroText.style.opacity = '0';
-        heroText.style.transform = 'translate(-50%, -80px)';
-      }
-
-      
-      const fadeOutHeroPoint = 1300;
-      heroContent.style.opacity = scrollY < fadeOutHeroPoint ? 1 - Math.max(0, (scrollY - visibleUntil) / (fadeOutHeroPoint - visibleUntil)) : 0;
-
-      
-      const sectionTop = slideshowSection.offsetTop;
-      const sectionHeight = slideshowSection.offsetHeight;
-      const totalSlides = slides.length;
-      const slideHeight = sectionHeight / totalSlides;
-      let activeIndex = Math.floor((scrollY - sectionTop) / slideHeight);
-
-      if (activeIndex < 0) activeIndex = 0;
-      if (activeIndex >= totalSlides) activeIndex = totalSlides - 1;
-
-      const afterScrollTop = afterScrollSection.offsetTop;
-      const fadeOutStart = afterScrollTop - window.innerHeight * 1.2;
-
-      slides.forEach((slide, idx) => {
-        if (scrollY >= fadeOutStart || scrollY < sectionTop) {
-          slide.style.opacity = 0;
+        if (y <= M.heroHoldEnd) {
+          heroLayer.style.opacity = 1;
+          heroLayer.style.display = '';
+        } else if (y <= M.heroFadeEnd) {
+          const p = 1 - fadeProgress(y, M.heroHoldEnd, M.heroFadeEnd);
+          heroLayer.style.opacity = p;
+          heroLayer.style.display = '';
         } else {
-          slide.style.opacity = idx === activeIndex ? 1 : 0;
+          heroLayer.style.opacity = 0;
+          heroLayer.style.display = 'none'; 
         }
-      });
-    });
+      }
+
+      const eps = 0.02;                       
+      const fadePortion = CFG.slideFadePortion;   
+      const holdStart = fadePortion;
+      const holdEnd = 1 - fadePortion;
+
+      if (y < M.slidesTop || y >= M.slidesEnd) {
+        slides.forEach(s => { s.style.opacity = 0; s.style.visibility = 'hidden'; });
+      } else {
+        const local = y - M.slidesTop;
+        const idx = Math.floor(local / M.perSlide);
+        const within = (local % M.perSlide) / M.perSlide;
+
+        slides.forEach((slide, i) => {
+          if (i !== idx) {
+            slide.style.opacity = 0;
+            slide.style.visibility = 'hidden';
+            return;
+          }
+
+          let op = 1;
+
+          if (within < holdStart - eps) {
+            op = Math.max(0, Math.min(1, within / (holdStart)));
+          } else if (within > holdEnd + eps) {
+            op = Math.max(0, Math.min(1, (1 - within) / (1 - holdEnd)));
+          } else {
+            op = 1;
+          }
+
+          slide.style.visibility = 'visible';
+          slide.style.opacity = op;
+        });
+      }
+
+      // Writing and fixing this shit is sooooooooo tiring 
+      if (y <= M.finalStart) {
+        finalInner.style.opacity = 0;
+      } else if (y <= M.finalFadeEnd) {
+        finalInner.style.opacity = fadeProgress(y, M.finalStart, M.finalFadeEnd);
+      } else {
+        finalInner.style.opacity = 1;
+      }
+
+      ticking = false;
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }
+// FINALLY DONE !!!!
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('load', onScroll);
   </script>
 </body>
 </html>
