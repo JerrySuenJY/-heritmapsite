@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fujian Tulou – Heritmap</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', serif;
+      color: #000000;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-y: auto;
+    }
+
+  
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('fujiantulouloubackground.jpg') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333333;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+   .logo img {
+      height: 40px;         
+     transform: scale(2); 
+      margin-top: -10px;     
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #dddddd;
+    }
+
+    
+    .article-container {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 2rem 4rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-container h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .article-container img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .article-container p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 3rem;
+      color: #0070f3;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    
+    .image-credit {
+      color: #888888;         
+      font-size: 0.85rem;       
+      text-align: center;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .caption {
+      color: #888888;         
+      font-size: 0.8rem;       
+      text-align: right;
+      margin-top: 0.1rem;
+      margin-bottom: 2rem;
+      font-family: 'Times New Roman', serif;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="logo.svg" alt="Heritmap Logo" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="map.html">Map View & Explore</a></li>
+      <li><a href="vacation.html">Vacation Plans</a></li>
+      <li><a href="heritage.html">Heritage Sites</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  
+  <div class="article-container">
+    <h1>Fujian Tulou (Yongding Tulou)</h1>
+    <img src="fujiantulou.jpg" alt="FujianTulou" />
+    <div class="caption">Image from Jerry Sun, Fujian (Yongding) Tulou</div>
+    <div class="image-credit">Written by James Jiang</div>
+    <p>
+      永定土楼是许多海外闽人的故乡，有深厚的历史底蕴。个人认为：土楼的核心价值在于村民仍在其中生活，是与其他文化遗产不同的一点也是很独特的价值，但过度旅游化正挤压居住空间。
+    </p>
+    <p>
+      以下为几点建议：
+    </p>
+    <p>
+      1. 赋权村民：成立由楼长、乡贤组成的共治委员会，对商业开发拥有一票否决权；  
+    </p>
+    <p>
+      2. 现代管理赋能：引入“权责清单”制度，明确村民在修缮、分红、游客管理中的主体地位；   
+    </p>
+    <p>
+      让居民从“被管理者”转为“主导者”，才是活态遗产真正存续的关键。闽人治闽!  
+    </p>
+    <p>
+      Yongding Tulou, home to many overseas Fujianese, boasts a rich history. I believe the core value of these buildings lies in the continued existence of local residents, despite a unique value that sets them apart from other cultural heritage sites. However, excessive tourism is squeezing out living space.
+    </p>
+    <p>
+      Here are a few suggestions:
+    </p>
+    <p>
+      1. Empower villagers: Establish a co-governance committee composed of building managers and village elders, which will have a veto over commercial development;
+    </p>
+    <p>
+      2. Modern management empowerment: Introducing a "power and responsibility list" system to clarify the villagers' dominant position in repairs, dividends, and tourist management;
+    </p>
+    <p>
+      Transforming residents from being "managed" to "leaders" is the key to the true survival of living heritage. Fujian people govern Fujian!
+    </p>
+    <a class="back-link" href="heritage.html">← Back to Heritage Sites</a>
+  </div>
+
+</body>
+</html>
