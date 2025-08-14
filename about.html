@@ -3,18 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Discover stories of Chinese cultural heritage, told by students. Explore traditions, historical sites, and cultural insights across China.">
-  <meta name="keywords" content="heritage, culture, China, Chinese culture, student stories, traditional sites, UNESCO, cultural preservation">
-  <meta name="robots" content="index, follow">
   <title>Heritmap – About</title>
   <style>
     body {
       margin: 0;
-      background-color: #1e1e1e;
-      font-family: 'Times New Roman', serif;
-      color: white;
+      background: #000;
+      font-family: 'Times New Roman', Times, serif;
+      color: #fff;
     }
-
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -22,7 +18,6 @@
       background-color: #333;
       padding: 1rem 2rem;
     }
-
     .logo img {
       height: 100px;
       transform: scale(2);
@@ -34,80 +29,114 @@
       display: flex;
       gap: 1.5rem;
     }
-
     .nav-links a {
       text-decoration: none;
       color: #fff;
-      font-weight: bold;
+      font-weight: normal;
       transition: color 0.3s ease, transform 0.3s ease;
     }
-    
     .nav-links a:hover {
       color: #ffcc00;
       transform: translateY(-2px);
     }
-
-    .container {
-      max-width: 800px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-
-    .team-photo {
+    .hero {
       text-align: center;
-      margin-bottom: 3rem;
+      padding: 4rem 1rem 2rem;
     }
-
-    .team-photo img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 200;
+      margin-bottom: 6rem;
+      margin-top: 6rem;
     }
-
-    .accordion {
-      border-bottom: 1px solid #555;
+    .picker-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
     }
-
-    .accordion-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .picker-select {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #1f1f1f;
+      color: #fff;
+      padding: 1rem 3rem 1rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: normal;
+      font-size: 0.5rem;
       cursor: pointer;
-      padding: 0.8rem 0;
-      font-size: 2.5rem;
     }
-
-    .accordion-header:hover {
-      color: #aaa;
+    .picker-caret {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
     }
-
-    .accordion-header .symbol {
-      font-size: 2rem;
-      transition: transform 0.3s ease;
+    .showcase {max-width: 700px; margin: 2rem auto; padding: 0 1rem;}
+    .showcase-viewport{
+      position: relative;
+      height: auto;               
+      overflow: hidden;          
+      transition: height .28s ease;
     }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-      font-size: 1.5rem;
+    .panel{
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .24s ease;
+      transform: none;            
+    }
+    .panel.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    @keyframes fadeIn {fadeIn { from { opacity: 1 } to { opacity: 1 } }}
+    .extra-section {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+      font-size: 1.2rem;
       line-height: 1.6;
-      padding-left: 0.5rem;
+      color: #ccc;
+    }
+    .navbar { background-color:#333; padding:1rem 2rem; }
+    .hero-title{ font-size: clamp(2.6rem, 8vw, 5.2rem); line-height:1.02; letter-spacing:-.03em; font-weight:900; }
+    .picker-select{ background:#111; padding:1.05rem 3rem 1.05rem 1.2rem; border-radius:999px; border:1px solid rgba(255,255,255,.18); font-weight:800; font-size:1.05rem }
+    .panel-inner p,
+    .panel-inner ul,
+    .panel-inner li {
+      font-size: 1.15rem;  
+      line-height: 1.9;    
+    }
+    .reader{ margin: 3rem auto 0; max-width: 840px }
+    .reader-inner{ background: linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid rgba(255,255,255,.07); border-radius: var(--radius); box-shadow: var(--shadow); padding:1.6rem }
+    .reader h3{ margin:0 0 .5rem; font-size:1.25rem; font-weight:800 }
+    .reader p{ color:#cfcfcf; line-height:1.8 }
+
+    .extra-section { max-width: 900px; margin: 4rem auto; padding: 0 1rem; }
+    .extra-section figure { margin: 0; }
+    .extra-section img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
     }
 
-    .accordion.active .accordion-content {
-      max-height: 450px;
-      margin-bottom: 0.5rem;
+    .extra-section figcaption {
+      margin-top: .6rem;
+      font-size: 0.95rem;
+      color: #cfcfcf;
+      text-align: center;
+      font-style: italic;
     }
-
-    .accordion.active .symbol {
-      transform: rotate(45deg);
-    }
+        
   </style>
 </head>
 <body>
-
   <nav class="navbar">
     <a href="index.html" class="logo">
       <img src="logo.svg" alt="Heritmap Logo" style="height: 40px;" />
@@ -121,94 +150,137 @@
     </ul>
   </nav>
 
-  <div class="container">    
-    <div class="team-photo">
-      <img src="team.jpg" alt="Founders of Heritmap" />
+  <section class="hero">
+    <h1>Here is where everything about Heritmap is introduced...</h1>
+    <div class="picker-wrap">
+      <select id="aboutPicker" class="picker-select">
+        <option value="mission">Mission & Vision</option>
+        <option value="edu">Educational Value</option>
+        <option value="build">How It’s Built</option>
+        <option value="plan">What's The "BIG PLAN"?</option>
+        <option value="cite">Source Citation</option>
+        <option value="credits">Credits and Copyrights</option>
+      </select>
+      <span class="picker-caret">▾</span>
     </div>
-    <div class="accordion">
-      <div class="accordion-header">
-        <span> Mission & Vision</span>
-        <span class="symbol">+</span>
-      </div>
-      <div class="accordion-content">
-        <p>Heritmap is designed to tell stories about cultural heritage in China digitally in teenagers' eyes. Our mission is to advocate for preservation of cultural heritage and connect people with the beauty and significance of cultural sites through interactive tools like maps, photos, and stories.</p>
-      </div>
-    </div>
+  </section>
 
-    <div class="accordion">
-      <div class="accordion-header">
-        <span> Educational Value</span>
-        <span class="symbol">+</span>
-      </div>
-      <div class="accordion-content">
-        <p>This website is not only a digital archive but also a study tool. By describing both the advantage and giving advices to the management of historical sites, Heritmap provides a comprehensive viewpoint about preservation and offers reviews with real-experiences.</p>
-      </div>
-    </div>
+  <section id="showcase" class="showcase" aria-live="polite">
+      <div class="showcase-viewport">
+        <article class="panel active" data-id="mission">
+          <div class="panel-inner">
+            <h2>Mission & Vision</h2>
+            <p>Heritmap is designed to tell stories about cultural heritage in China digitally in teenagers' eyes. Our mission is to advocate for preservation of cultural heritage and connect people with the beauty and significance of cultural sites through interactive tools like maps, photos, and stories.</p>
+          </div>
+        </article>
 
-    <div class="accordion">
-      <div class="accordion-header">
-        <span> How It’s Built</span>
-        <span class="symbol">+</span>
-      </div>
-      <div class="accordion-content">
-        <p>This site is coded in HTML, CSS, and JavaScript under partial help from artificial intellegence*. Designed and managed by Jerry Sun, it uses interactive mapping and is hosted via Vercel.</p>
-      </div>
-    </div>
+        <article class="panel" data-id="edu">
+          <div class="panel-inner">
+            <h2>Educational Value</h2>
+            <p>This website is not only a digital archive but also a study tool. By describing both the advantage and giving advices to the management of historical sites, Heritmap provides a comprehensive viewpoint about preservation and offers reviews with real-experiences.</p>
+          </div>
+        </article>
 
-    <div class="accordion">
-      <div class="accordion-header">
-        <span> What's The "BIG PLAN"?</span>
-        <span class="symbol">+</span>
-      </div>
-      <div class="accordion-content">
-        <p>By the time of our graduation (May, 2026), the goal is to complete some detailed heritage pages as well as a whole-functioning web. Future plans include adding a user-submitted gallery (promote own experience), multilingual support (languages other than Chinese and English), and vacation planning features.</p>
-      </div>
-    </div>
+        <article class="panel" data-id="build">
+          <div class="panel-inner">
+            <h2>How It’s Built</h2>
+            <p>This site is coded in HTML, CSS, and JavaScript under partial help from artificial intellegence*. Designed and managed by Jerry Sun, it uses interactive mapping and is hosted via Vercel.</p>
+          </div>
+        </article>
 
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>Source Citation</span>
-        <span class="symbol">+</span>
-      </div>
-      <div class="accordion-content">
-        <p>Specifically, individually listed if exit.</p>
-      </div>
-    </div>
+        <article class="panel" data-id="plan">
+          <div class="panel-inner">
+            <h2>What's The "BIG PLAN"?</h2>
+            <p>By the time of our graduation (May, 2026), the goal is to complete some detailed heritage pages as well as a whole-functioning web. Future plans include adding a user-submitted gallery (promote own experience), multilingual support (languages other than Chinese and English), and vacation planning features.</p>
+          </div>
+        </article>
 
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>Credits and Copyrights</span>
-        <span class="symbol">+</span>
-      </div>
-      <div class="accordion-content">
-        <p>This website is created by Sun Jingyuan (Jerry Sun) with partial help from ChatGPT<sup>*</sup> (OpenAI).</p>
-        <ul style="padding-left: 1.5rem; font-size: 1.4rem;">
-          <li><strong>Mapping Credit:</strong> Leaflet</li>
-          <li><strong>Article Contributions:</strong> Niu Yiwen (Corrine Niu), Guo Tianyang (Craig Guo), Qi Lin (Kirin Qi), Yin Huijie (Charlie Yin), Liu Yuxin (Camile Liu), Li Xinyan (Eliana Li), Ma Yidan (Mary Ma), Cao Zhuo, James Jiang (Jiang Wei)...[Still Expanding]</li>
-          <li><strong>Information & Data:</strong> Wikipedia, Google Scholar (sources stated specifically)</li>
-          <li><strong>Images:</strong> Specifically Cited under Individual Image</li>
-          <li><strong>Logo:</strong> Designed and Refined by Niu Yiwen (Corrine Niu) with Full-Credit and Copyrights®</li>
-        </ul>
-      </div>
-    </div>
+        <article class="panel" data-id="cite">
+          <div class="panel-inner">
+            <h2>Source Citation</h2>
+            <p>Specifically, individually listed if exist.</p>
+          </div>
+        </article>
 
-    <hr style="margin: 3rem auto; width: 60%; border: 0.5px solid #444;" />
-    <p style="text-align: center; font-style: italic; color: #aaa;">
-      “Where shall we go next? The answer is the same as it was 100 years ago: beyond, far beyond.”<br/>
-      — <span style="font-weight: bold;">National Geographic</span>
-    </p>
-  </div>
+        <article class="panel" data-id="credits">
+          <div class="panel-inner">
+            <h2>Credits and Copyrights</h2>
+            <p>This website is created by Sun Jingyuan (Jerry Sun) with partial help from ChatGPT<sup>*</sup> (OpenAI).</p>
+            <ul>
+              <li><strong>Mapping Credit:</strong> Leaflet</li>
+              <li><strong>Article Contributions:</strong> Niu Yiwen (Corrine Niu), Guo Tianyang (Craig Guo), Qi Lin (Kirin Qi), Yin Huijie (Charlie Yin), Liu Yuxin (Camile Liu), Li Xinyan (Eliana Li), Ma Yidan (Mary Ma), Cao Zhuo, James Jiang (Jiang Wei)...[Still Expanding]</li>
+              <li><strong>Information &amp; Data:</strong> Wikipedia, Google Scholar (sources stated specifically)</li>
+              <li><strong>Images:</strong> Specifically Cited under Individual Image</li>
+              <li><strong>Logo:</strong> Designed and Refined by Niu Yiwen (Corrine Niu) with Full-Credit and Copyrights®</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  
+    <section class="reader">
+      <div class="reader-inner">
+        <h3>From the founder</h3>
+        <p>Heritmap grew out of weekend trips, notebook sketches, and a belief that places remember us as much as we remember them. This is a living notebook — a clean, simple home for student voices, maps, and small discoveries worth keeping.</p>
+      </div>
+    </section>
+
+  <section class="extra-section">
+    <figure>
+      <img src="founder.jpg" alt="Founder’s note (extended)">
+    </figure>
+  </section>
+
   <script>
-    const accordions = document.querySelectorAll('.accordion');
+    const select   = document.getElementById('aboutPicker');
+    const panels   = [...document.querySelectorAll('.panel')];
+    const viewport = document.querySelector('.showcase-viewport');
+    const order    = ["mission","edu","build","plan","cite","credits"];
 
-    accordions.forEach(acc => {
-      acc.querySelector('.accordion-header').addEventListener('click', () => {
-        acc.classList.toggle('active');
+    const ro = new ResizeObserver(() => setViewportHeight());
+    function observeActivePanel() {
+      ro.disconnect();
+      const active = document.querySelector('.panel.active');
+      if (active) ro.observe(active);
+    }
+
+    function setViewportHeight(targetEl) {
+      const active = targetEl || document.querySelector('.panel.active');
+      if (!active || !viewport) return;
+      requestAnimationFrame(() => {
+        viewport.style.height = active.scrollHeight + 'px';
       });
-    });
-  </script>
+    }
 
+    function activate(id) {
+      const current = document.querySelector('.panel.active');
+      const next = panels.find(p => p.dataset.id === id);
+      if (!next || next === current) return;
+
+      const curIdx  = current ? order.indexOf(current.dataset.id) : 0;
+      const nextIdx = order.indexOf(id);
+      const dirCls  = nextIdx > curIdx ? 'exit-left' : 'exit-right';
+
+      if (current){
+        current.classList.remove('active');
+        current.classList.add(dirCls);
+        setTimeout(() => current.classList.remove('exit-left','exit-right'), 400);
+      }
+
+      next.classList.add('active');
+      observeActivePanel();        
+      setViewportHeight(next);     
+    }
+
+    window.addEventListener('load', () => {
+      if (!document.querySelector('.panel.active')) panels[0].classList.add('active');
+      observeActivePanel();
+      setViewportHeight();
+    });
+
+    select.addEventListener('change', e => activate(e.target.value));
+
+    window.addEventListener('resize', () => setViewportHeight());
+  </script>
 </body>
 </html>
