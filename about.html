@@ -23,7 +23,6 @@
       transform: scale(2);
       margin-top: -10px;
     }
-
     .nav-links {
       list-style: none;
       display: flex;
@@ -41,18 +40,20 @@
     }
     .hero {
       text-align: center;
-      padding: 4rem 1rem 2rem;
+      padding-top: 0 !important; 
+      padding-bottom: 0 !important; 
     }
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: 200;
-      margin-bottom: 6rem;
-      margin-top: 6rem;
+      margin-bottom: 16rem;
+      margin-top: 22rem;
     }
     .picker-wrap {
       position: relative;
       display: inline-block;
-      margin-bottom: 2rem;
+      margin-top: 3rem;
+      margin-bottom: 13rem;
     }
     .picker-select {
       -webkit-appearance: none;
@@ -74,12 +75,13 @@
       transform: translateY(-50%);
       pointer-events: none;
     }
-    .showcase {max-width: 700px; margin: 2rem auto; padding: 0 1rem;}
+    .showcase {max-width: 900px; margin: 2rem auto; padding: 0 1rem;}
     .showcase-viewport{
       position: relative;
       height: auto;               
-      overflow: hidden;          
-      transition: height .28s ease;
+      overflow: hidden;
+      transition: height .32s cubic-bezier(.2,.8,.2,1);
+      will-change: height;
     }
     .panel{
       position: absolute;
@@ -87,7 +89,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity .24s ease;
-      transform: none;            
+      transform: none;   
     }
     .panel.active {
       opacity: 1;
@@ -126,7 +128,6 @@
       border: 1px solid rgba(255,255,255,.12);
       box-shadow: 0 12px 28px rgba(0,0,0,.35);
     }
-
     .extra-section figcaption {
       margin-top: .6rem;
       font-size: 0.95rem;
@@ -134,7 +135,50 @@
       text-align: center;
       font-style: italic;
     }
-        
+    .hero h1{
+      transform-origin: center top;
+      transform: scale(var(--s, 1));   
+      will-change: transform;
+    }
+    body:not(.hero-done) .picker-wrap,
+    body:not(.hero-done) .showcase,
+    body:not(.hero-done) .reader,
+    body:not(.hero-done) .extra-section{
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+    }
+    body.hero-done .picker-wrap,
+    body.hero-done .showcase,
+    body.hero-done .reader,
+    body.hero-done .extra-section{
+      opacity: 1;
+      transform: none;
+      transition: opacity .35s ease, transform .45s cubic-bezier(.2,.8,.2,1);
+    }
+    .hero{
+      min-height: 100svh;              
+      display: grid;
+      place-items: center;             
+    }
+    :root{
+      --gap-title-capsule: 0rem;  
+      --gap-capsule-content: 0rem; 
+    }
+    .hero h1{ margin-bottom: var(--gap-title-capsule); }
+    .picker-wrap{ margin-bottom: var(--gap-capsule-content); }  
+    .showcase{ margin-top: var(--gap-capsule-content); }        
+    :root{
+      --gap-title-capsule: 1rem;
+      --gap-capsule-content: 0.8rem;
+      --hero-min: auto;             
+    }
+    .hero{ min-height: var(--hero-min); }
+    :root{
+      --gap-after-panels: 10rem;   
+    }
+    .showcase{ margin-bottom: 0 !important; }   
+    .reader{ margin-top: var(--gap-after-panels) !important; }  
   </style>
 </head>
 <body>
@@ -170,42 +214,36 @@
       <div class="showcase-viewport">
         <article class="panel active" data-id="mission">
           <div class="panel-inner">
-            <h2>Mission & Vision</h2>
             <p>Heritmap is designed to tell stories about cultural heritage in China digitally in teenagers' eyes. Our mission is to advocate for preservation of cultural heritage and connect people with the beauty and significance of cultural sites through interactive tools like maps, photos, and stories.</p>
           </div>
         </article>
 
         <article class="panel" data-id="edu">
           <div class="panel-inner">
-            <h2>Educational Value</h2>
             <p>This website is not only a digital archive but also a study tool. By describing both the advantage and giving advices to the management of historical sites, Heritmap provides a comprehensive viewpoint about preservation and offers reviews with real-experiences.</p>
           </div>
         </article>
 
         <article class="panel" data-id="build">
           <div class="panel-inner">
-            <h2>How It’s Built</h2>
             <p>This site is coded in HTML, CSS, and JavaScript under partial help from artificial intellegence*. Designed and managed by Jerry Sun, it uses interactive mapping and is hosted via Vercel.</p>
           </div>
         </article>
 
         <article class="panel" data-id="plan">
           <div class="panel-inner">
-            <h2>What's The "BIG PLAN"?</h2>
             <p>By the time of our graduation (May, 2026), the goal is to complete some detailed heritage pages as well as a whole-functioning web. Future plans include adding a user-submitted gallery (promote own experience), multilingual support (languages other than Chinese and English), and vacation planning features.</p>
           </div>
         </article>
 
         <article class="panel" data-id="cite">
           <div class="panel-inner">
-            <h2>Source Citation</h2>
             <p>Specifically, individually listed if exist.</p>
           </div>
         </article>
 
         <article class="panel" data-id="credits">
           <div class="panel-inner">
-            <h2>Credits and Copyrights</h2>
             <p>This website is created by Sun Jingyuan (Jerry Sun) with partial help from ChatGPT<sup>*</sup> (OpenAI).</p>
             <ul>
               <li><strong>Mapping Credit:</strong> Leaflet</li>
@@ -282,6 +320,55 @@
     select.addEventListener('change', e => activate(e.target.value));
 
     window.addEventListener('resize', () => setViewportHeight());
+  </script>
+
+  <script>
+  (function(){
+    const title = document.querySelector('.hero h1');
+    if(!title) return;
+
+    const SIDE_MARGIN = 1.2;  
+    const MAX_SCALE   = 2.2;   
+    const FINISH_AT   = 0.15;  
+
+    let startScale = 1;
+
+    function measure(){
+      title.style.setProperty('--s', 1);
+      const rect = title.getBoundingClientRect();
+
+      const targetWidth = Math.min(window.innerWidth * SIDE_MARGIN, 1400);
+      startScale = Math.min(MAX_SCALE, Math.max(1, targetWidth / rect.width));
+
+      title.style.setProperty('--s', startScale);
+      document.body.classList.remove('hero-done');
+    }
+
+    function dist(){ return Math.max(80, window.innerHeight * FINISH_AT); }
+
+    function onScroll(){
+      const p = Math.min(1, (window.scrollY || 0) / dist());    
+      const s = startScale + (1 - startScale) * p;               
+      title.style.setProperty('--s', s);
+
+      if (p >= 1) document.body.classList.add('hero-done');
+      else        document.body.classList.remove('hero-done');
+    }
+
+    function init(){
+      measure();
+      onScroll();
+    }
+
+    if (document.fonts && document.fonts.ready){
+      document.fonts.ready.then(init);
+    } else {
+      window.addEventListener('load', init, { once:true });
+    }
+
+    window.addEventListener('resize', () => { measure(); onScroll(); }, { passive:true });
+    window.addEventListener('scroll', onScroll, { passive:true });
+  })();
   </script>
 </body>
 </html>
