@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heritmap — Share a Story</title>
+  <style>
+    body { margin:0; font-family:'Times New Roman', serif; background:#000; color:#fff; }
+    .navbar {
+      display:flex; justify-content:space-between; align-items:center;
+      background-color:#333; padding:1rem 2rem;
+    }
+    .logo img { height:40px; transform:scale(2); margin-top:-10px; }
+    .nav-links { list-style:none; display:flex; gap:1.5rem; }
+    .nav-links a {
+      text-decoration:none; color:#fff; font-weight:bold;
+      transition: color .3s ease, transform .3s ease;
+    }
+    .nav-links a:hover { color:#ffcc00; transform:translateY(-2px); }
+
+    .container {
+      max-width:880px; margin:2rem auto; padding:1.25rem;
+      background:#111; border-radius:14px; box-shadow:0 10px 24px rgba(0,0,0,.55);
+    }
+    h1 { text-align:center; margin:.2rem 0 1rem; }
+    p.lead { text-align:center; color:#bbb; margin-top:-.25rem; }
+
+    label { display:block; margin-top:1rem; margin-bottom:.5rem; font-weight:bold; color:#e5e7eb; }
+    input, textarea, select {
+      width:100%; padding:12px; border:1px solid #333; border-radius:10px; background:#0a0a0a; color:#fff; outline:none;
+    }
+    input:focus, textarea:focus, select:focus { border-color:#555; }
+
+    .files { margin-top:.5rem; color:#bbb; font-size:.95rem; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media (max-width:760px){ .row{ grid-template-columns:1fr; } }
+
+    .actions { display:flex; gap:10px; align-items:center; margin-top:16px; }
+    button {
+      padding:12px 18px; border:none; border-radius:10px;
+      background:#ffcc00; color:#000; font-weight:bold; cursor:pointer;
+      transition:transform .2s ease; }
+    button:hover { transform:translateY(-2px); }
+    .secondary { background:#1f2937; color:#fff; }
+
+    .hint { color:#bbb; font-size:.9rem; margin-top:.5rem; }
+    .ok { color:#10b981; font-weight:700; }
+    .err { color:#ef4444; font-weight:700; }
+    *, *::before, *::after { box-sizing: border-box; }
+
+    .row > * { min-width: 0; }
+
+    .actions { flex-wrap: wrap; }
+
+    input[type="file"] { display: block; max-width: 100%; }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    #story {
+      resize: vertical;         
+      min-height: 220px;         
+      width: 100%;               
+    }
+    @media (min-width: 980px) {
+      #story { 
+        max-width: 150ch;         
+        margin-right: auto;
+      }
+      label[for="story"] {
+        max-width: 15ch;        
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="logo.svg" alt="Heritmap Logo" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="map.html">Map View & Explore</a></li>
+      <li><a href="share.html" style="color:#ffcc00">Share a Story</a></li>
+      <li><a href="heritage.html">Heritage Sites</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Share a Story</h1>
+    <p class="lead">This portal is a redirection to email. When submitting a story, make sure it is self-written because we won't accept AI work.</b>.</p>
+
+    <form id="mailtoForm" autocomplete="on">
+      <div class="row">
+        <div>
+          <label for="author">Your Name / Nickname *</label>
+          <input id="author" required placeholder="e.g., Lin or @ForestNote" />
+        </div>
+        <div>
+          <label for="fromEmail">Your Email (for reply) *</label>
+          <input id="fromEmail" type="email" required placeholder="you@example.com" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="site">Site Name *</label>
+          <input id="site" required placeholder="e.g., Xuanwu Lake, Nanjing" />
+        </div>
+        <div>
+          <label for="coords">Coordinates (optional)</label>
+          <input id="coords" placeholder="lat, lon e.g., 62.0603, 138.7914" />
+        </div>
+      </div>
+
+      <label for="title">Story Title *</label>
+      <input id="title" required placeholder="A precise, 6–12 word title" />
+
+      <label for="story">Your Story</label>
+      <textarea id="story" rows="8" required placeholder="NO word-count limit. What's the most impressive fact about the site? Any preservation ideas?"></textarea>
+
+      <label for="files">Attachments (DO NOT ADD HERE. Attach them in your email app)</label>
+      <input id="files" type="file" multiple accept="image/*,.pdf" />
+      <div id="fileList" class="files"></div>
+
+      <div class="actions">
+        <button type="submit">Open Email App</button>
+        <button class="secondary" type="button" id="copyBtn">Copy Email Text</button>
+      </div>
+      <div id="status" class="hint"></div>
+    </form>
+
+    <p class="hint">Note: Web pages can’t auto-attach files to an email. After the email window opens, please <b>attach the files</b> you selected.</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('mailtoForm');
+    const status = document.getElementById('status');
+    const filesInput = document.getElementById('files');
+    const fileList = document.getElementById('fileList');
+    const copyBtn = document.getElementById('copyBtn');
+
+    function listFiles() {
+      const files = [...(filesInput.files||[])];
+      if (!files.length) { fileList.textContent = ''; return; }
+      fileList.textContent = 'Selected files: ' + files.map(f=>f.name).join(', ');
+    }
+    filesInput.addEventListener('change', listFiles);
+
+    function buildEmail() {
+      const to = 'Jerry.SunJingyuan@outlook.com';
+      const author = document.getElementById('author').value.trim();
+      const fromEmail = document.getElementById('fromEmail').value.trim();
+      const site = document.getElementById('site').value.trim();
+      const coords = document.getElementById('coords').value.trim();
+      const title = document.getElementById('title').value.trim();
+      const story = document.getElementById('story').value.trim();
+
+      if (!author || !fromEmail || !site || !title || !story) {
+        throw new Error('Please fill all required fields.');
+      }
+
+      const subject = `[Heritmap Submission] ${title} — ${site}`;
+
+      const files = [...(filesInput.files||[])];
+      const filesNote = files.length ? 
+        `\n\nAttachments to add in email app:\n- ${files.map(f=>f.name).join('\n- ')}` : '';
+
+      const body =
+`Author: ${author}
+Reply-To: ${fromEmail}
+Site/Tradition: ${site}
+Coordinates: ${coords || '(not provided)'}
+
+Title: ${title}
+
+Story:
+${story}
+
+——
+Heritmap submission via mailto${filesNote}
+`;
+
+      return { to, subject, body };
+    }
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      try {
+        const { to, subject, body } = buildEmail();
+        const href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = href; 
+        status.textContent = 'If your mail app did not open, click “Copy Email Text” and paste into a new message to Jerry.';
+        status.className = 'hint';
+      } catch (err) {
+        status.textContent = err.message;
+        status.className = 'err';
+      }
+    });
+
+    copyBtn.addEventListener('click', async ()=>{
+      try {
+        const { to, subject, body } = buildEmail();
+        await navigator.clipboard.writeText(`To: ${to}\nSubject: ${subject}\n\n${body}`);
+        status.textContent = 'Copied email text. Open your mail app and paste, then attach your files.';
+        status.className = 'ok';
+      } catch (err) {
+        status.textContent = err.message;
+        status.className = 'err';
+      }
+    });
+  </script>
+</body>
+</html>
