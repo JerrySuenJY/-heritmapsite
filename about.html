@@ -5,180 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Heritmap – About</title>
   <style>
-    body {
-      margin: 0;
-      background: #000;
-      font-family: 'Times New Roman', Times, serif;
-      color: #fff;
-    }
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #333;
-      padding: 1rem 2rem;
-    }
-    .logo img {
-      height: 100px;
-      transform: scale(2);
-      margin-top: -10px;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    .nav-links a:hover {
-      color: #ffcc00;
-      transform: translateY(-2px);
-    }
-    .hero {
-      text-align: center;
-      padding-top: 0 !important; 
-      padding-bottom: 0 !important; 
-    }
+    :root { color-scheme: dark; }
+    * { font-family: 'Times New Roman', Times, serif !important; font-weight: 400; }
+    body { margin:0; background:#000; color:#fff; }
+
+    .navbar { display:flex; justify-content:space-between; align-items:center; background:#333; padding:1rem 2rem; }
+    .logo img { height:100px; transform:scale(2); margin-top:-10px; }
+    .nav-links { list-style:none; display:flex; gap:1.5rem; }
+    .nav-links a { text-decoration:none; color:#fff; font-weight: 700; transition:color .3s ease, transform .3s ease; }
+    .nav-links a:hover { color:#ffcc00; transform:translateY(-2px); }
+
+    .hero { text-align:center; padding:0; display:grid; place-items:center; min-height:40vh; }
     .hero h1 {
-      font-size: 2rem;
-      font-weight: 200;
-      margin-bottom: 16rem;
-      margin-top: 22rem;
+      font-size:3rem;
+      margin-top: clamp(3rem, 8vh, 6rem);
+      margin-bottom: clamp(1.5rem, 4vh, 3rem);
     }
-    .picker-wrap {
-      position: relative;
-      display: inline-block;
-      margin-top: 3rem;
-      margin-bottom: 13rem;
+
+    .capsule-bar-wrap { position:sticky; top:0; z-index:5; background:linear-gradient(180deg, rgba(0,0,0,.96), rgba(0,0,0,.9)); }
+    .capsule-bar { max-width:900px; margin:0 auto; padding:1.25rem 1rem; }
+    .capsule-scroll {
+      display:flex; gap:.5rem; overflow-x:auto; padding-bottom:.25rem;
+      scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+      mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
     }
-    .picker-select {
-      -webkit-appearance: none;
-      appearance: none;
-      background: #1f1f1f;
-      color: #fff;
-      padding: 1rem 3rem 1rem 1.5rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.2);
-      font-family: 'Times New Roman', Times, serif !important;
-      font-weight: 400 !important;   
-      font-size: 1.2rem !important;
-      cursor: pointer;
+    .capsule {
+      flex:0 0 auto; scroll-snap-align:start;
+      border:1px solid rgba(255,255,255,.18);
+      background:#111; color:#fff;
+      padding:0.9rem 1.4rem; border-radius:999px;
+      font-size:1.1rem; cursor:pointer;
+      transition:transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+      white-space:nowrap; user-select:none;
     }
-    .picker-caret {
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-    .showcase {max-width: 700px; margin: 2rem auto; padding: 0 1rem;}
-    .showcase-viewport{
-      position: relative;
-      height: auto;               
-      overflow: hidden;
-      transition: height .32s cubic-bezier(.2,.8,.2,1);
-      will-change: height;
-    }
-    .panel{
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .24s ease;
-      transform: none;   
-    }
-    .panel.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    @keyframes fadeIn {fadeIn { from { opacity: 1 } to { opacity: 1 } }}
-    .extra-section {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 0 1rem;
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: #ccc;
-    }
-    .navbar { background-color:#333; padding:1rem 2rem; }
-    .hero-title{ font-size: clamp(2.6rem, 8vw, 5.2rem); line-height:1.02; letter-spacing:-.03em; font-weight:900; }
-    .picker-select{ background:#111; padding:1.05rem 3rem 1.05rem 1.2rem; border-radius:999px; border:1px solid rgba(255,255,255,.18); font-weight:800; font-size:1.05rem }
-    .panel-inner p,
-    .panel-inner ul,
-    .panel-inner li {
-      font-size: 1.15rem;  
-      line-height: 1.9;    
-    }
-    .reader{ margin: 3rem auto 0; max-width: 840px }
-    .reader-inner{ background: linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid rgba(255,255,255,.07); border-radius: var(--radius); box-shadow: var(--shadow); padding:1.6rem }
-    .reader h3{ margin:0 0 .5rem; font-size:1.25rem; font-weight:800 }
+    .capsule:hover { transform:translateY(-1px); }
+    .capsule[aria-selected="true"] { background:#fff; color:#000; border-color:#fff; }
+
+    .showcase { max-width:900px; margin:1.25rem auto 2rem; padding:0 1rem; }
+    .showcase-viewport { position:relative; height:auto; overflow:visible; }
+    .panel { display:none; opacity:0; transition:opacity .24s ease; }
+    .panel.active { display:block; opacity:1; }
+    .panel-inner p, .panel-inner ul, .panel-inner li { font-size:1.15rem; line-height:1.9; }
+
+    .reader{ margin:3rem auto 0; max-width:840px }
+    .reader-inner{ background:linear-gradient(180deg, #0c0c0c, #111); border:1px solid rgba(255,255,255,.07); border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.35); padding:1.6rem }
+    .reader h3{ margin:0 0 .5rem; font-size:1.25rem; }
     .reader p{ color:#cfcfcf; line-height:1.8 }
 
-    .extra-section { max-width: 900px; margin: 4rem auto; padding: 0 1rem; }
-    .extra-section figure { margin: 0; }
-    .extra-section img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 12px 28px rgba(0,0,0,.35);
-    }
-    .extra-section figcaption {
-      margin-top: .6rem;
-      font-size: 0.95rem;
-      color: #cfcfcf;
-      text-align: center;
-      font-style: italic;
-    }
-    .hero h1{
-      transform-origin: center top;
-      transform: scale(var(--s, 1));   
-      will-change: transform;
-    }
-    body:not(.hero-done) .picker-wrap,
-    body:not(.hero-done) .showcase,
-    body:not(.hero-done) .reader,
-    body:not(.hero-done) .extra-section{
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-    }
-    body.hero-done .picker-wrap,
-    body.hero-done .showcase,
-    body.hero-done .reader,
-    body.hero-done .extra-section{
-      opacity: 1;
-      transform: none;
-      transition: opacity .35s ease, transform .45s cubic-bezier(.2,.8,.2,1);
-    }
-    .hero{
-      min-height: 100svh;              
-      display: grid;
-      place-items: center;             
-    }
-    :root{
-      --gap-title-capsule: 0rem;  
-      --gap-capsule-content: 0rem; 
-    }
-    .hero h1{ margin-bottom: var(--gap-title-capsule); }
-    .picker-wrap{ margin-bottom: var(--gap-capsule-content); }  
-    .showcase{ margin-top: var(--gap-capsule-content); }        
-    :root{
-      --gap-title-capsule: 1rem;
-      --gap-capsule-content: 0.8rem;
-      --hero-min: auto;             
-    }
-    .hero{ min-height: var(--hero-min); }
-    :root{
-      --gap-after-panels: 18rem;   
-    }
-    .showcase{ margin-bottom: 0 !important; }   
-    .reader{ margin-top: var(--gap-after-panels) !important; }  
+    .extra-section { max-width:900px; margin:4rem auto; padding:0 1rem; }
+    .extra-section figure { margin:0; }
+    .extra-section img { display:block; width:100%; height:auto; border-radius:12px; border:1px solid rgba(255,255,255,.12); box-shadow:0 12px 28px rgba(0,0,0,.35); }
+    .extra-section figcaption { margin-top:.6rem; font-size:.95rem; color:#cfcfcf; text-align:center; font-style:italic; }
   </style>
 </head>
 <body>
@@ -197,193 +74,148 @@
 
   <section class="hero">
     <h1>Here is where everything about Heritmap is introduced...</h1>
-    <div class="picker-wrap">
-      <select id="aboutPicker" class="picker-select">
-        <option value="mission">Mission & Vision</option>
-        <option value="edu">Educational Value</option>
-        <option value="build">How It’s Built</option>
-        <option value="plan">What's The "BIG PLAN"?</option>
-        <option value="cite">Source Citation</option>
-        <option value="credits">Credits and Copyrights</option>
-      </select>
-      <span class="picker-caret">▾</span>
+  </section>
+
+  <div class="capsule-bar-wrap">
+    <div class="capsule-bar" role="tablist" aria-label="About sections">
+      <div class="capsule-scroll" id="capsuleScroll">
+        <button class="capsule" role="tab" aria-selected="true"  data-id="mission">Mission &amp; Vision</button>
+        <button class="capsule" role="tab" aria-selected="false" data-id="edu">Educational Value</button>
+        <button class="capsule" role="tab" aria-selected="false" data-id="build">How It’s Built</button>
+        <button class="capsule" role="tab" aria-selected="false" data-id="plan">What's The “BIG PLAN”?</button>
+        <button class="capsule" role="tab" aria-selected="false" data-id="cite">Source Citation</button>
+        <button class="capsule" role="tab" aria-selected="false" data-id="credits">Credits &amp; Copyrights</button>
+      </div>
+    </div>
+  </div>
+
+  <section id="showcase" class="showcase" aria-live="polite">
+    <div class="showcase-viewport">
+      <article class="panel active" data-id="mission">
+        <div class="panel-inner">
+          <p>Heritmap is designed to tell stories about cultural heritage in China digitally in teenagers' eyes. Our mission is to advocate for preservation of cultural heritage and connect people with the beauty and significance of cultural sites through interactive tools like maps, photos, and stories.</p>
+        </div>
+      </article>
+
+      <article class="panel" data-id="edu">
+        <div class="panel-inner">
+          <p>This website is not only a digital archive but also a study tool. By describing both the advantage and giving advices to the management of historical sites, Heritmap provides a comprehensive viewpoint about preservation and offers reviews with real-experiences.</p>
+        </div>
+      </article>
+
+      <article class="panel" data-id="build">
+        <div class="panel-inner">
+          <p>This site is coded in HTML, CSS, and JavaScript under partial help from artificial intellegence*. Designed and managed by Jerry Sun, it uses interactive mapping and is hosted via Vercel.</p>
+        </div>
+      </article>
+
+      <article class="panel" data-id="plan">
+        <div class="panel-inner">
+          <p>By the time of our graduation (May, 2026), the goal is to complete some detailed heritage pages as well as a whole-functioning web. Future plans include adding a user-submitted gallery (promote own experience), multilingual support (languages other than Chinese and English), and vacation planning features.</p>
+        </div>
+      </article>
+
+      <article class="panel" data-id="cite">
+        <div class="panel-inner">
+          <p>Specifically, individually listed if exist.</p>
+        </div>
+      </article>
+
+      <article class="panel" data-id="credits">
+        <div class="panel-inner">
+          <p>This website is created by Sun Jingyuan (Jerry Sun) with partial help from ChatGPT<sup>*</sup> (OpenAI).</p>
+          <ul>
+            <li>Mapping Credit: Leaflet</li>
+            <li>Article Contributions: Niu Yiwen (Corrine Niu), Guo Tianyang (Craig Guo), Qi Lin (Kirin Qi), Yin Huijie (Charlie Yin), Liu Yuxin (Camile Liu), Li Xinyan (Eliana Li), Ma Yidan (Mary Ma), Cao Zhuo, James Jiang (Jiang Wei)...[Still Expanding]</li>
+            <li>Information &amp; Data: Wikipedia, Google Scholar (sources stated specifically)</li>
+            <li>Images: Specifically Cited under Individual Image</li>
+            <li>Logo: Designed and Refined by Niu Yiwen (Corrine Niu)</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section id="showcase" class="showcase" aria-live="polite">
-      <div class="showcase-viewport">
-        <article class="panel active" data-id="mission">
-          <div class="panel-inner">
-            <p>Heritmap is designed to tell stories about cultural heritage in China digitally in teenagers' eyes. Our mission is to advocate for preservation of cultural heritage and connect people with the beauty and significance of cultural sites through interactive tools like maps, photos, and stories.</p>
-          </div>
-        </article>
-
-        <article class="panel" data-id="edu">
-          <div class="panel-inner">
-            <p>This website is not only a digital archive but also a study tool. By describing both the advantage and giving advices to the management of historical sites, Heritmap provides a comprehensive viewpoint about preservation and offers reviews with real-experiences.</p>
-          </div>
-        </article>
-
-        <article class="panel" data-id="build">
-          <div class="panel-inner">
-            <p>This site is coded in HTML, CSS, and JavaScript under partial help from artificial intellegence*. Designed and managed by Jerry Sun, it uses interactive mapping and is hosted via Vercel.</p>
-          </div>
-        </article>
-
-        <article class="panel" data-id="plan">
-          <div class="panel-inner">
-            <p>By the time of our graduation (May, 2026), the goal is to complete some detailed heritage pages as well as a whole-functioning web. Future plans include adding a user-submitted gallery (promote own experience), multilingual support (languages other than Chinese and English), and vacation planning features.</p>
-          </div>
-        </article>
-
-        <article class="panel" data-id="cite">
-          <div class="panel-inner">
-            <p>Specifically, individually listed if exist.</p>
-          </div>
-        </article>
-
-        <article class="panel" data-id="credits">
-          <div class="panel-inner">
-            <p>This website is created by Sun Jingyuan (Jerry Sun) with partial help from ChatGPT<sup>*</sup> (OpenAI).</p>
-            <ul>
-              <li><strong>Mapping Credit:</strong> Leaflet</li>
-              <li><strong>Article Contributions:</strong> Niu Yiwen (Corrine Niu), Guo Tianyang (Craig Guo), Qi Lin (Kirin Qi), Yin Huijie (Charlie Yin), Liu Yuxin (Camile Liu), Li Xinyan (Eliana Li), Ma Yidan (Mary Ma), Cao Zhuo, James Jiang (Jiang Wei)...[Still Expanding]</li>
-              <li><strong>Information &amp; Data:</strong> Wikipedia, Google Scholar (sources stated specifically)</li>
-              <li><strong>Images:</strong> Specifically Cited under Individual Image</li>
-              <li><strong>Logo:</strong> Designed and Refined by Niu Yiwen (Corrine Niu) with Full-Credit and Copyrights®</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="reader">
-      <div class="reader-inner">
-        <h3>From the founder</h3>
-        <p>
-          Dear contributors, scholars, and visitors,
-
-          Hello, I’m Jerry Sun, a high school student from Nanjing.
-
-          When I was little, my dad encouraged me to “jump as far as you can, and take a glance at the magnificent world we live in.” This website would not exist without his support and inspiration. It has now been ten years since I visited my first cultural heritage site (the Terracotta Army) and I still carry that same sense of wonder with me.
-          
-          Through Heritmap, I want to pass on that invitation: go out and explore the magnificent world we share.
-          
-          In today’s world of overwhelming social media, government censorship, and propaganda, too many invaluable voices are at risk of being silenced. The purpose of this project is to protect those voices, not for advertisement, not for propaganda, and not for mainstream trends—but for preservation, truth, and memory.
-          
-          Thank you for your contributions, trust, and determination to help make preservation possible. Together, we can keep cultural heritage alive for generations to come.
-          
-          Sincerely,
-          Jerry Sun
-        </p>
-      </div>
-    </section>
+  <section class="reader">
+    <div class="reader-inner">
+      <h3>From the founder</h3>
+      <p>Dear contributors, scholars, and visitors, …</p>
+      <p>Hello, I’m Jerry Sun, a high school student from Nanjing.</p>
+      <p>When I was little, my dad encouraged me to “jump as far as you can, and take a glance at the magnificent world we live in.” This website would not exist without his support and inspiration. It has now been ten years since I visited my first cultural heritage site (the Terracotta Army) and I still carry that same sense of wonder with me. Through Heritmap, I want to pass on that invitation: go out and explore the magnificent world we share.</p>
+      <p>In today’s world of overwhelming social media, government censorship, and propaganda, too many invaluable voices are at risk of being silenced. The purpose of this project is to protect those voices, not for advertisement, not for propaganda, and not for mainstream trends—but for preservation, truth, and memory.</p>
+      <p>Thank you for your contributions, trust, and determination to help make preservation possible. Together, we can keep cultural heritage alive for generations to come.</p>
+      <p>Sincerely,</p>
+      <p>Jerry Sun</p>
+    </div>
+  </section>
 
   <section class="extra-section">
-    <figure>
-      <img src="founder.jpg" alt="Founder’s note (extended)">
-    </figure>
+    <figure><img src="founder.jpg" alt="Founder’s note (extended)"></figure>
   </section>
 
   <script>
-    const select   = document.getElementById('aboutPicker');
-    const panels   = [...document.querySelectorAll('.panel')];
-    const viewport = document.querySelector('.showcase-viewport');
-    const order    = ["mission","edu","build","plan","cite","credits"];
+    (function(){
+      const panels   = Array.from(document.querySelectorAll('.panel'));
+      const scrollEl = document.getElementById('capsuleScroll');
 
-    const ro = new ResizeObserver(() => setViewportHeight());
-    function observeActivePanel() {
-      ro.disconnect();
-      const active = document.querySelector('.panel.active');
-      if (active) ro.observe(active);
-    }
-
-    function setViewportHeight(targetEl) {
-      const active = targetEl || document.querySelector('.panel.active');
-      if (!active || !viewport) return;
-      requestAnimationFrame(() => {
-        viewport.style.height = active.scrollHeight + 'px';
-      });
-    }
-
-    function activate(id) {
-      const current = document.querySelector('.panel.active');
-      const next = panels.find(p => p.dataset.id === id);
-      if (!next || next === current) return;
-
-      const curIdx  = current ? order.indexOf(current.dataset.id) : 0;
-      const nextIdx = order.indexOf(id);
-      const dirCls  = nextIdx > curIdx ? 'exit-left' : 'exit-right';
-
-      if (current){
-        current.classList.remove('active');
-        current.classList.add(dirCls);
-        setTimeout(() => current.classList.remove('exit-left','exit-right'), 400);
+      function show(id){
+        panels.forEach(p => p.classList.toggle('active', p.dataset.id === id));
+        scrollEl.querySelectorAll('.capsule').forEach(btn => {
+          btn.setAttribute('aria-selected', btn.dataset.id === id ? 'true' : 'false');
+        });
       }
 
-      next.classList.add('active');
-      observeActivePanel();        
-      setViewportHeight(next);     
-    }
+      scrollEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('.capsule');
+        if (!btn) return;
+        show(btn.dataset.id);
+        btn.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+      });
 
-    window.addEventListener('load', () => {
-      if (!document.querySelector('.panel.active')) panels[0].classList.add('active');
-      observeActivePanel();
-      setViewportHeight();
-    });
+      const firstId = scrollEl.querySelector('.capsule')?.dataset.id || panels[0]?.dataset.id;
+      if (firstId) show(firstId);
 
-    select.addEventListener('change', e => activate(e.target.value));
+      const original = Array.from(scrollEl.children);
+      const originalCount = original.length;
 
-    window.addEventListener('resize', () => setViewportHeight());
-  </script>
+      function measureSetWidth() {
+        const gap = parseFloat(getComputedStyle(scrollEl).gap || '0');
+        return original.reduce((sum, el, i) => {
+          const w = el.getBoundingClientRect().width;
+          return sum + w + (i ? gap : 0);
+        }, 0);
+      }
 
-  <script>
-  (function(){
-    const title = document.querySelector('.hero h1');
-    if(!title) return;
+      function rebuildLoop(){
+        scrollEl.querySelectorAll('.capsule.is-clone').forEach(n => n.remove());
 
-    const SIDE_MARGIN = 1.2;  
-    const MAX_SCALE   = 2.2;   
-    const FINISH_AT   = 0.15;  
+        for (let r = 0; r < 2; r++){
+          original.forEach(el => {
+            const clone = el.cloneNode(true);
+            clone.classList.add('is-clone');
+            scrollEl.appendChild(clone);
+          });
+        }
 
-    let startScale = 1;
+        const baseWidth = measureSetWidth();
+        scrollEl.scrollLeft = baseWidth; 
+        scrollEl.dataset.baseWidth = String(baseWidth);
+      }
 
-    function measure(){
-      title.style.setProperty('--s', 1);
-      const rect = title.getBoundingClientRect();
+      function handleLoop(){
+        const baseWidth = parseFloat(scrollEl.dataset.baseWidth || '0');
+        if (!baseWidth) return;
+        if (scrollEl.scrollLeft <= 0){
+          scrollEl.scrollLeft += baseWidth;
+        } else if (scrollEl.scrollLeft >= baseWidth * 2){
+          scrollEl.scrollLeft -= baseWidth;
+        }
+      }
 
-      const targetWidth = Math.min(window.innerWidth * SIDE_MARGIN, 1400);
-      startScale = Math.min(MAX_SCALE, Math.max(1, targetWidth / rect.width));
-
-      title.style.setProperty('--s', startScale);
-      document.body.classList.remove('hero-done');
-    }
-
-    function dist(){ return Math.max(80, window.innerHeight * FINISH_AT); }
-
-    function onScroll(){
-      const p = Math.min(1, (window.scrollY || 0) / dist());    
-      const s = startScale + (1 - startScale) * p;               
-      title.style.setProperty('--s', s);
-
-      if (p >= 1) document.body.classList.add('hero-done');
-      else        document.body.classList.remove('hero-done');
-    }
-
-    function init(){
-      measure();
-      onScroll();
-    }
-
-    if (document.fonts && document.fonts.ready){
-      document.fonts.ready.then(init);
-    } else {
-      window.addEventListener('load', init, { once:true });
-    }
-
-    window.addEventListener('resize', () => { measure(); onScroll(); }, { passive:true });
-    window.addEventListener('scroll', onScroll, { passive:true });
-  })();
+      rebuildLoop();
+      scrollEl.addEventListener('scroll', handleLoop, { passive:true });
+      window.addEventListener('resize', () => { rebuildLoop(); }, { passive:true });
+    })();
   </script>
 </body>
 </html>
