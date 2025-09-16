@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Longmen Grottoes – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="longmen.jpg" alt="Header photo of the heritage site">
+      </figure>
+
+      <a href="heritage.html" class="return-home">← Return to Home</a>
+
+      <h1 class="hero-title">Longmen Grottoes</h1>
+
+      <p class="hero-intro">
+        A UNESCO World Heritage site near Luoyang, famous for thousands of Buddhist statues and carvings in limestone cliffs.
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">Written by 吴近睿</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              洛阳有一处世界闻名的瑰宝——龙门石窟。这里依偎着波光粼粼的伊河，处处洋溢着中华文明的独特韵味。
+            </p>
+            <p>
+              在进入龙门石窟之前，有一块匾上写着“龙门”，进入石窟后，第一眼就看见崖壁上嵌着密密麻麻的石窟，像一个个球在壁上。古阳洞中有最早的佛像，在它的上面则是最大的佛像。
+            </p>
+            <p>
+              再往前走，万佛洞更是令我惊叹不已，数不清的佛像高低错落，最大的不过人身大小，最小的不过只有拇指大小。
+            </p>
+            <p>
+              河风吹过，石窟的剪影在暮色中愈发清晰。
+            </p>
+            <p>
+              In Luoyang lies a world-renowned treasure—the Longmen Grottoes. Nestled along the shimmering Yi River, the site radiates the unique charm of Chinese civilization.
+            </p>
+            <p>
+              Before entering the grottoes, one passes a plaque inscribed with “Longmen.” Inside, the cliffside immediately reveals countless caves carved into the rock, like clusters of spheres embedded in the wall. The Guyang Cave contains the earliest Buddhist statues, while above it sits the largest Buddha image.
+            </p>
+            <p>
+              Walking further ahead, the Wanfo Cave left me in awe: innumerable Buddha figures arranged at varying heights, the largest no taller than a human body, the smallest no bigger than a thumb.
+            </p>
+            <p>
+              As the river breeze swept through, the silhouettes of the grottoes became ever clearer in the twilight.
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">Written by 张逸桐</h3>
+          <p class="card-intro">
+            <p>
+              龙门石窟位于河南省洛阳市，占地面积31.7平方千米，现存2345座佛龛，10万余尊造像，2800余块碑刻题记，是世界上造像最多，规模最大的石刻艺术宝库，被联合国教科文组织评为“中国石刻艺术的最高峰”，位居中国石窟之首。
+            </p>
+            <p>
+              令我印象深刻的是卢舍那大佛，他高17米，仅头部就有4米，两耳长1.9米。夕阳西下，大佛被镀上一层金边，那慈详的面容，上扬的嘴角，和善的目光，仿佛在对每一位游客宣扬佛教的伟大，传承善的品质。
+            </p>
+            <p>
+              那次龙门石窟之旅令我印象深刻，永不能忘。
+            </p>
+            <p>
+              The Longmen Grottoes, located in Luoyang, Henan Province, cover an area of 31.7 square kilometers. The site contains 2,345 niches, over 100,000 statues, and more than 2,800 stone inscriptions. It is the largest repository of stone-carved art in the world, acclaimed by UNESCO as “the pinnacle of Chinese stone carving art,” and ranked first among China’s grotto sites.
+            </p>
+            <p>
+              What impressed me most was the Vairocana Buddha. Standing 17 meters tall, with a head alone measuring 4 meters and ears 1.9 meters long, the statue radiates grandeur. At sunset, it is bathed in golden light, its compassionate face, slightly upturned lips, and gentle gaze seeming to proclaim the greatness of Buddhism and the enduring value of kindness to every visitor.
+            </p>
+            <p>
+              That journey to the Longmen Grottoes left me deeply impressed — an experience I will never forget.
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
