@@ -270,7 +270,7 @@
       const finalTotal = finalRect.height - vh;
       let fprog = 0;
       if (finalTotal > 0) fprog = clamp01((-finalRect.top) / finalTotal);
-      const visible = clamp01((fprog - 0.65) / (1 - 0.65));
+      const visible = clamp01((fprog - 0) / (1 - 0.9));
       finalInner.style.opacity = prefersReduced ? 1 : visible;
     }
 
