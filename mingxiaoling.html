@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ming Xiaoling Mausoleum – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="mingxiaolingmausoleumbackground.jpg" alt="Header photo of the heritage site">
+      </figure>
+
+      <a href="heritage.html" class="return-home">← Return to Home</a>
+
+      <h1 class="hero-title">Ming Xiaoling Mausoleum</h1>
+
+      <p class="hero-intro">
+        The tomb of the Hongwu Emperor, founder of the Ming dynasty, located at the foot of Purple Mountain in Nanjing.
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">Written by 朱雨泽</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              南京是一座历史文化名城，拥有众多珍贵的古迹，其中最为宏伟的建筑之一便是明孝陵。
+            </p>
+            <p>
+              明孝陵已有六百多年的历史，这里安葬着明代开国皇帝朱元璋，相传东吴的孙权也葬在此地。陵区内树木葱郁，空气清新，建筑庄严典雅——金黄的琉璃瓦、朱红的宫墙，处处体现着中国古代精湛的木结构技艺，整体气势十分壮观。遗憾的是，孙权墓因年代久远、缺乏修缮，如今已难以寻迹。
+            </p>
+            <p>
+              明城墙同样是一项举世瞩目的奇迹。砌筑城墙的每块砖石上都刻有工匠的姓名与籍贯，这种责任到人的制度令人赞叹。我用手轻抚砖面，触到湿润的青苔，微微渗着凉意。砖隙间爬满了爬山虎，宛如一幅沧桑古朴的画卷在眼前展开，仿佛穿越时空，看见古代工匠正专注地凿刻字迹、挥汗如雨。
+            </p>
+            <p>
+              在明孝陵内，我们应自觉遵守规定，不在室内吸烟，不触摸、不破坏文物。历史遗迹承载着民族的记忆与文化，保护它们，是我们每一个人的责任。让我们从自身做起，共同守护这些珍贵的文化。
+            </p>
+            <p>
+              Nanjing is a city rich in history and culture, home to many precious relics, among which the Ming Xiaoling Mausoleum stands as one of the grandest.
+            </p>
+            <p>
+              The Ming Xiaoling has stood for more than six centuries, housing the tomb of Zhu Yuanzhang, the founding emperor of the Ming dynasty. It is also said that Sun Quan of Eastern Wu was buried here. The mausoleum grounds are lush with trees and fresh air, while its architecture exudes solemn elegance—golden glazed tiles and crimson palace walls showcase the brilliance of ancient Chinese timber construction. The overall grandeur is striking. Sadly, Sun Quan’s tomb, weathered by time and neglected repair, has become nearly untraceable.
+            </p>
+            <p>
+              The Nanjing City Wall is likewise an awe-inspiring marvel. Every brick bears the name and origin of the craftsman who made it, reflecting a remarkable system of personal accountability. As I gently touched the surface, I felt the cool dampness of moss. Climbing ivy filled the gaps between bricks, unfolding into an ancient, rustic scroll before my eyes. It was as if I had traveled back in time, watching craftsmen chiseling inscriptions with focus, sweat pouring as they worked.
+            </p>
+            <p>
+              Within the Ming Xiaoling, we must consciously observe the rules—no smoking indoors, no touching or damaging relics. Historic sites carry the memory and culture of a nation. Protecting them is the responsibility of each one of us. Let us start with ourselves and together safeguard these invaluable treasures.
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">Written by 郭瑞临</h3>
+          <p class="card-intro">
+            <p>
+              明孝陵坐落于南京市玄武区紫金山南麓的独龙阜玩珠峰下，是明太祖朱元璋与孝慈高皇后马氏的合葬陵墓。它不仅素有“明清皇家第一陵”的盛誉，更在1987年被列入世界文化遗产名录，承载着厚重的历史分量。
+            </p>
+            <p>
+              作为一名南京人，我曾有幸走进这座陵寝。明孝陵的规制宏大，从下马坊到大金门，再到深处的陵寝主体，一步步皆是历史的印记。其中，最让我难忘的便是石像路。
+            </p>
+            <p>
+              石像路位于大金门之后，整条路蜿蜒延伸，大致分为两段。前一段的路侧，整齐矗立着各类石兽雕像——骆驼昂首似欲远行，骏马昂首若待驰骋，鸵鸟姿态灵动，大象更是憨态庄重，每一尊都雕刻得栩栩如生，远观时竟让人恍惚以为是真兽静立。而后一段的两侧，则是文官与武官的石像：文官手持书卷，眉宇间透着温文尔雅的气度；武官腰挎宝剑，身姿挺拔，尽显威风凛凛的凛然正气。
+            </p>
+            <p>
+              我希望景区可以限制人流量，这样可以减少景区环境的负担，也可以更好地保护文物。
+            </p>
+            <p>
+              The Ming Xiaoling Mausoleum lies at the southern foot of Mount Zijin in Xuanwu District, Nanjing, beneath Dulongfu and Wanzhu Peak. It is the joint tomb of Emperor Zhu Yuanzhang, the founder of the Ming dynasty, and Empress Ma. Known as the “First Mausoleum of the Ming and Qing Dynasties,” it was inscribed on the UNESCO World Heritage List in 1987, bearing profound historical weight.
+            </p>
+            <p>
+              As a Nanjing native, I was fortunate to have visited this grand mausoleum. From the Dismounting Archway to the Great Golden Gate and finally to the inner tomb complex, each step reveals a trace of history. Among them, what impressed me most was the Sacred Way (Shixiang Road).
+            </p>
+            <p>
+              The Sacred Way stretches behind the Great Golden Gate and can be roughly divided into two sections. In the first section, rows of stone animal statues stand solemnly on both sides—camels lifting their heads as if ready for a long journey, horses poised for gallop, ostriches with graceful movement, and elephants with dignified composure. Each statue is vividly carved, so lifelike that from afar they seem like real creatures standing still. In the second section, stone figures of civil and military officials line the path: civil officials hold scrolls with an air of refinement, while military officials, swords at their waists and posture upright, radiate awe-inspiring dignity.
+            </p>
+            <p>
+              I hope that the site can limit visitor numbers, which would ease the burden on the environment and better preserve the cultural relics.
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
