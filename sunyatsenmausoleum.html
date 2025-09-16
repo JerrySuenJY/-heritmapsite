@@ -1,175 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sun Yat-sen Mausoleum – Heritmap</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Times New Roman', serif;
-      color: #000000;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow-y: auto;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sun Yat-sen Mausoleum – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
 
-   
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('Sunbackground.jpg') no-repeat center center fixed;
-      background-size: cover;
-      opacity: 0.2;
-      z-index: -1;
-    }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
 
-    
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #333333;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
 
-   .logo img {
-      height: 40px;         
-     transform: scale(2); 
-      margin-top: -10px;     
-    }
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      font-family: 'Times New Roman', serif;
-    }
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: 500;
-    }
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
 
-    .nav-links a:hover {
-      color: #dddddd;
-    }
+  .submissions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    margin-top: 28px;
+  }
 
-    
-    .article-container {
-      max-width: 800px;
-      margin: 4rem auto;
-      padding: 0 2rem 4rem;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
 
-    .article-container h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-    .article-container img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-    }
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
 
-    .article-container p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
 
-    .back-link {
-      display: block;
-      text-align: center;
-      margin-top: 3rem;
-      color: #0070f3;
-      text-decoration: none;
-    }
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
 
-    .back-link:hover {
-      text-decoration: underline;
-    }
-    
-    .image-credit {
-      color: #888888;         
-      font-size: 0.85rem;       
-      text-align: center;
-      margin-top: 0.5rem;
-      margin-bottom: 2rem;
-      font-family: 'Times New Roman', serif;
-    }
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
 
-    .caption {
-      color: #888888;         
-      font-size: 0.8rem;       
-      text-align: right;
-      margin-top: 0.1rem;
-      margin-bottom: 2rem;
-      font-family: 'Times New Roman', serif;
-    }
-  </style>
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
+  <main class="page">
 
-  
-  <nav class="navbar">
-    <a href="index.html" class="logo">
-      <img src="logo.svg" alt="Heritmap Logo" />
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="map.html">Map View & Explore</a></li>
-      <li><a href="share.html">Share a Story</a></li>
-      <li><a href="heritage.html">Heritage Sites</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="Sunbackground.jpg" alt="Header photo of the heritage site">
+      </figure>
 
-  
-  <div class="article-container">
-    <h1>Sun Yat-sen Mausoleum</h1>
-    <img src="SunYatsenMausoleum.jpg" alt="SunYatsenMausoleum" />
-    <div class="caption">Image from Arrival Guides, Dr. Sun Yatsen's Mausoleum</div>
-    <div class="image-credit">Written by Kirin Qi</div>
-    <p>
-      当我来到中山陵，想起网上盛传的‘一座中山陵，半部近代史’的话，在历史书上看到的孙中山先生的照片，不经感叹我真来到了中山陵！
-    </p>
-    <p>
-      中山陵是我国国父孙中山的陵墓，整体构成一座立起的钟以此来唤起民众并依靠着紫金山，蓝色的玻璃瓦片勾起了历史的烟尘。同时在这里可以看到‘天下为公’的陵门，还能感受到孙先生‘革命尚未成功，同志仍需努力’的精神。在中山陵你可以欣赏到层层石阶与两道松柏。透露着庄严和肃穆。
-    </p>
-    <p>
-      然而中山陵也存在一些问题。文化解读力度的不全，即使有讲解，但是没有深入了解，关于历史背景只存在表面。如果不对该方面有所研究，游客只能停留在拍照的层次。其次高峰期堵车问题严重，大大影响到了游客旅游的舒适度。
-    </p>
-    <p>
-      When I came to Dr. Sun Yat-sen’s Mausoleum, I thought of the phrase, “Dr. Sun Yatsen’s Mausoleum is Half of Modern Chinese History,” from journals on the internet. The only photo of Mr. Sun Yat-sen that has existed in my life is in my history textbook; thus, I couldn't help but look in awe at the magnificent architecture for its vividness in front of me.
-    </p>
-    <p>
-      Dr. Sun Yat-sen’s Mausoleum is the resting place of Sun Yat-sen, the founder of the Republic of China. The whole mausoleum forms a standing clock when viewed from above, serving as a reminder for continuous improvement. The blue glass tiles evoke the smoke of history in my mind. At the same time, you can see the tomb gate with the title "the world is public" here, and you can also feel Mr. Sun's spirit of "the revolution has not been successful, and comrades still need to work hard". In Dr. Sun Yat-sen’s Mausoleum, you can enjoy layers of stone steps and two pine and cypress trees. It reveals the ultimate feeling of solemnity.
-    </p>
-    <p>
-      However, there are some issues with Dr. Sun Yat-sen’s Mausoleum. First, the strength of cultural interpretation is incomplete due to the government’s cultural censorship. It resulted in the outcome that even if there is an explanation, there is no in-depth understanding, and thus, the historical background explained is superficial. If the officials make no change on this aspect, tourists can merely stay at the level of photo-taking. Second, the traffic jam during peak hours is a serious problem, which greatly affects the comfort index of tourists.
-    </p>
-    <div class="image-credit">Written by Charlie Yin</div>
-    <p>
-      中山陵给我的印象是庄重而宁静的。台阶很多，但思考着走起来却不觉得累，反而像是在一点点靠近一位值得尊敬的人。环顾四周，陵墓的颜色素净，没有张扬的金碧辉煌，却让人有一种深深的敬意，随着四周整齐又安静的松柏伫立。站在中山先生的墓前，我没说话，心里却很充实。他不是离我们很远的人，而是一直在那里，看着这个国家经历风风雨雨，兴衰成败。整个地方没有强烈的刺激，却能让人沉下心来去想一想，什么才是真正重要的东西。
-    </p>
-    <p>
-      The Sun Yat-sen Mausoleum left me with a solemn and tranquil impression. There are many steps, but walking thoughtfully never felt tiring; instead, it felt like I was gradually approaching a figure worthy of respect. Looking around, the mausoleum's plain colors, devoid of ostentatious splendor, evoke a deep sense of respect, surrounded by the neat and quiet pine and cypress trees. Standing before Dr. Sun Yat-sen's tomb, I remained silent, yet my heart was filled with clamor. Dr. Sun Yat-sen is not a distant figure; he has always been there, witnessing this country through its ups and downs, its successes and failures. The entire place has a paucity of "intense stimulation" visually, thus it allows one to calm down and reflect on what truly matters.
-    </p>
-    <a class="back-link" href="heritage.html">← Back to Heritage Sites</a>
-  </div>
+      <a href="heritage.html" class="return-home">← Return to Home</a>
 
+      <h1 class="hero-title">Sun Yat-sen Mausoleum</h1>
+
+      <p class="hero-intro">
+        The resting place of Dr. Sun Yat-sen, located at the foot of Purple Mountain in Nanjing.
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-media">
+          <img src="SunYatsenMausoleum.jpg" alt="SunYatsenMausoleum">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Written by Kirin Qi</h3>
+          <div class="card-meta">Image from Arrival Guides, Dr. Sun Yatsen's Mausoleum</div>
+          <p class="card-intro clamp-3">
+            <p>
+              当我来到中山陵，想起网上盛传的‘一座中山陵，半部近代史’的话，在历史书上看到的孙中山先生的照片，不经感叹我真来到了中山陵！
+            </p>
+            <p>
+              中山陵是我国国父孙中山的陵墓，整体构成一座立起的钟以此来唤起民众并依靠着紫金山，蓝色的玻璃瓦片勾起了历史的烟尘。同时在这里可以看到‘天下为公’的陵门，还能感受到孙先生‘革命尚未成功，同志仍需努力’的精神。在中山陵你可以欣赏到层层石阶与两道松柏。透露着庄严和肃穆。
+            </p>
+            <p>
+              然而中山陵也存在一些问题。文化解读力度的不全，即使有讲解，但是没有深入了解，关于历史背景只存在表面。如果不对该方面有所研究，游客只能停留在拍照的层次。其次高峰期堵车问题严重，大大影响到了游客旅游的舒适度。
+            </p>
+            <p>
+              When I came to Dr. Sun Yat-sen’s Mausoleum, I thought of the phrase, “Dr. Sun Yatsen’s Mausoleum is Half of Modern Chinese History,” from journals on the internet. The only photo of Mr. Sun Yat-sen that has existed in my life is in my history textbook; thus, I couldn't help but look in awe at the magnificent architecture for its vividness in front of me.
+            </p>
+            <p>
+              Dr. Sun Yat-sen’s Mausoleum is the resting place of Sun Yat-sen, the founder of the Republic of China. The whole mausoleum forms a standing clock when viewed from above, serving as a reminder for continuous improvement. The blue glass tiles evoke the smoke of history in my mind. At the same time, you can see the tomb gate with the title "the world is public" here, and you can also feel Mr. Sun's spirit of "the revolution has not been successful, and comrades still need to work hard". In Dr. Sun Yat-sen’s Mausoleum, you can enjoy layers of stone steps and two pine and cypress trees. It reveals the ultimate feeling of solemnity.
+            </p>
+            <p>
+              However, there are some issues with Dr. Sun Yat-sen’s Mausoleum. First, the strength of cultural interpretation is incomplete due to the government’s cultural censorship. It resulted in the outcome that even if there is an explanation, there is no in-depth understanding, and thus, the historical background explained is superficial. If the officials make no change on this aspect, tourists can merely stay at the level of photo-taking. Second, the traffic jam during peak hours is a serious problem, which greatly affects the comfort index of tourists.
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">Written by Charlie Yin</h3>
+          <p class="card-intro">
+            <p>
+              中山陵给我的印象是庄重而宁静的。台阶很多，但思考着走起来却不觉得累，反而像是在一点点靠近一位值得尊敬的人。环顾四周，陵墓的颜色素净，没有张扬的金碧辉煌，却让人有一种深深的敬意，随着四周整齐又安静的松柏伫立。站在中山先生的墓前，我没说话，心里却很充实。他不是离我们很远的人，而是一直在那里，看着这个国家经历风风雨雨，兴衰成败。整个地方没有强烈的刺激，却能让人沉下心来去想一想，什么才是真正重要的东西。
+            </p>
+            <p>
+              The Sun Yat-sen Mausoleum left me with a solemn and tranquil impression. There are many steps, but walking thoughtfully never felt tiring; instead, it felt like I was gradually approaching a figure worthy of respect. Looking around, the mausoleum's plain colors, devoid of ostentatious splendor, evoke a deep sense of respect, surrounded by the neat and quiet pine and cypress trees. Standing before Dr. Sun Yat-sen's tomb, I remained silent, yet my heart was filled with clamor. Dr. Sun Yat-sen is not a distant figure; he has always been there, witnessing this country through its ups and downs, its successes and failures. The entire place has a paucity of "intense stimulation" visually, thus it allows one to calm down and reflect on what truly matters.
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
 </body>
 </html>
