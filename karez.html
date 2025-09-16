@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Karez System – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="karez.jpg" alt="Header photo of the heritage site">
+      </figure>
+
+      <a href="heritage.html" class="return-home">← Return to Home</a>
+
+      <h1 class="hero-title">Karez System of Turpan</h1>
+
+      <p class="hero-intro">
+        An ancient irrigation system in Turpan, Xinjiang, consisting of underground channels that brought water from the Tianshan Mountains to the arid desert basin.
+      </p>
+    </header>
+
+    <section class="submissions">
+      <article class="card">
+        <div class="card-media">
+          <img src="karez1.jpg" alt="Detail of mural, Cave 45">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Written by 朱语熙</h3>
+          <div class="card-meta">Image from 朱语熙, Karez Irrigation System</div>
+          <p class="card-intro clamp-3">
+            <p>
+              暑假期间，我沿着丝绸之路从河西走廊一路来到了吐鲁番，第一次看到了坎儿井。吐鲁番酷热少雨，夏季高温可达到42度，火焰山高温可达50多度，在这样炎热干旱的地理条件，如何盛产出全国赫赫有名的葡萄呢？除了极大的早晚温差，最重要是灌溉的水源，每到夏季天山上就有大量融雪流下来，这珍贵的雪水便是坎儿井里流淌的井水。
+            </p>
+            <p>
+              到了坎儿井景点，我沿着电梯向下到了暗渠，和地面干燥的感受不同，地下瞬间感到潮湿的空气弥漫开来，耳边传来哗哗流水声，旁边有一条小水道，里面的水清澈见底。我们一路往前，参观了坎儿井微缩实景展示，原来，智慧的先民巧妙地利用天然地理高度落差把雪水引到吐鲁番农田。如此还能有效减少水份蒸发。如此一举两得的巧思，让我不禁佩服新疆古人的智慧。
+            </p>
+            <p>
+              继续往前，每隔几十米就有一口竖井，它是和水平渠道连通的，用于挖渠道时运输泥沙和通风采光。坎儿井高度有一米八左右，宽度大概可容纳两人。2000多年前，掘井人需要跪着在微弱的油灯下一点一点刨土，长年累月，忍受严寒酷暑，经过几代人的牺牲奉献才能造就这奇迹般的水利工程。吐鲁番人民的团结和勤劳，真让人由衷的敬佩。
+            </p>
+            <p>
+              坎儿井这项伟大的工程也面临着年久失修以及自然和人为破坏，所以，我希望相关部门能及时修缮坎儿井，并加强对周围环境的改善和检测，从而能够让这项国内唯一而独特的工程得到保护。同时，我也期待旅游局可以设计出更丰富有趣的旅行线路，能够让观光客更加全面细致了解坎儿井。
+            </p>
+            <p>
+              坎儿井被誉为“地下长城”，是新疆劳动人民智慧与勤劳的结晶，也是中华民族的宝贵财富。新疆这片神奇的土地还孕育出许许多多的本土文化和当地独一无二的地质地貌，希望大家多了解新疆——这颗璀璨的西部明珠。
+            </p>
+            <p>
+              During the summer vacation, I traveled along the Silk Road from the Hexi Corridor all the way to Turpan, where I saw the Karez system for the first time. Turpan is scorching hot and receives very little rainfall. In summer, the temperature can reach 42°C, and at the Flaming Mountains it can soar above 50°C. Under such harsh and arid conditions, how could this place produce China’s famously abundant grapes? Besides the great difference between daytime and nighttime temperatures, the most crucial factor is irrigation. Each summer, snow from the Tianshan Mountains melts in great quantities, and this precious meltwater flows into the Karez system, nourishing the fields below.
+            </p>
+            <p>
+              At the Karez scenic site, I descended by elevator into the underground channel. Unlike the dry air above ground, here the air instantly became cool and moist, accompanied by the sound of rushing water. Alongside us ran a small watercourse, its water crystal clear. As we moved forward, we visited the miniature models of the Karez system, learning how the ingenious ancestors cleverly used natural differences in elevation to direct snowmelt into Turpan’s farmland. This not only brought water to the fields but also greatly reduced evaporation—an ingenious solution that left me full of admiration for the wisdom of the ancient people of Xinjiang.
+            </p>
+            <p>
+              Continuing further, I noticed that every few dozen meters there was a vertical shaft. These were connected to the horizontal channels and were originally dug to transport soil during construction, as well as to provide ventilation and light. The tunnels of the Karez are about 1.8 meters high and wide enough for two people to walk side by side. Over 2,000 years ago, the diggers had to kneel in the dim glow of oil lamps, scraping away the earth bit by bit, year after year, enduring the extremes of heat and cold. It took the sacrifice and perseverance of many generations to create this miraculous feat of hydraulic engineering. The unity and hard work of the Turpan people truly command deep respect.
+            </p>
+            <p>
+              Yet today, this great project faces the threats of age, neglect, and both natural and human damage. I hope the relevant authorities will carry out timely repairs to the Karez, improve and monitor the surrounding environment, and protect this unique and irreplaceable achievement of Chinese engineering. At the same time, I also hope the tourism department can design more engaging travel routes, enabling visitors to better understand the Karez system in detail.
+            </p>
+            <p>
+              Praised as the “Underground Great Wall,” the Karez is a crystallization of the wisdom and diligence of Xinjiang’s laboring people, and a priceless treasure of the Chinese nation. This magical land of Xinjiang has also nurtured countless local cultures and unique geological landscapes. I hope more people will come to know Xinjiang — this brilliant pearl of China’s western frontier.
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
