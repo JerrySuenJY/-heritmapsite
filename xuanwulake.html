@@ -1,254 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Xuanwu Lake – Heritmap</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Times New Roman', serif;
-      color: #000000;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow-y: auto;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Xuanwu Lake – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
 
-  
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('xuanwulakebackground.jpg') no-repeat center center fixed;
-      background-size: cover;
-      opacity: 0.2;
-      z-index: -1;
-    }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
 
-    
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #333333;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
 
-   .logo img {
-      height: 40px;         
-     transform: scale(2); 
-      margin-top: -10px;     
-    }
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      font-family: 'Times New Roman', serif;
-    }
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: 500;
-    }
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
 
-    .nav-links a:hover {
-      color: #dddddd;
-    }
+  .submissions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+    margin-top: 28px;
+  }
 
-    
-    .article-container {
-      max-width: 800px;
-      margin: 4rem auto;
-      padding: 0 2rem 4rem;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
 
-    .article-container h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-    .article-container img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-    }
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
 
-    .article-container p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
 
-    .back-link {
-      display: block;
-      text-align: center;
-      margin-top: 3rem;
-      color: #0070f3;
-      text-decoration: none;
-    }
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
 
-    .back-link:hover {
-      text-decoration: underline;
-    }
-    
-    .image-credit {
-      color: #888888;         
-      font-size: 0.85rem;       
-      text-align: center;
-      margin-top: 0.5rem;
-      margin-bottom: 2rem;
-      font-family: 'Times New Roman', serif;
-    }
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
 
-    .caption {
-      color: #888888;         
-      font-size: 0.8rem;       
-      text-align: right;
-      margin-top: 0.1rem;
-      margin-bottom: 2rem;
-      font-family: 'Times New Roman', serif;
-    }
-  </style>
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
+  <main class="page">
 
-  
-  <nav class="navbar">
-    <a href="index.html" class="logo">
-      <img src="logo.svg" alt="Heritmap Logo" />
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="map.html">Map View & Explore</a></li>
-      <li><a href="share.html">Share a Story</a></li>
-      <li><a href="heritage.html">Heritage Sites</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="xuanwulakebackground.jpg" alt="Header photo of the heritage site">
+      </figure>
 
-  
-  <div class="article-container">
-    <h1>Xuanwu Lake</h1>
-    <img src="xuanwulake.jpg" alt="xuanwulake" />
-    <div class="caption">Image from Mary Ma, Xuanwu Lake</div>
-    <div class="image-credit">Written by Mary Ma</div>
-    <p>
-      六朝的风，吹过南京玄武湖千年。湖面涟漪轻晃，把王朝兴衰、市井烟火，都揉进波光里。湖岸垂柳摇曳，与远处建筑相映，古意和烟火气奇妙交融。
-    </p>
-    <p>
-      它是历史的容器，也是市民生活的背景。建议多设历史导览，让游客读懂湖畔典故；定期维护湖域生态，让水更清、景更活。
-    </p>
-    <p>
-      愿这汪湖水，继续串起过去与当下，成为南京人心里，始终温热的文化符号，附件为玄武湖实拍图，盼它永葆生机，讲未完的故事。
-    </p>
-    <p>
-      The winds of the Six Dynasties have blown across Nanjing's Xuanwu Lake for thousands of years. Ripples gently ripple the surface, capturing the rise and fall of dynasties and the bustling city life. Willows sway along the lakeshore, echoing with distant buildings in a wondrous blend of antiquity and the hustle and bustle of life.
-    </p>
-    <p>
-      It serves as a vessel of history and a backdrop for local life. We suggest offering more historical tours to help visitors understand the lake's history, and regular maintenance of the lake's ecology to enhance its clarity and vitality.
-    </p>
-    <p>
-      May this lake continue to connect the past and present, becoming a cultural symbol that remains a warm memory in the hearts of Nanjing residents. Attached are photos of Xuanwu Lake. May it remain vibrant and tell its unfinished story.
-    </p>
-    <div class="image-credit">Written by Cao Zhuo</div>
-    <p>
-      玄武湖——坐落于江苏南京，是江南的皇家园林，是金陵明珠。
-    </p>
-    <p>
-       印象最深是玄武湖的蓝调时刻，幽暗的天空浸染整个南京城，但玄武湖内映射点点星火使忧郁中带着柔和的温暖。就像无助的孩子在黑暗中躲入母亲的怀抱，母亲为孩子抓萤火虫消解情绪一般让人暖心。是一个无论晴天雨天雪天白天夜里都让人心旷神怡的地方，并且我个人认为玄武湖目前仍然是自然之景大于商业化的的地方。
-    </p>
-    <p>
-       保护建议：
-    </p>
-    <p>
-      1️⃣可以通过当代年轻人对于一二次元的热爱与玄武湖的景色相结合，让更多的人关注并响应环境保护
-    </p>
-    <p>
-      2️⃣定点设立服务亭与服务人员，当看见有破坏生态的事情及时制止
-    </p>
-    <p>
-      3️⃣可以划定核心保护区，将重点保护与保护划分，适当给予商业化获得资金从而更好投入对景点的保护
-    </p>
-    <p>
-      Xuanwu Lake, located in Nanjing, Jiangdu Province, accounts for a royal garden of Jiangnan, and it is the pearl of Jinlin (Nanking).
-    </p>
-    <p>
-      My most memorable moment for Xuanwu Lake is the blue hour. The gloomy sky drentches the entire city of Nanjing, but the fitful sparks reflected within the lake bring a gentle warmth to the melancholy. It's like a helpless child hiding in the darkness, her mother catching fireflies for her to soothe her sorrow, which forms a heartwarming scenario. Regardless of rain, shine, snow, day, and night, it's a place that brings peace and tranquility. Personally I believe that Xuanwu Lake still prioritizes natural beauty over commercialization.
-    </p>
-    <p>
-      Conservation Suggestions:
-    </p>
-    <p>
-      1️⃣ Combine the contemporary youth's love for animation characters with the beauty of Xuanwu Lake to raise the awareness of environmental protection for consistent beauty.
-    </p>
-    <p>
-      2️⃣ Establish designated service booths and staff to intervene in time when ecological damage is observed.
-    </p>
-    <p>
-      3️⃣ Designate core protected areas, segregate key areas for protection and conservation, and allow for appropriate commercialization to generate funding for better conservation.
-    </p>
-    <div class="image-credit">Written by 初恋99</div>
-    <p>
-      记忆里的玄武湖
-    </p>
-    <p>
-      玄武湖，是南京人成长记忆里不可缺少的一部分。
-    </p>
-    <p>
-      玄武湖名气很大。它位于江苏省南京市玄武区东北，钟山以西，六朝前称桑泊，曾名秣陵湖、昆明湖、后湖等，是中国古代最大的皇家湖泊园林，也是当代仅存的江南皇家园林。
-    </p>
-    <p>
-      玄武湖历史悠久。它的历史最早可追溯到距今2220多年前的先秦时期。在朝代的更迭中，玄武湖也经历了多次兴衰。解放以后，人民政府对玄武湖进行了大规模的扩建改造，迁出湖民，广植花草，多增景点，面貌全新。玄武湖现在是国家级风景区、江南三大名湖之一（另外两个是杭州西湖和嘉兴南湖），是江南最大的城内公园。
-    </p>
-    <p>
-      玄武湖景色优美。湖面辽阔，西临玄武门，东邻紫金山，水面约368公顷，湖内多鱼，广植荷花。玄武湖以前曾爆发过蓝藻，政府花了很大的力气进行治理。现在是一番波光粼粼的优美景致。湖岸呈菱形，湖周有长10公里环湖公路，湖上有五个洲，环洲、樱洲、菱洲、梁洲和翠洲，相互间以堤桥相接，其中以梁洲景色最美，上有览胜楼、陶然亭等建筑。
-    </p>
-    <p>
-      翻开儿时的相册，以前中小学的春游秋游最喜欢安排在玄武湖。还记得和同学们在童子拜观音那里的假山里上下穿梭（现在不允许了，据说是为了保证游客安全）；还记得在大水池那里拍的集体照，一张张稚嫩的脸庞；还记得第一次站在武庙闸那里看开闸换水，水声轰鸣，印象深刻；还记得有一次在湖边散步，突然从城墙的小洞里钻出三只小猫，原来是猫妈妈带着孩子出来觅食；还记得有一次在南京站左动车去外地，透过玻璃窗一眼就看见了外面清波荡漾的玄武湖。你来的时候，它陪伴着你，你走的时候，它还是默默陪伴着你……
-    </p>
-    <p>
-      从太平门出去，夏天的时候一路都有盛开的荷花在微风里轻轻摆动，让人心旷神怡。在太平门附近，还有一家鸡鸣汤包。走累了，刚好来这里吃一碗鸭血粉丝汤，点一笼鸡汁汤包，再来一杯冰镇杨梅汁，所有的烦恼在这一刻都会烟消云散。春夏秋冬，每个季节的玄武湖都有属于自己的美。每次去走一走都会想着再去鸡鸣汤包点几份小吃。这仿佛已经变成了一种仪式。
-    </p>
-    <p>
-      南京人的记忆里总有玄武湖的身影。
-    </p>
-    <p>
-      Xuanwu Lake in Memory
-    </p>
-    <p>
-      Xuanwu Lake is an inseparable part of the growing-up memories of Nanjing people.
-    </p>
-    <p>
-      The lake is well-known. Located in the northeast of Xuanwu District, Nanjing, west of Zhongshan Mountain, it was called Sangbo during the Six Dynasties, and later known as Moling Lake, Kunming Lake, and Hou Lake. It is the largest royal lake garden of ancient China, and today the only surviving royal garden in the Jiangnan region.
-    </p>
-    <p>
-      Xuanwu Lake has a long history. Its origins can be traced back more than 2,220 years to the pre-Qin period. Over successive dynasties, the lake experienced rises and falls. After Liberation, the people’s government carried out large-scale expansion and renovation: relocating the lake residents, planting flowers and trees, and adding scenic spots. The lake took on a new look. Today, it is a national-level scenic area, one of the three great lakes south of the Yangtze (alongside West Lake in Hangzhou and South Lake in Jiaxing), and the largest urban park in Jiangnan.    
-    </p>
-    <p>
-      Xuanwu Lake is beautiful. Its surface is vast, with Xuanwu Gate to the west and Purple Mountain to the east, covering about 368 hectares. The lake is rich in fish and filled with lotus flowers. In the past, blue-green algae broke out here, but the government invested great effort in restoration. Now it gleams with sparkling waves. The shoreline is diamond-shaped, encircled by a 10-kilometer road. Five islets—Huan Islet, Cherry Blossom Islet, Lotus Islet, Liang Islet, and Cui Islet—are linked by causeways and bridges. Of these, Liang Islet is the most scenic, home to pavilions such as Lansheng Tower and Taoran Pavilion.    
-    </p>
-    <p>
-      Flipping through childhood photo albums, one finds that spring and autumn outings in primary and middle school often took place at Xuanwu Lake. I remember dashing up and down the artificial rockery at Tongzi Bai Guanyin with my classmates (something no longer allowed, reportedly for safety); I remember the group photos taken by the large pond, with rows of youthful faces; I remember standing at Wumiao Sluice for the first time watching the gates open to change the water, the roar unforgettable; I remember once strolling along the lakeshore when suddenly three kittens popped out of a small hole in the city wall, led by their mother in search of food; I remember once, departing Nanjing Station on a train, looking through the window to see the rippling surface of Xuanwu Lake outside. When you arrive, it welcomes you; when you leave, it silently accompanies you still…
-    </p>
-    <p>
-      Leaving through Taiping Gate in summer, rows of blooming lotuses sway gently in the breeze, delighting the heart. Nearby is the famous Jiming Soup Dumpling shop. After walking, one can stop for a bowl of duck-blood vermicelli soup, a basket of chicken-soup dumplings, and a chilled glass of bayberry juice. All troubles dissolve in that moment. In spring, summer, autumn, and winter, each season brings its own beauty to Xuanwu Lake. Each visit ends with the thought of returning again to Jiming for a few small dishes, as if it has become a ritual.
-    </p>
-    <p>
-      In the memory of Nanjing people, the figure of Xuanwu Lake is always there.
-    </p>
-    <a class="back-link" href="heritage.html">← Back to Heritage Sites</a>
-  </div>
+      <a href="heritage.html" class="return-home">← Return to Home</a>
 
+      <h1 class="hero-title">Xuanwu Lake</h1>
+
+      <p class="hero-intro">
+        Xuanwu Lake is a historic lake park in central Nanjing, known for its scenic views and lotus-filled waters.
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-media">
+          <img src="xuanwulake.jpg" alt="xuanwulake">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Image from Mary Ma, Xuanwu Lake</h3>
+          <div class="card-meta">Written by Mary Ma</div>
+          <p class="card-intro clamp-3">
+            <p>
+              六朝的风，吹过南京玄武湖千年。湖面涟漪轻晃，把王朝兴衰、市井烟火，都揉进波光里。湖岸垂柳摇曳，与远处建筑相映，古意和烟火气奇妙交融。
+            </p>
+            <p>
+              它是历史的容器，也是市民生活的背景。建议多设历史导览，让游客读懂湖畔典故；定期维护湖域生态，让水更清、景更活。
+            </p>
+            <p>
+              愿这汪湖水，继续串起过去与当下，成为南京人心里，始终温热的文化符号，附件为玄武湖实拍图，盼它永葆生机，讲未完的故事。
+            </p>
+            <p>
+              The winds of the Six Dynasties have blown across Nanjing's Xuanwu Lake for thousands of years. Ripples gently ripple the surface, capturing the rise and fall of dynasties and the bustling city life. Willows sway along the lakeshore, echoing with distant buildings in a wondrous blend of antiquity and the hustle and bustle of life.
+            </p>
+            <p>
+              It serves as a vessel of history and a backdrop for local life. We suggest offering more historical tours to help visitors understand the lake's history, and regular maintenance of the lake's ecology to enhance its clarity and vitality.
+            </p>
+            <p>
+              May this lake continue to connect the past and present, becoming a cultural symbol that remains a warm memory in the hearts of Nanjing residents. Attached are photos of Xuanwu Lake. May it remain vibrant and tell its unfinished story.
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">Written by Cao Zhuo</h3>
+          <p class="card-intro">
+            <p>
+              玄武湖——坐落于江苏南京，是江南的皇家园林，是金陵明珠。
+            </p>
+            <p>
+              印象最深是玄武湖的蓝调时刻，幽暗的天空浸染整个南京城，但玄武湖内映射点点星火使忧郁中带着柔和的温暖。就像无助的孩子在黑暗中躲入母亲的怀抱，母亲为孩子抓萤火虫消解情绪一般让人暖心。是一个无论晴天雨天雪天白天夜里都让人心旷神怡的地方，并且我个人认为玄武湖目前仍然是自然之景大于商业化的的地方。
+            </p>
+            <p>
+              保护建议：
+            </p>
+            <p>
+              1️⃣可以通过当代年轻人对于一二次元的热爱与玄武湖的景色相结合，让更多的人关注并响应环境保护
+            </p>
+            <p>
+              2️⃣定点设立服务亭与服务人员，当看见有破坏生态的事情及时制止
+            </p>
+            <p>
+              3️⃣可以划定核心保护区，将重点保护与保护划分，适当给予商业化获得资金从而更好投入对景点的保护
+            </p>
+            <p>
+              Xuanwu Lake, located in Nanjing, Jiangdu Province, accounts for a royal garden of Jiangnan, and it is the pearl of Jinlin (Nanking).
+            </p>
+            <p>
+              My most memorable moment for Xuanwu Lake is the blue hour. The gloomy sky drentches the entire city of Nanjing, but the fitful sparks reflected within the lake bring a gentle warmth to the melancholy. It's like a helpless child hiding in the darkness, her mother catching fireflies for her to soothe her sorrow, which forms a heartwarming scenario. Regardless of rain, shine, snow, day, and night, it's a place that brings peace and tranquility. Personally I believe that Xuanwu Lake still prioritizes natural beauty over commercialization.
+            </p>
+            <p>
+              Conservation Suggestions:
+            </p>
+            <p>
+              1️⃣ Combine the contemporary youth's love for animation characters with the beauty of Xuanwu Lake to raise the awareness of environmental protection for consistent beauty.
+            </p>
+            <p>
+              2️⃣ Establish designated service booths and staff to intervene in time when ecological damage is observed.
+            </p>
+            <p>
+              3️⃣ Designate core protected areas, segregate key areas for protection and conservation, and allow for appropriate commercialization to generate funding for better conservation.
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">Written by 初恋99</h3>
+          <p class="card-intro">
+            <p>
+              记忆里的玄武湖
+            </p>
+            <p>
+              玄武湖，是南京人成长记忆里不可缺少的一部分。
+            </p>
+            <p>
+              玄武湖名气很大。它位于江苏省南京市玄武区东北，钟山以西，六朝前称桑泊，曾名秣陵湖、昆明湖、后湖等，是中国古代最大的皇家湖泊园林，也是当代仅存的江南皇家园林。
+            </p>
+            <p>
+              玄武湖历史悠久。它的历史最早可追溯到距今2220多年前的先秦时期。在朝代的更迭中，玄武湖也经历了多次兴衰。解放以后，人民政府对玄武湖进行了大规模的扩建改造，迁出湖民，广植花草，多增景点，面貌全新。玄武湖现在是国家级风景区、江南三大名湖之一（另外两个是杭州西湖和嘉兴南湖），是江南最大的城内公园。
+            </p>
+            <p>
+              玄武湖景色优美。湖面辽阔，西临玄武门，东邻紫金山，水面约368公顷，湖内多鱼，广植荷花。玄武湖以前曾爆发过蓝藻，政府花了很大的力气进行治理。现在是一番波光粼粼的优美景致。湖岸呈菱形，湖周有长10公里环湖公路，湖上有五个洲，环洲、樱洲、菱洲、梁洲和翠洲，相互间以堤桥相接，其中以梁洲景色最美，上有览胜楼、陶然亭等建筑。
+            </p>
+            <p>
+              翻开儿时的相册，以前中小学的春游秋游最喜欢安排在玄武湖。还记得和同学们在童子拜观音那里的假山里上下穿梭（现在不允许了，据说是为了保证游客安全）；还记得在大水池那里拍的集体照，一张张稚嫩的脸庞；还记得第一次站在武庙闸那里看开闸换水，水声轰鸣，印象深刻；还记得有一次在湖边散步，突然从城墙的小洞里钻出三只小猫，原来是猫妈妈带着孩子出来觅食；还记得有一次在南京站左动车去外地，透过玻璃窗一眼就看见了外面清波荡漾的玄武湖。你来的时候，它陪伴着你，你走的时候，它还是默默陪伴着你……
+            </p>
+            <p>
+              从太平门出去，夏天的时候一路都有盛开的荷花在微风里轻轻摆动，让人心旷神怡。在太平门附近，还有一家鸡鸣汤包。走累了，刚好来这里吃一碗鸭血粉丝汤，点一笼鸡汁汤包，再来一杯冰镇杨梅汁，所有的烦恼在这一刻都会烟消云散。春夏秋冬，每个季节的玄武湖都有属于自己的美。每次去走一走都会想着再去鸡鸣汤包点几份小吃。这仿佛已经变成了一种仪式。
+            </p>
+            <p>
+              南京人的记忆里总有玄武湖的身影。
+            </p>
+            <p>
+              Xuanwu Lake in Memory
+            </p>
+            <p>
+              Xuanwu Lake is an inseparable part of the growing-up memories of Nanjing people.
+            </p>
+            <p>
+              The lake is well-known. Located in the northeast of Xuanwu District, Nanjing, west of Zhongshan Mountain, it was called Sangbo during the Six Dynasties, and later known as Moling Lake, Kunming Lake, and Hou Lake. It is the largest royal lake garden of ancient China, and today the only surviving royal garden in the Jiangnan region.
+            </p>
+            <p>
+              Xuanwu Lake has a long history. Its origins can be traced back more than 2,220 years to the pre-Qin period. Over successive dynasties, the lake experienced rises and falls. After Liberation, the people’s government carried out large-scale expansion and renovation: relocating the lake residents, planting flowers and trees, and adding scenic spots. The lake took on a new look. Today, it is a national-level scenic area, one of the three great lakes south of the Yangtze (alongside West Lake in Hangzhou and South Lake in Jiaxing), and the largest urban park in Jiangnan.    
+            </p>
+            <p>
+              Xuanwu Lake is beautiful. Its surface is vast, with Xuanwu Gate to the west and Purple Mountain to the east, covering about 368 hectares. The lake is rich in fish and filled with lotus flowers. In the past, blue-green algae broke out here, but the government invested great effort in restoration. Now it gleams with sparkling waves. The shoreline is diamond-shaped, encircled by a 10-kilometer road. Five islets—Huan Islet, Cherry Blossom Islet, Lotus Islet, Liang Islet, and Cui Islet—are linked by causeways and bridges. Of these, Liang Islet is the most scenic, home to pavilions such as Lansheng Tower and Taoran Pavilion.    
+            </p>
+            <p>
+              Flipping through childhood photo albums, one finds that spring and autumn outings in primary and middle school often took place at Xuanwu Lake. I remember dashing up and down the artificial rockery at Tongzi Bai Guanyin with my classmates (something no longer allowed, reportedly for safety); I remember the group photos taken by the large pond, with rows of youthful faces; I remember standing at Wumiao Sluice for the first time watching the gates open to change the water, the roar unforgettable; I remember once strolling along the lakeshore when suddenly three kittens popped out of a small hole in the city wall, led by their mother in search of food; I remember once, departing Nanjing Station on a train, looking through the window to see the rippling surface of Xuanwu Lake outside. When you arrive, it welcomes you; when you leave, it silently accompanies you still…
+            </p>
+            <p>
+              Leaving through Taiping Gate in summer, rows of blooming lotuses sway gently in the breeze, delighting the heart. Nearby is the famous Jiming Soup Dumpling shop. After walking, one can stop for a bowl of duck-blood vermicelli soup, a basket of chicken-soup dumplings, and a chilled glass of bayberry juice. All troubles dissolve in that moment. In spring, summer, autumn, and winter, each season brings its own beauty to Xuanwu Lake. Each visit ends with the thought of returning again to Jiming for a few small dishes, as if it has become a ritual.
+            </p>
+            <p>
+              In the memory of Nanjing people, the figure of Xuanwu Lake is always there.
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
 </body>
 </html>
