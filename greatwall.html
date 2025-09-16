@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Great Wall – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="greatwallbackground.jpg" alt="Header photo of the heritage site">
+      </figure>
+
+      <a href="heritage.html" class="return-home">← Return to Home</a>
+
+      <h1 class="hero-title">The Great Wall of China</h1>
+
+      <p class="hero-intro">
+        A monumental series of fortifications built across northern China to protect against invasions.
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">Written by 范俊喆</h3>
+          <p class="card-intro">
+            <p>
+              我站在长城上，心中不禁油然而生一股崇敬之情，轻转地抚摸长城的砖头，那凹凸不平的石块表现出历史的厚重。四周的山峰起伏不断，长城也在这之间绵延不绝，仿佛一条巨龙。放眼望去，蜿蜒曲折的长城，翻山越岭，游向远方的天边，就像你那悠久的历史，从过去走向未来。让我们以敬畏之心承古物之重，以长久之力传文明之火，让文物在时光里永续生辉。
+            </p>
+            <p>
+              Standing atop the Great Wall, a deep sense of reverence arose within me as I gently touched the bricks. Their uneven stones embody the weight of history. Surrounded by rolling mountains, the Wall stretches endlessly, like a mighty dragon. Gazing into the distance, its winding path climbs over peaks and valleys, reaching toward the horizon—just like its long history, journeying from the past to the future. Let us carry the burden of antiquity with respect, pass on the flame of civilization with enduring strength, and let cultural relics shine eternally through time.
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">Written by 李梓轩</h3>
+          <p class="card-intro">
+            <p>
+              长城是中国民族的象征,也是人类文明历史上最伟大的建筑工程之一。它不止是一道墙,而是一个复杂的军事防御体系。
+            </p>
+            <p>
+              长城是世界文化遗产,也是世界中古七大奇迹之一,总长度长达2.1万公里,分布于中国17个省区市,不仅见证了历史的变迁,更承载着中华人民的自强不息。
+            </p>
+            <p>
+              我站在长城上,北京“一览众山小”,一切仿佛都如同尘埃。这雄伟的风景,犹如一条古龙盘旋在苍山之巅，抚摸着斑驳的墙，体会当年的故事，孟姜女是如何哭倒的长城，山海关的传说，王昭君出塞的情景，一幅幅在眼前浮现，这其中蕴含着什么东西等待我们寻找呢。
+            </p>
+            <p>
+              The Great Wall is a symbol of the Chinese nation and one of the greatest architectural feats in human history. It is not merely a wall, but a complex military defense system.
+            </p>
+            <p>
+              As a World Cultural Heritage site and one of the Seven Wonders of the Medieval World, the Great Wall stretches over 21,000 kilometers across 17 provinces, regions, and municipalities of China. It not only bears witness to historical change but also embodies the indomitable spirit of the Chinese people.
+            </p>
+            <p>
+              Standing on the Great Wall, I gazed over Beijing, where “all the mountains seemed small beneath my feet.” Everything felt like dust before this majestic view, as if an ancient dragon coiled along the peaks. Touching its weathered walls, I felt the stories of the past—the tale of Lady Meng Jiang weeping the Wall down, the legends of Shanhaiguan, the image of Wang Zhaojun riding beyond the frontier. One by one they unfolded before my eyes, hinting at mysteries still awaiting discovery.
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">Written by 黄明辉</h3>
+          <p class="card-intro">
+            <p>
+              我从没去过长城，却常在课本中看见他的身影！
+            </p>
+            <p>
+              风从画面里吹来，伴着千年声响——工匠凿砖的叮当声，将士的脚步声敲在心上。
+            </p>
+            <p>
+              想象长城上的景象，想象摸砖的触感，想象着千年的回响。那粗糙的划痕，像外婆的木梳，暖到心里。我把长城的故事记在本子上，盼着寒假和姐姐一起去，讲课本里的故事。
+            </p>
+            <p>
+              我是个学生，不能做些什么，我能做的就是不乱扔东西，将长城的历史分享给同学、家人，让大家重视长城、守护热爱长城，将我们的文化遗址传承宣扬出去！
+            </p>
+            <p>
+              I have never been to the Great Wall, yet I often see its figure in my textbooks!
+            </p>
+            <p>
+              The wind seems to blow from the pictures, carrying echoes of a thousand years—the clinking of craftsmen chiseling bricks, the footsteps of soldiers striking my heart.
+            </p>
+            <p>
+              I imagine the scenes upon the Wall, the feeling of touching its bricks, the resonance of centuries. Those rough scratches are like my grandmother’s wooden comb, warming me inside. I write down the stories of the Great Wall in my notebook, hoping to visit it with my sister during winter break and retell the stories from our books.
+            </p>
+            <p>
+              As a student, I cannot do much, but I can refrain from littering, share the Great Wall’s history with classmates and family, encourage respect and love for it, and help pass on and celebrate our cultural heritage!
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">Written by 梁锦妈妈</h3>
+          <p class="card-intro">
+            <p>
+              长城，又称“万里长城”，是中国古代劳动人民智慧的结晶，更是一座血汗筑成的军事防御奇迹。守护着中华大地千年安宁。不仅是举世闻名的文化遗产，更是中华民族精神与意志的象征。
+            </p>
+            <p>
+              当我第一眼看到长城时，瞬间被它的雄伟气势所震撼——它仿佛一条沉睡又苏醒的巨龙，蜿蜒起伏于苍茫山岭之间。尽管岁月在它身上刻下斑驳痕迹，风雨侵蚀了砖石，但它依旧巍然耸立，傲视山河。
+            </p>
+            <p>
+              可惜的是，由于体力有限、时间匆匆，最终我没能走完长城全程。但那一刻，我已深深感受到它磅礴的历史力量与民族自豪。
+            </p>
+            <p>
+              The Great Wall, also known as the “Ten-Thousand-Li Wall,” is the crystallization of the wisdom of ancient Chinese laborers and a military defense miracle built with sweat and sacrifice. It safeguarded peace across the land of China for millennia. More than a world-renowned cultural heritage, it stands as a symbol of the spirit and will of the Chinese nation.
+            </p>
+            <p>
+              The first time I saw the Great Wall, I was instantly overwhelmed by its majesty—it resembled a giant dragon, once asleep but now awakened, winding through the boundless mountains. Though time has left weathered scars upon it and storms have eroded its stones, it still towers proudly, gazing over rivers and mountains.
+            </p>
+            <p>
+              Unfortunately, limited strength and a hurried schedule meant I could not finish walking the entire Wall. Yet in that moment, I deeply felt its immense historical power and the pride of a nation.
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
