@@ -1,189 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mogao Caves – Heritmap</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Times New Roman', serif;
-      color: #000000;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow-y: auto;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mogao Caves – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
 
-  
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('mogaobackground.jpg') no-repeat center center fixed;
-      background-size: cover;
-      opacity: 0.2;
-      z-index: -1;
-    }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
 
-  
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #333333;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
 
-   .logo img {
-      height: 40px;         
-     transform: scale(2); 
-      margin-top: -10px;     
-    }
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      font-family: 'Times New Roman', serif;
-    }
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: 500;
-    }
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
 
-    .nav-links a:hover {
-      color: #dddddd;
-    }
+  .submissions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    margin-top: 28px;
+  }
 
-   
-    .article-container {
-      max-width: 800px;
-      margin: 4rem auto;
-      padding: 0 2rem 4rem;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
 
-    .article-container h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-    .article-container img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-    }
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
 
-    .article-container p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
 
-    .back-link {
-      display: block;
-      text-align: center;
-      margin-top: 3rem;
-      color: #0070f3;
-      text-decoration: none;
-    }
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
 
-    .back-link:hover {
-      text-decoration: underline;
-    }
-    
-    .image-credit {
-      color: #888888;         
-      font-size: 0.85rem;       
-      text-align: center;
-      margin-top: 0.5rem;
-      margin-bottom: 2rem;
-      font-family: 'Times New Roman', serif;
-    }
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
 
-    .caption {
-      color: #888888;         
-      font-size: 0.8rem;       
-      text-align: right;
-      margin-top: 0.1rem;
-      margin-bottom: 2rem;
-      font-family: 'Times New Roman', serif;
-    }
-  </style>
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
+  <main class="page">
 
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="mogaobackground.jpg" alt="Header photo of the heritage site">
+      </figure>
 
-  <nav class="navbar">
-    <a href="index.html" class="logo">
-      <img src="logo.svg" alt="Heritmap Logo" />
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="map.html">Map View & Explore</a></li>
-      <li><a href="share.html">Share a Story</a></li>
-      <li><a href="heritage.html">Heritage Sites</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
+      <a href="heritage.html" class="return-home">← Return to Home</a>
 
- 
-  <div class="article-container">
-    <h1>Mogao Caves</h1>
-    <img src="mogao.jpg" alt="MogaoCaves" />
-    <div class="caption">Image from Trip.com, Mogao Caves</div>
-    <div class="image-credit">Written by Jane Ji</div>
-    <p>
-      敦煌莫高窟的壁画让我深深着迷。那些飞舞的飞天、宁静的佛像，历经千年依然生动。站在洞窟里，仿佛能感受到古代画师们倾注的心血。
-    </p>
-    <p>
-      但令人担忧的是，随着游客增多，洞窟内的温湿度变化加速了壁画的褪色和剥落，这些珍贵的艺术正面临威胁。
-    </p>
-    <p>
-      The murals of the Mogao Grottoes in Dunhuang obsesses me. The dancing apsaras and serene Buddha statues remain vivid even after thousands of years. Standing in the caves, I can almost feel the effort made by the ancient painters poured into their creations.
-    </p>
-    <p>
-      But what is worrying is that with the increase in the number of tourists, changes in temperature and humidity in the caves have accelerated the fading and peeling of the murals, and these precious works of art are facing threats.
-    </p>
-    <div class="image-credit">Written by 初恋99</div>
-    <p>
-      敦煌莫高窟：千年壁画的守护与传承
-    </p>
-    <p>
-      细数中国境内令我印象最深的文化遗址币是敦煌莫高窟。犹记第220窟的唐代壁画，鲜艳的色彩与生动的乐舞场景跨越千年依然震撼人心，，梦幻的飞天与虔诚的僧侣众像展现盛唐艺术的辉煌。然而，岁月不饶人，自然风化与游客呼吸带来的温湿度变化正威胁这些脆弱遗产。
-    </p>
-    <p>
-      为了经典永留，我有以下保护建议；首先，景点方可以限流预约：严格执行每日游览人数上限，推广数字展厅从而缓解实体压力；其次，我们可以科技“护航”：例如利用纳米材料加固壁画，使用感应系统实时监测洞窟环境数据等；再次，注重实体保护的同时也要加强传统文化的延伸：我们可以在景点周边建设数字体验馆，通过VR技术分流游客并普及保护知识。
-    </p>
-    <p>
-      唯有平衡开放与保护，才能让文明之光永续闪烁。
-    </p>
-    <p>
-      Dunhuang Mogao Caves: Guardianship and Transmission of a Millennium of Murals
-    </p>
-    <p>
-      Among all the cultural heritage sites in China, the one that impressed me most is the Mogao Caves in Dunhuang. I still remember the Tang dynasty murals in Cave 220: the vivid colors and lively musical and dance scenes remain awe-inspiring after more than a thousand years. The dreamlike flying apsaras and the devout monks reflect the splendor of Tang art. Yet time shows no mercy—natural weathering and the shifts in temperature and humidity caused by visitors’ breathing now threaten these fragile treasures.
-    </p>
-    <p>
-      To ensure these classics endure, I have several suggestions for preservation:
-      First, the site can adopt strict visitor caps and a reservation system, while promoting digital exhibition halls to relieve pressure on the physical caves.
-      Second, we can let technology “escort” protection efforts: using nanomaterials to reinforce murals, or deploying sensor systems to monitor cave conditions in real time.
-      Third, alongside physical protection, we should also strengthen cultural extension: for example, building digital experience centers around the site where VR technology can both divert visitors and spread knowledge of preservation.    </p>
-    <p>
-      Only by balancing openness with protection can the light of civilization continue to shine across the ages.
-    </p>
-    <a class="back-link" href="heritage.html">← Back to Heritage Sites</a>
-  </div>
+      <h1 class="hero-title">Mogao Caves</h1>
 
+      <p class="hero-intro">
+        Located in Dunhuang, the Mogao Caves house an enormous collection of Buddhist artwork, murals, and scriptures dating back over a thousand years.
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-media">
+          <img src="mogao.jpg" alt="mogao">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Written by Jane Ji</h3>
+          <div class="card-meta">Image from Trip.com, Mogao Caves</div>
+          <p class="card-intro clamp-3">
+            <p>
+              敦煌莫高窟的壁画让我深深着迷。那些飞舞的飞天、宁静的佛像，历经千年依然生动。站在洞窟里，仿佛能感受到古代画师们倾注的心血。
+            </p>
+            <p>
+              但令人担忧的是，随着游客增多，洞窟内的温湿度变化加速了壁画的褪色和剥落，这些珍贵的艺术正面临威胁。
+            </p>
+            <p>
+              The murals of the Mogao Grottoes in Dunhuang obsesses me. The dancing apsaras and serene Buddha statues remain vivid even after thousands of years. Standing in the caves, I can almost feel the effort made by the ancient painters poured into their creations.
+            </p>
+            <p>
+              But what is worrying is that with the increase in the number of tourists, changes in temperature and humidity in the caves have accelerated the fading and peeling of the murals, and these precious works of art are facing threats.
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">Written by 初恋99</h3>
+          <p class="card-intro">
+            <p>
+              敦煌莫高窟：千年壁画的守护与传承
+            </p>
+            <p>
+              细数中国境内令我印象最深的文化遗址币是敦煌莫高窟。犹记第220窟的唐代壁画，鲜艳的色彩与生动的乐舞场景跨越千年依然震撼人心，，梦幻的飞天与虔诚的僧侣众像展现盛唐艺术的辉煌。然而，岁月不饶人，自然风化与游客呼吸带来的温湿度变化正威胁这些脆弱遗产。
+            </p>
+            <p>
+              为了经典永留，我有以下保护建议；首先，景点方可以限流预约：严格执行每日游览人数上限，推广数字展厅从而缓解实体压力；其次，我们可以科技“护航”：例如利用纳米材料加固壁画，使用感应系统实时监测洞窟环境数据等；再次，注重实体保护的同时也要加强传统文化的延伸：我们可以在景点周边建设数字体验馆，通过VR技术分流游客并普及保护知识。
+            </p>
+            <p>
+              唯有平衡开放与保护，才能让文明之光永续闪烁。
+            </p>
+            <p>
+              Dunhuang Mogao Caves: Guardianship and Transmission of a Millennium of Murals
+            </p>
+            <p>
+              Among all the cultural heritage sites in China, the one that impressed me most is the Mogao Caves in Dunhuang. I still remember the Tang dynasty murals in Cave 220: the vivid colors and lively musical and dance scenes remain awe-inspiring after more than a thousand years. The dreamlike flying apsaras and the devout monks reflect the splendor of Tang art. Yet time shows no mercy—natural weathering and the shifts in temperature and humidity caused by visitors’ breathing now threaten these fragile treasures.
+            </p>
+            <p>
+              To ensure these classics endure, I have several suggestions for preservation:
+              First, the site can adopt strict visitor caps and a reservation system, while promoting digital exhibition halls to relieve pressure on the physical caves.
+              Second, we can let technology “escort” protection efforts: using nanomaterials to reinforce murals, or deploying sensor systems to monitor cave conditions in real time.
+              Third, alongside physical protection, we should also strengthen cultural extension: for example, building digital experience centers around the site where VR technology can both divert visitors and spread knowledge of preservation.    </p>
+            <p>
+              Only by balancing openness with protection can the light of civilization continue to shine across the ages.
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
 </body>
 </html>
