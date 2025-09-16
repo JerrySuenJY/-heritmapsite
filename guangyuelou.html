@@ -1,168 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guangyue Tower – Heritmap</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Times New Roman', serif;
-      color: #000000;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow-y: auto;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Guangyue Tower – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
 
-  
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('guangyueloubackground.jpg') no-repeat center center fixed;
-      background-size: cover;
-      opacity: 0.2;
-      z-index: -1;
-    }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
 
-    
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #333333;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
 
-   .logo img {
-      height: 40px;         
-     transform: scale(2); 
-      margin-top: -10px;     
-    }
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      font-family: 'Times New Roman', serif;
-    }
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: 500;
-    }
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
 
-    .nav-links a:hover {
-      color: #dddddd;
-    }
+  .submissions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    margin-top: 28px;
+  }
 
-    
-    .article-container {
-      max-width: 800px;
-      margin: 4rem auto;
-      padding: 0 2rem 4rem;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
 
-    .article-container h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-    .article-container img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-    }
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
 
-    .article-container p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
 
-    .back-link {
-      display: block;
-      text-align: center;
-      margin-top: 3rem;
-      color: #0070f3;
-      text-decoration: none;
-    }
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
 
-    .back-link:hover {
-      text-decoration: underline;
-    }
-    
-    .image-credit {
-      color: #888888;         
-      font-size: 0.85rem;       
-      text-align: center;
-      margin-top: 0.5rem;
-      margin-bottom: 2rem;
-      font-family: 'Times New Roman', serif;
-    }
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
 
-    .caption {
-      color: #888888;         
-      font-size: 0.8rem;       
-      text-align: right;
-      margin-top: 0.1rem;
-      margin-bottom: 2rem;
-      font-family: 'Times New Roman', serif;
-    }
-  </style>
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
+  <main class="page">
 
-  
-  <nav class="navbar">
-    <a href="index.html" class="logo">
-      <img src="logo.svg" alt="Heritmap Logo" />
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="map.html">Map View & Explore</a></li>
-      <li><a href="share.html">Share a Story</a></li>
-      <li><a href="heritage.html">Heritage Sites</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="guangyueloubackground.jpg" alt="Header photo of the heritage site">
+      </figure>
 
-  
-  <div class="article-container">
-    <h1>Guangyue Tower</h1>
-    <img src="guangyuelou.jpg" alt="Guangyuelou" />
-    <div class="caption">Image from Camile Liu, Guangyue Tower</div>
-    <div class="image-credit">Written by Camile Liu</div>
-    <p>
-      聊城市，或许很少会有人提到这样一座“小众”的城市，但是，就是在这座“小众”的城市中，却拥有我国古人的“大智慧”。
-    </p>
-    <p>
-      站在聊城古城中央，光岳楼最令人惊叹的是它那座砖石墩台与木质主楼的完美咬合。33米高的楼阁，没有一根铁钉，全凭榫卯结构层层叠起，六百多年风雨中稳如磐石。墩台四门连通四方街巷，主楼匾额“光岳楼”三字笔力遒劲，登楼北望可见运河故道波光，南眺能赏古城青砖黛瓦，仿佛时空在此交汇。
-    </p>
-    <p>
-      作为我国文化古迹之一，历史悠久，但修复和保存却略显困难，因此，我个人建议为楼体榫卯节点加装微型监测装置，实时掌握木材形变；同时在墩台周边设沉浸式投影，重现明清文人登楼赋诗的场景，让游客感受“虽黄鹤、岳阳亦当望拜”的盛景。这样既护其形，又传其神，让这座“天下第一楼”的故事永续流传。
-    </p>
-    <p>
-     Liaocheng, a city considered by most people as "lesser known," possesses the profound wisdom of ancient Chinese people.
-    </p>
-    <p>
-      Standing in the heart of Liaocheng Ancient City, the most astonishing thing about Guangyue Tower is the seamless interplay between its brick and stone piers and the wooden main building. The 33-meter-high tower, constructed without a single nail, relies entirely on a layered, mortise and tenon joint system, maintaining its rock-solid stability for over 600 years. The four gates of the piers connect to the surrounding streets and alleys. The main building's plaque, inscribed with the three characters "Guangyue Tower," is written in powerful calligraphy. Looking north from the tower, visitors can admire the shimmering waters of the ancient canal, while gazing southward, they admire the blue bricks and black tiles of the ancient city, a scene that feels as if time and space converge.
-    </p>
-    <p>
-      As a cultural relic of my country, with its rich history, its restoration and preservation present challenges. Therefore, I personally recommend installing micro-monitoring devices at the mortise and tenon joints to monitor wood deformation in real time. Furthermore, immersive projections around the piers will recreate the scene of Ming and Qing dynasty poets ascending the tower to compose poetry, allowing visitors to experience the magnificent spectacle of "even the Yellow Crane and Yueyang would be admired." This way, we can protect its shape and convey its spirit, so that the story of this "No. 1 Building in the World" can be passed down forever.
-    </p>
-    <a class="back-link" href="heritage.html">← Back to Heritage Sites</a>
-  </div>
+      <a href="heritage.html" class="return-home">← Return to Home</a>
 
+      <h1 class="hero-title">Guangyue Tower</h1>
+
+      <p class="hero-intro">
+        A prominent Ming Dynasty wooden pavilion located in Liaocheng, Shandong. Known as the northernmost ancient wooden tower of its kind in China, built in 1374.
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-media">
+          <img src="guangyuelou.jpg" alt="guangyuelou">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Written by Camile Liu</h3>
+          <div class="card-meta">Image from Camile Liu, Guangyue Tower</div>
+          <p class="card-intro clamp-3">
+            <p>
+              聊城市，或许很少会有人提到这样一座“小众”的城市，但是，就是在这座“小众”的城市中，却拥有我国古人的“大智慧”。
+            </p>
+            <p>
+              站在聊城古城中央，光岳楼最令人惊叹的是它那座砖石墩台与木质主楼的完美咬合。33米高的楼阁，没有一根铁钉，全凭榫卯结构层层叠起，六百多年风雨中稳如磐石。墩台四门连通四方街巷，主楼匾额“光岳楼”三字笔力遒劲，登楼北望可见运河故道波光，南眺能赏古城青砖黛瓦，仿佛时空在此交汇。
+            </p>
+            <p>
+              作为我国文化古迹之一，历史悠久，但修复和保存却略显困难，因此，我个人建议为楼体榫卯节点加装微型监测装置，实时掌握木材形变；同时在墩台周边设沉浸式投影，重现明清文人登楼赋诗的场景，让游客感受“虽黄鹤、岳阳亦当望拜”的盛景。这样既护其形，又传其神，让这座“天下第一楼”的故事永续流传。
+            </p>
+            <p>
+              Liaocheng, a city considered by most people as "lesser known," possesses the profound wisdom of ancient Chinese people.
+            </p>
+            <p>
+              Standing in the heart of Liaocheng Ancient City, the most astonishing thing about Guangyue Tower is the seamless interplay between its brick and stone piers and the wooden main building. The 33-meter-high tower, constructed without a single nail, relies entirely on a layered, mortise and tenon joint system, maintaining its rock-solid stability for over 600 years. The four gates of the piers connect to the surrounding streets and alleys. The main building's plaque, inscribed with the three characters "Guangyue Tower," is written in powerful calligraphy. Looking north from the tower, visitors can admire the shimmering waters of the ancient canal, while gazing southward, they admire the blue bricks and black tiles of the ancient city, a scene that feels as if time and space converge.
+            </p>
+            <p>
+              As a cultural relic of my country, with its rich history, its restoration and preservation present challenges. Therefore, I personally recommend installing micro-monitoring devices at the mortise and tenon joints to monitor wood deformation in real time. Furthermore, immersive projections around the piers will recreate the scene of Ming and Qing dynasty poets ascending the tower to compose poetry, allowing visitors to experience the magnificent spectacle of "even the Yellow Crane and Yueyang would be admired." This way, we can protect its shape and convey its spirit, so that the story of this "No. 1 Building in the World" can be passed down forever.
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
 </body>
 </html>
