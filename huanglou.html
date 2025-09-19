@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Huanglou Pavilion of Xuzhou – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="huanglou.jpg" alt="Header photo of the heritage site">
+      </figure>
+
+      <a href="heritage.html" class="return-home">← Return to Home</a>
+
+      <h1 class="hero-title">Huanglou Pavilion</h1>
+
+      <p class="hero-intro">
+        A historic pavilion in Xuzhou, Jiangsu, originally built during the Han dynasty and later reconstructed, symbolizing the city's cultural heritage.
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">Written by Corrine Niu</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              蝉声漫过故黄河堤岸时，黄楼正浸在浓荫里。砖缝间钻出的青苔带着水汽，与老槐树影缠绵，将朱漆匾额上的“黄楼”二字烟染得愈发沉静。夏日午后，连阳光都懂得轻手轻脚，透过叶隙在石阶前织就细碎的金网，生怕惊扰楼中沉睡的旧时光。
+            </p>
+            <p>
+              桔红墙皮被晒得温热，檐角铜铃却悬着一丝清凉。风过柳梢时，叮当声坠入浓绿荫影里，恍若将千年光阴泡成一盏碧潭飘雪。当年，这楼因黄河而建，是苏轼治水时而建，水退后，苏公取“黄土实楼”为其命名。
+            </p>
+            <p>
+              绕至楼后忽见故黄河水泛着粼光向西流去。岸边柳丝垂入历史长河，几个老人坐在石凳上摇扇。我只是离开时购买了一块黄楼雪糕，除此之外，我什么都带不走。毕竟黄楼已经成为历史的碑谷，自然要承历史之重。
+            </p>
+            <p>
+              When the sound of cicadas drifted across the old Yellow River embankment, Huanglou Pavilion was steeped in deep shade. Moss crept out from the cracks between bricks, mingling with the shadows of ancient locust trees, as if softening the vermilion plaque that bore the characters “Huanglou,” rendering them even more solemn. On a summer afternoon, even the sunlight seemed cautious, weaving a delicate golden net through the leaves upon the stone steps, as though afraid of disturbing the slumbering memories within the pavilion.
+            </p>
+            <p>
+              The orange-red walls were warmed by the sun, while a trace of coolness lingered in the copper bells at the eaves. When the breeze brushed the willow tips, their chimes fell into the dense shade, as though steeping a thousand years of time into a cup of jade-green snowflakes. This pavilion was originally built because of the Yellow River, during Su Shi’s time managing the floods. After the waters receded, Su Gong named it “Huanglou,” meaning “a tower of yellow earth.”
+            </p>
+            <p>
+              Walking around to the back, I suddenly saw the waters of the old Yellow River shimmering as they flowed westward. Willows trailed into the river of history, while several elders fanned themselves on stone benches. All I took away was a Huanglou ice cream before leaving—nothing more. After all, Huanglou has already become a monument of history, destined to bear the weight of the past.
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
