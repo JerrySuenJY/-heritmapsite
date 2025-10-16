@@ -155,8 +155,11 @@
 
       let body =
   `Author: ${author}
+
   Reply-To: ${fromEmail}
-  Site/Tradition: ${site}
+
+  Site/Heritage: ${site}
+  
   Location: ${coords || '(not provided)'}
 
   Title: ${title}
@@ -176,8 +179,11 @@
         const trimmed = story.slice(0, safeTrim) + '\n\n[...truncated due to email link length; will paste full text manually]';
         body =
   `Author: ${author}
+
   Reply-To: ${fromEmail}
-  Site/Tradition: ${site}
+
+  Site/Heritage: ${site}
+  
   Location: ${coords || '(not provided)'}
 
   Title: ${title}
