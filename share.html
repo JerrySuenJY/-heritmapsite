@@ -132,29 +132,20 @@
 
     <p class="hint">Note: Web pages can’t auto-attach files to an email. After the email window opens, please <b>attach the files</b> you selected.</p>
   </div>
-
+  
   <script>
-    const form = document.getElementById('mailtoForm');
+    const form   = document.getElementById('mailtoForm');
     const status = document.getElementById('status');
-    const filesInput = document.getElementById('files');
-    const fileList = document.getElementById('fileList');
-    const copyBtn = document.getElementById('copyBtn');
-
-    function listFiles() {
-      const files = [...(filesInput.files||[])];
-      if (!files.length) { fileList.textContent = ''; return; }
-      fileList.textContent = 'Selected files: ' + files.map(f=>f.name).join(', ');
-    }
-    filesInput.addEventListener('change', listFiles);
+    const copyBtn= document.getElementById('copyBtn');
 
     function buildEmail() {
-      const to = 'Jerry.SunJingyuan@outlook.com';
-      const author = document.getElementById('author').value.trim();
+      const to        = 'Jerry.SunJingyuan@outlook.com';
+      const author    = document.getElementById('author').value.trim();
       const fromEmail = document.getElementById('fromEmail').value.trim();
-      const site = document.getElementById('site').value.trim();
-      const coords = document.getElementById('coords').value.trim();
-      const title = document.getElementById('title').value.trim();
-      const story = document.getElementById('story').value.trim();
+      const site      = document.getElementById('site').value.trim();
+      const coords    = document.getElementById('coords').value.trim();
+      const title     = document.getElementById('title').value.trim();
+      const story     = document.getElementById('story').value.trim();
 
       if (!author || !fromEmail || !site || !title || !story) {
         throw new Error('Please fill all required fields.');
@@ -162,34 +153,61 @@
 
       const subject = `[Heritmap Submission] ${title} — ${site}`;
 
-      const files = [...(filesInput.files||[])];
-      const filesNote = files.length ? 
-        `\n\nAttachments to add in email app:\n- ${files.map(f=>f.name).join('\n- ')}` : '';
+      let body =
+  `Author: ${author}
+  Reply-To: ${fromEmail}
+  Site/Tradition: ${site}
+  Location: ${coords || '(not provided)'}
 
-      const body =
-`Author: ${author}
-Reply-To: ${fromEmail}
-Site/Tradition: ${site}
-Coordinates: ${coords || '(not provided)'}
+  Title: ${title}
 
-Title: ${title}
+  Story:
+  ${story}
 
-Story:
-${story}
+  ——
+  Heritmap submission via mailto
+  `;
 
-——
-Heritmap submission via mailto${filesNote}
-`;
+      const MAX_URL_LEN = 1900; 
+      let href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (href.length > MAX_URL_LEN) {
+        const overBy = href.length - MAX_URL_LEN;
+        const safeTrim = Math.max(0, story.length - overBy - 200); 
+        const trimmed = story.slice(0, safeTrim) + '\n\n[...truncated due to email link length; will paste full text manually]';
+        body =
+  `Author: ${author}
+  Reply-To: ${fromEmail}
+  Site/Tradition: ${site}
+  Location: ${coords || '(not provided)'}
 
-      return { to, subject, body };
+  Title: ${title}
+
+  Story:
+  ${trimmed}
+
+  ——
+  Heritmap submission via mailto
+  `;
+        href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
+
+      return { to, subject, body, href };
     }
 
-    form.addEventListener('submit', (e)=>{
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
       try {
-        const { to, subject, body } = buildEmail();
-        const href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = href; 
+        const { href } = buildEmail();
+
+        window.location.href = href;
+
+        const a = document.createElement('a');
+        a.href = href;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
         status.textContent = 'If your mail app did not open, click “Copy Email Text” and paste into a new message to Jerry.';
         status.className = 'hint';
       } catch (err) {
@@ -198,7 +216,7 @@ Heritmap submission via mailto${filesNote}
       }
     });
 
-    copyBtn.addEventListener('click', async ()=>{
+    copyBtn.addEventListener('click', async () => {
       try {
         const { to, subject, body } = buildEmail();
         await navigator.clipboard.writeText(`To: ${to}\nSubject: ${subject}\n\n${body}`);
@@ -210,5 +228,6 @@ Heritmap submission via mailto${filesNote}
       }
     });
   </script>
+  
 </body>
 </html>
