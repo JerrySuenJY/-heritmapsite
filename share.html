@@ -82,7 +82,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="map.html">Map View & Explore</a></li>
-      <li><a href="share.html" style="color:#ffcc00">Share a Story</a></li>
+      <li><a href="share.html">Share a Story</a></li>
       <li><a href="heritage.html">Heritage Sites</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
@@ -90,13 +90,13 @@
 
   <div class="container">
     <h1>Share a Story</h1>
-    <p class="lead">This portal is a redirection to email. When submitting a story, make sure it is self-written because we won't accept AI work.</b>.</p>
+    <p class="lead">This portal is a redirection to email. When submitting a story, make sure it is self-written because we won't accept AI work.</p>
 
     <form id="mailtoForm" autocomplete="on">
       <div class="row">
         <div>
           <label for="author">Your Name / Nickname *</label>
-          <input id="author" required placeholder="e.g., Lin or @ForestNote" />
+          <input id="author" required placeholder="e.g., Jerry, @ChrisLi" />
         </div>
         <div>
           <label for="fromEmail">Your Email (for reply) *</label>
@@ -107,23 +107,21 @@
       <div class="row">
         <div>
           <label for="site">Site Name *</label>
-          <input id="site" required placeholder="e.g., Xuanwu Lake, Nanjing" />
+          <input id="site" required placeholder="e.g., Xuanwu Lake" />
         </div>
         <div>
-          <label for="coords">Coordinates (optional)</label>
-          <input id="coords" placeholder="lat, lon e.g., 62.0603, 138.7914" />
+          <label for="coords">Location *</label>
+          <input id="coords" required placeholder="City/Province/State/Country" />
         </div>
       </div>
 
       <label for="title">Story Title *</label>
       <input id="title" required placeholder="A precise, 6–12 word title" />
 
-      <label for="story">Your Story</label>
+      <label for="story">Your Story *</label>
       <textarea id="story" rows="8" required placeholder="NO word-count limit. What's the most impressive fact about the site? Any preservation ideas?"></textarea>
 
-      <label for="files">Attachments (DO NOT ADD HERE. Attach them in your email app)</label>
-      <input id="files" type="file" multiple accept="image/*,.pdf" />
-      <div id="fileList" class="files"></div>
+      <label for="files">Attachments: Please DO NOT ADD HERE. Attach them in your email app.</label>
 
       <div class="actions">
         <button type="submit">Open Email App</button>
