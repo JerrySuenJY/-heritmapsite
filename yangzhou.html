@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Yangzhou City – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="yangzhou.jpg" alt="Header photo of the heritage site">
+      </figure>
+
+      <a href="heritage.html" class="return-home">← Return to Home</a>
+
+      <h1 class="hero-title">Yangzhou City</h1>
+
+      <p class="hero-intro">
+       Historic canal city famous for Slender West Lake, classical gardens, and Huaiyang cuisine.
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">Written by Eric Lu</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              在我的记忆里，扬州，这个从我出生便生活到现在的地方，如果让我用一个词来形容这座城，那就是“慢”。这座城，好像天生就懂如何把时光泡得慢些，再慢些。
+            </p>
+            <p>
+              小时候跟着父母穿过东关街的青石板路时，我总忍不住放慢脚步。脚下的石板被岁月磨得发亮，手指缝隙里夹着老爷爷的独门糖画，偶尔有穿蓝布衫的老人提着菜篮走过，竹篮里躺着刚买的嫩藕，嘴里哼着两句扬剧的调子，尾音拖得长长的，像巷口那老海棠的花瓣，轻轻落在青瓦上。街边的茶社飘出绿杨春的香气，木质门窗吱呀作响，穿堂风里混着评弹艺人的三弦声，恍惚间竟不知是走在当下，还是跌进了以往“烟花三月下扬州”的时光中。
+            </p>
+            <p>
+              扬州的古意，从不是封存在博物馆里的冷硬文物，而是活在市井烟火里的温柔。去个园时，恰逢雨停，满园的竹子沾着水珠，在阳光下泛着翡翠般的光泽。沿着 “春夏秋冬” 四序假山而上，每一步都踩着不同的景致。春山的笋石鲜嫩如破土新芽，夏山的太湖石孔洞里藏着流云，秋山的黄石堆叠出苍劲风骨，冬山的宣石在墙角映出皑皑雪意。老一辈们都说：“看这园子得配着茶味品，急不得。”
+            </p>
+            <p>
+              是啊，扬州从没有 “急” 这个字。清晨去冶春吃早茶，才懂什么是 “慢食” 的真谛。烫干丝要切得细如发丝，用沸水反复浇烫三遍，再拌上虾仁与鸡丝。蟹黄汤包得先咬开一个小口，让鲜美的汤汁顺着勺子流进嘴里，烫得直呼气也舍不得放下。就连一盘简单的扬州炒饭，也要用隔夜饭慢慢炒出颗粒分明的口感，每一粒米都裹着鸡蛋的香气。邻桌的老夫妻慢慢喝着茶，聊着家里的琐事，阳光透过窗棂洒在金黄的干丝上，时光仿佛在这里凝固成了一首温柔的诗。
+            </p>
+            <p>
+              傍晚时分，沿着瘦西湖漫步将是老扬州人的生活调调。湖面泛着粼粼的波光，画舫缓缓驶过，留下一道道涟漪。二十四桥的栏杆上还沾着雨珠，远远望去，像一串晶莹的珍珠。岸边的柳树垂下万千枝条，随风轻轻摇曳，偶尔有花瓣落在湖面上，顺着水流漂向远方。当夜晚真正降临，五彩斑斓的灯光秀也拉开帷幕，在我小时候，还并没有如此夜景可以欣赏，而如今，随着时代的发展，扬州也逐渐成为江苏旅游城市的标杆。
+            </p>
+            <p>
+              在扬州的日子里，人们将渐渐爱上这里的慢节奏。不用赶早高峰的地铁，不用急着回复工作消息，晨起可以去公园听老人们唱昆曲，午后可以在茶馆里看一本闲书，傍晚可以沿着古运河散步，看夕阳将河水染成橘红色。这里的人们好像从不会为生活奔波忙碌，他们懂得在平淡的日子里寻找乐趣，懂得在慢时光里品味生活的美好。
+            </p>
+            <p>
+              离开扬州去南京的那天，依旧飘着细雨。我站在高铁站的站台上，望着窗外风景离去，心里满是不舍。这座城，没有大都市的繁华喧嚣，却有着独属于自己的温柔与诗意。这里的人们，没有行色匆匆的焦虑，却有着从容不迫的生活态度。扬州，就像一泡煮久的绿茶，初尝时或许平淡，细细品味后，才知其中的醇厚与绵长。
+            </p>
+            <p>
+              当我老了，我一定会将我的养老城市选在这里。回到东关街的青石板路上，再品一次那著名的糖画；回到瘦西湖的岸边，再看一次二十四桥的烟雨；回到茶馆里，再吃一次烫干丝与蟹黄汤包。因为在这里，我找到了久违的慢时光，找到了生活最本真的模样。扬州，这座藏在烟雨里的古城，早已深深印在了我的心底，成为了我心中最温柔的牵挂。
+            </p>
+            <p>
+              In my memory, Yangzhou—the city where I have lived since birth—can be described in one word: “slow.” This city seems to be born knowing how to steep time itself, slower and slower still.
+            </p>
+            <p>
+              When I was a child walking along the bluestone path of Dongguan Street with my parents, I could never resist slowing my steps. The stones beneath my feet glistened from years of wear; in my fingers was an old man’s handmade sugar painting. Sometimes an elder in a blue cotton shirt passed by with a bamboo basket of fresh lotus roots, humming a tune from Yangju opera—the lingering note long and soft, like the petals of the old crabapple tree drifting onto the grey tiles. From the teahouses came the aroma of green Yangchun tea; wooden doors creaked, and through the passing breeze came the faint sound of a sanxian from a storytelling artist. In that moment, I could hardly tell whether I was walking in the present or had stepped into the misty days of “Yangzhou in the blossoms of March.”
+            </p>
+            <p>
+              The ancient charm of Yangzhou is not sealed in a museum’s glass case; it lives gently in the smoke and chatter of everyday life. When I visited Ge Garden after the rain, drops of water clung to the bamboo leaves, shining like jade in the sunlight. Following the artificial mountains of the Four Seasons—spring, summer, autumn, and winter—each step revealed a new scene: spring rocks sprouting tender shoots, summer stones hiding clouds within their holes, autumn rocks piled with golden strength, and winter stones casting shadows of imagined snow. The elders always said, “To appreciate this garden, you must sip it like tea—you can’t rush it.”
+            </p>
+            <p>
+              Indeed, “haste” does not belong in Yangzhou’s vocabulary. Only when you go to Yechun in the morning for dim sum do you truly understand the art of “slow eating.” The shredded tofu must be cut as fine as hair, scalded three times in boiling water, and mixed carefully with shrimp and chicken shreds. The crab roe soup dumpling must first be pierced with a small bite, letting the hot broth flow slowly into your mouth—so hot you gasp, yet unwilling to stop. Even a simple plate of Yangzhou fried rice must be gently stir-fried with overnight rice until every grain shines with egg fragrance. At the next table, an elderly couple sip tea and chat softly; sunlight filters through the wooden lattice, glinting on the golden tofu strands—time, it seems, pauses here and becomes a gentle poem.
+            </p>
+            <p>
+              At dusk, a stroll along Slender West Lake is the rhythm of old Yangzhou life. Ripples shimmer across the lake as painted boats drift by, leaving trails of light. The railings of the Twenty-Four Bridge still glisten with rain, like strings of pearls from afar. Willows droop along the shore, swaying softly in the breeze; petals fall onto the lake and float away with the current. When night truly arrives, colorful lights illuminate the lake. When I was a child, there were no such spectacles—but now, as the times evolve, Yangzhou has become a shining symbol of Jiangsu’s charm.
+            </p>
+            <p>
+              In Yangzhou, people slowly fall in love with the pace of life. There is no rush-hour subway to catch, no urgent work messages to reply to. In the morning, one can listen to elders sing Kunqu opera in the park; in the afternoon, read a leisure book in a teahouse; and in the evening, walk along the Grand Canal, watching the sunset dye the water orange-red. People here seldom hurry through life—they know how to find joy in simplicity, how to taste beauty in the slowness of time.
+            </p>
+            <p>
+              The day I left Yangzhou for Nanjing, a fine drizzle was still falling. Standing on the platform, I watched the scenery fade from the train window, my heart full of reluctance. This city has no noisy skyscrapers, yet it holds its own tenderness and poetry. Its people may not chase speed, but they embody composure and grace. Yangzhou is like a pot of green tea steeped long and slow—plain at first sip, yet endlessly rich the longer you taste it.
+            </p>
+            <p>
+              When I grow old, I know I’ll choose this city as my place of retirement. I will walk again on the bluestones of Dongguan Street and taste that famous sugar painting once more; I will return to the banks of Slender West Lake to see the mist over the Twenty-Four Bridge again; I will sit once more in a teahouse, savoring shredded tofu and crab roe soup dumplings. For here, I’ve found the long-lost rhythm of slow time—the truest face of life itself. Yangzhou, the ancient city hidden in mist and rain, has long engraved itself in my heart, becoming the gentlest of my lifelong memories.
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
