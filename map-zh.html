@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heritmap – 地圖與探索</title>
+  <meta name="description" content="由學生呈現的中國文化遺產故事。探索跨越各地的傳統、歷史遺址與文化洞見。">
+  <meta name="keywords" content="文化遺產, 中國, 傳統文化, 學生故事, 歷史遺址, UNESCO, 文化保存">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333333;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .logo img {
+      height: 100px;
+      transform: scale(2);
+      margin-top: -10px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffcc00;
+      transform: translateY(-2px);
+    }
+
+    header h1 {
+      margin: 1rem 0;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    #map {
+      width: 100%;
+      height: 80vh;
+    }
+
+    .popup {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index-zh.html" class="logo">
+      <img src="logo.svg" alt="Heritmap Logo" style="height: 40px;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index-zh.html">首頁</a></li>
+      <li><a href="map-zh.html">地圖與探索</a></li>
+      <li><a href="share-zh.html">分享故事</a></li>
+      <li><a href="heritage-zh.html">文化遺產</a></li>
+      <li><a href="about-zh.html">關於</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>地圖與探索</h1>
+  </header>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map', {
+      center: [35.8617, 104.1954],
+      zoom: 5,
+      maxBounds: [[-85, -180], [85, 180]],
+      maxBoundsViscosity: 1.0,
+      maxZoom: 10,
+      minZoom: 3
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const sites = [
+      {
+        name: "秦始皇兵馬俑",
+        coords: [34.3846, 109.2732],
+        description: `位於陝西西安的著名考古遺址。<br><a href="terracottaarmy.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "故宮",
+        coords: [39.9163, 116.3971],
+        description: `明清兩代的皇家宮殿，位於北京中心。<br><a href="forbiddencity.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "莫高窟",
+        coords: [40.0459, 94.8091],
+        description: `位於敦煌的古代佛教石窟群。<br><a href="mogaocaves.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "三星堆",
+        coords: [30.9922, 104.1647],
+        description: `四川廣漢的青銅時代遺址。<br><a href="sanxingdui.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "中山陵",
+        coords: [32.0603, 118.8510],
+        description: `孫中山先生的陵墓，位於南京紫金山麓。<br><a href="sunyatsenmausoleum.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "獅子林",
+        coords: [31.3223, 120.6333],
+        description: `江蘇蘇州的古典園林，以太湖石假山聞名。<br><a href="shizilin.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "光岳樓",
+        coords: [36.4525, 115.9856],
+        description: `山東聊城的明代古樓，是中國現存最北的古代木結構樓閣之一。<br><a href="guangyuelou.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "惠山古鎮",
+        coords: [31.583935, 120.272824],
+        description: `以宗祠文化、園林藝術與泥塑聞名的江南水鄉古鎮。<br><a href="huishanguzhen.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "玄武湖",
+        coords: [32.0665, 118.7969],
+        description: `南京市中心的歷史湖泊公園，以荷花與湖景著稱。<br><a href="xuanwulake.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "福建土樓",
+        coords: [24.6310, 117.1264],
+        description: `福建客家傳統的圓形與方形土樓建築。<br><a href="fujiantulou.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "萬里長城",
+        coords: [40.4319, 116.5704],
+        description: `中國古代防禦工程的象徵。<br><a href="greatwall.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "明孝陵",
+        coords: [32.0566, 118.8377],
+        description: `明太祖朱元璋的陵寢，位於南京紫金山。<br><a href="mingxiaoling.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "南京城牆",
+        coords: [32.0572, 118.7860],
+        description: `世界上保存最完整、規模最大的古代城牆之一。<br><a href="nanjingwall.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "龍門石窟",
+        coords: [34.4641, 112.4305],
+        description: `位於洛陽的世界文化遺產，以大量佛像雕刻聞名。<br><a href="longmen.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "西夏王陵",
+        coords: [38.4876, 106.1470],
+        description: `融合唐、藏及地方建築特色的西夏皇陵。<br><a href="xixiatombs.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "瞻園（南京）",
+        coords: [32.0195, 118.7866],
+        description: `南京的古典園林，始建於明代，展示江南園林風格。<br><a href="zhanyuan.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "黃鶴樓",
+        coords: [30.5491, 114.3007],
+        description: `武漢長江畔的歷史名樓，在詩詞與文化中佔有重要地位。<br><a href="yellowcrane.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "坎兒井",
+        coords: [42.9387, 89.1745],
+        description: `新疆吐魯番的古老地下水利工程，由天山雪水引流至盆地。<br><a href="karez.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "黃樓（徐州）",
+        coords: [34.2044, 117.2849],
+        description: `徐州的歷史建築，始建於漢代，後屢次重建，是地方文化象徵。<br><a href="huanglou.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "媽閣廟（澳門）",
+        coords: [22.1877, 113.5315],
+        description: `澳門最古老的廟宇之一，奉祀海神媽祖。“澳門”名稱即源於此處。<br><a href="maguetemple.html" target="_blank">閱讀更多 →</a>`
+      },
+      {
+        name: "揚州",
+        coords: [32.3970, 119.4080],
+        description: `位於大運河沿岸的歷史名城，以瘦西湖、園林與淮揚菜聞名。<br><a href="yangzhou.html" target="_blank">閱讀更多 →</a>`
+      }
+    ];
+
+    sites.forEach(site => {
+      L.marker(site.coords).addTo(map)
+        .bindPopup(`
+          <div class='popup'>
+            <strong>${site.name}</strong><br>
+            ${site.description}
+          </div>
+        `);
+    });
+  </script>
+</body>
+</html>
