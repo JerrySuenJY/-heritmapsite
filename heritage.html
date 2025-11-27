@@ -15,7 +15,7 @@
       color: #000;
       overflow-x: hidden;
     }
-
+/* ======= UPON FURTHER ADDITION OF CONTENT, PLEASE ADD categoryMap, JS, AND SECTION CONTENT (REMINDER)======= */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -29,7 +29,7 @@
 
     .logo img {
       height: 100px;         
-     transform: scale(2); 
+      transform: scale(2); 
       margin-top: -10px;     
     }
 
@@ -55,7 +55,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 2.5rem 0;
+      margin: 2.5rem 0 0.5rem 0;
     }
 
     .search-bar {
@@ -133,6 +133,126 @@
       color: #0070f3;
       text-decoration: none;
     }
+    
+    .or-text {
+      text-align: center;
+      font-size: 30px;
+      margin-top: 1.2rem;
+      color: #555;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .category-trigger-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.3rem;
+      margin-bottom: 2rem;
+    }
+
+    #category-trigger {
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Times New Roman', serif;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0;               
+      border: none;            
+      border-radius: 0;          
+      background: transparent;   
+      box-shadow: none;          
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    #category-trigger:hover {
+      color: #007aff;
+      transform: translateY(-1px);
+    }
+
+    #category-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(12px);
+      display: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      z-index: 3000;
+    }
+
+    #category-panel {
+      width: 86%;
+      max-width: 1100px;
+      margin: 80px auto;
+      display: flex;
+      gap: 40px;
+      color: white;
+    }
+
+    #category-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .category-item {
+      font-size: 22px;
+      cursor: pointer;
+      padding: 4px 0;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .category-item:hover {
+      transform: translateX(6px);
+      opacity: 0.8;
+    }
+
+    #subcategory-panel {
+      flex: 2;
+      border-left: 1px solid rgba(255,255,255,0.15);
+      padding-left: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .subcategory-link {
+      cursor: pointer;
+      padding: 4px 0;
+      transition: transform 0.2s, opacity 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .subcategory-link:hover {
+      transform: translateX(4px);
+      opacity: 0.85;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      #category-panel {
+        flex-direction: column;
+        margin-top: 60px;
+      }
+
+      #subcategory-panel {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        padding-left: 0;
+        padding-top: 16px;
+      }
+
+      .category-item {
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -150,131 +270,152 @@
     </ul>
   </nav>
 
-  
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search Heritage Sites here..." class="search-bar" />
   </div>
+
+  <div class="or-text">or</div>
+
+  <div class="category-trigger-wrapper">
+    <div id="category-trigger">Look up by categories</div>
+  </div>
+
+  <div id="category-overlay">
+    <div id="category-panel">
+      <div id="category-list">
+        <div class="category-item" data-category="cities">Ancient Cities & Towns</div>
+        <div class="category-item" data-category="gardens">Gardens & Lakes</div>
+        <div class="category-item" data-category="temples">Temples, Caves & Sacred Sites</div>
+        <div class="category-item" data-category="walls">Walls & Fortifications</div>
+        <div class="category-item" data-category="mausoleums">Mausoleums & Memorials</div>
+        <div class="category-item" data-category="engineering">Ancient Engineering</div>
+      </div>
+
+      <div id="subcategory-panel">
+      </div>
+    </div>
+  </div>
   
-  <section class="section">
+  <section class="section" id="terracotta-army">
     <h2>Terracotta Army</h2>
     <p>A famous archaeological site in Xi'an, Shaanxi Province, discovered in 1974. Thousands of life-sized terracotta soldiers were buried with the first emperor of China.</p>
     <img src="terracotta.jpg" alt="TerracottaArmy">
     <a class="learn-more" href="terracottaarmy.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="forbidden-city">
     <h2>The Forbidden City</h2>
     <p>The imperial palace of Ming and Qing dynasties in Beijing, with over 900 buildings and centuries of Chinese history behind its red walls.</p>
     <img src="forbidden.jpg" alt="ForbiddenCity">
     <a class="learn-more" href="forbiddencity.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="mogao-caves">
     <h2>Mogao Caves</h2>
     <p>Located in Dunhuang, the Mogao Caves house an enormous collection of Buddhist artwork, murals, and scriptures dating back over a thousand years.</p>
     <img src="mogao.jpg" alt="MogaoCaves">
     <a class="learn-more" href="mogaocaves.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="sanxingdui">
     <h2>Sanxingdui</h2>
     <p>Sanxingdui is a Bronze Age archaeological site in Sichuan, known for its mysterious and sophisticated ancient relics.</p>
     <img src="sanxingdui.jpg" alt="Sanxingdui">
     <a class="learn-more" href="sanxingdui.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="sun-yat-sen-mausoleum">
     <h2>Sun Yat-sen Mausoleum</h2>
     <p>The resting place of Dr. Sun Yat-sen, located at the foot of Purple Mountain in Nanjing.</p>
     <img src="SunYatsenMausoleum.jpg" alt="SunYatsenMausoleum">
     <a class="learn-more" href="sunyatsenmausoleum.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="lion-grove-garden">
     <h2>Lion Grove Garden</h2>
     <p>A classic Yuan dynasty garden, famed for its labyrinthine rockeries.</p>
     <img src="shizilin.jpg" alt="LionGroveGarden">
     <a class="learn-more" href="shizilin.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="guangyue-tower">
     <h2>Guangyue Tower</h2>
     <p>A prominent Ming Dynasty wooden pavilion located in Liaocheng, Shandong. Known as the northernmost ancient wooden tower of its kind in China, built in 1374.</p>
     <img src="guangyuelou.jpg" alt="Guangyuelou">
     <a class="learn-more" href="guangyuelou.html">Learn more →</a>
   </section>
 
-   <section class="section">
+   <section class="section" id="huishan-ancient-town">
     <h2>Huishan Ancient Town</h2>
     <p>Huishan Ancient Town is an ancient town with a long history, famous for its rich ancestral hall culture, garden art, clay figurine culture and Jiangnan water town style.</p>
     <img src="huishanguzhen.jpg" alt="HuishanAncientTown">
     <a class="learn-more" href="huishanguzhen.html">Learn more →</a>
   </section>
   
-  <section class="section">
+  <section class="section" id="xuanwu-lake">
     <h2>Xuanwu Lake</h2>
     <p>Xuanwu Lake is a historic lake park in central Nanjing, known for its scenic views and lotus-filled waters.</p>
     <img src="xuanwulake.jpg" alt="XuanwuLake">
     <a class="learn-more" href="xuanwulake.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="fujian-tulou">
     <h2>Fujian Tulou (Yongding Tulou)</h2>
     <p>A type of traditional communal earthen building in Fujian, China, known for its unique circular and square designs and Hakka heritage.</p>
     <img src="fujiantulou.jpg" alt="FujianTulou">
     <a class="learn-more" href="fujiantulou.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="great-wall">
     <h2>The Great Wall of China</h2>
     <p>A monumental series of fortifications built across northern China to protect against invasions.</p>
     <img src="greatwallbackground.jpg" alt="Great Wall of China">
     <a class="learn-more" href="greatwall.html">Learn more →</a>
   </section>
   
-  <section class="section">
+  <section class="section" id="ming-xiaoling">
     <h2>Ming Xiaoling Mausoleum</h2>
     <p>The tomb of the Hongwu Emperor, founder of the Ming dynasty, located at the foot of Purple Mountain in Nanjing.</p>
     <img src="mingxiaolingmausoleumbackground.jpg" alt="Ming Xiaoling Mausoleum">
     <a class="learn-more" href="mingxiaoling.html">Learn more →</a>
   </section>
   
-  <section class="section">
+  <section class="section" id="nanjing-city-wall">
     <h2>Nanjing City Wall</h2>
     <p>One of the largest surviving ancient city walls in the world, built during the early Ming dynasty to protect Nanjing.</p>
     <img src="nanjingwall.jpg" alt="Nanjing City Wall">
     <a class="learn-more" href="nanjingwall.html">Learn more →</a>
   </section>
   
-  <section class="section">
+  <section class="section" id="longmen-grottoes">
     <h2>Longmen Grottoes</h2>
     <p>A UNESCO World Heritage site near Luoyang, famous for thousands of Buddhist statues and carvings in limestone cliffs.</p>
     <img src="longmen.jpg" alt="Longmen Grottoes">
     <a class="learn-more" href="longmen.html">Learn more →</a>
   </section>
   
-  <section class="section">
+  <section class="section" id="western-xia-tombs">
     <h2>Western Xia Imperial Tombs</h2>
     <p>Mausoleums of the emperors of the Western Xia dynasty, blending Tang, Tibetan, and local architectural influences.</p>
     <img src="xixiatombs.jpg" alt="Western Xia Imperial Tombs">
     <a class="learn-more" href="xixiatombs.html">Learn more →</a>
   </section>
   
-  <section class="section">
+  <section class="section" id="zhan-garden">
     <h2>Zhan Garden (Nanjing)</h2>
     <p>A classical garden in Nanjing, originally built in the Ming dynasty and later restored, showcasing Jiangnan garden design.</p>
     <img src="zhanyuan.jpg" alt="Zhan Garden (Nanjing)">
     <a class="learn-more" href="zhanyuan.html">Learn more →</a>
   </section>
   
-  <section class="section">
+  <section class="section" id="yellow-crane-tower">
     <h2>Yellow Crane Tower</h2>
     <p>A historic tower overlooking the Yangtze River in Wuhan, celebrated in Chinese poetry and culture for centuries.</p>
     <img src="yellowcrane.jpg" alt="Yellow Crane Tower">
     <a class="learn-more" href="yellowcrane.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="karez-system">
     <h2>Karez System of Turpan</h2>
     <p>One of the three great ancient projects of China, the Karez is an ingenious underground water system in Turpan, Xinjiang. 
        It channels snowmelt and groundwater from the Tianshan Mountains through vertical shafts and tunnels to the arid basin, 
@@ -283,7 +424,7 @@
     <a class="learn-more" href="karez.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="huanglou-pavilion">
     <h2>Huanglou Pavilion (Xuzhou)</h2>
     <p>Located in Xuzhou, Jiangsu Province, Huanglou Pavilion is a cultural landmark with origins tracing back to the Han dynasty. 
        Rebuilt many times throughout history, it has long been a place of gathering, poetry, and memory, symbolizing the 
@@ -293,7 +434,7 @@
     <a class="learn-more" href="huanglou.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="a-ma-temple">
     <h2>A-Ma Temple (Macau)</h2>
     <p>The A-Ma Temple, or Ma Kok Miu, was built in 1488 and is dedicated to Mazu, the goddess of the sea. 
        According to legend, the name “Macau” itself comes from this temple. With its halls, courtyards, pavilions, and stone carvings, 
@@ -303,7 +444,7 @@
     <a class="learn-more" href="maguetemple.html">Learn more →</a>
   </section>
 
-  <section class="section">
+  <section class="section" id="yangzhou">
     <h2>Yangzhou (扬州)</h2>
     <p>
       Yangzhou, nestled along China’s Grand Canal, is a historic city famed for its tranquil beauty and refined culture. 
@@ -317,7 +458,6 @@
   </section>
 
   <script>
-    
     const sections = document.querySelectorAll('.section');
     const options = { threshold: 0.3 };
 
@@ -334,13 +474,102 @@
       observer.observe(section);
     });
 
-    
     const input = document.getElementById('searchInput');
     input.addEventListener('input', () => {
       const filter = input.value.toLowerCase();
       sections.forEach(section => {
         const title = section.querySelector('h2').textContent.toLowerCase();
         section.style.display = title.includes(filter) ? 'flex' : 'none';
+      });
+    });
+
+    const categoryTrigger = document.getElementById('category-trigger');
+    const overlay = document.getElementById('category-overlay');
+    const categoryItems = document.querySelectorAll('.category-item');
+    const subPanel = document.getElementById('subcategory-panel');
+
+    // Map for additional categorization upon addition
+    const categoryMap = {
+      cities: [
+        { name: "Yangzhou", targetId: "yangzhou" },
+        { name: "Huishan Ancient Town", targetId: "huishan-ancient-town" },
+        { name: "Huanglou Pavilion (Xuzhou)", targetId: "huanglou-pavilion" }
+      ],
+      gardens: [
+        { name: "Lion Grove Garden", targetId: "lion-grove-garden" },
+        { name: "Zhan Garden (Nanjing)", targetId: "zhan-garden" },
+        { name: "Xuanwu Lake", targetId: "xuanwu-lake" },
+        { name: "Yangzhou (Slender West Lake)", targetId: "yangzhou" }
+      ],
+      temples: [
+        { name: "Mogao Caves", targetId: "mogao-caves" },
+        { name: "Longmen Grottoes", targetId: "longmen-grottoes" },
+        { name: "A-Ma Temple (Macau)", targetId: "a-ma-temple" }
+      ],
+      walls: [
+        { name: "The Great Wall of China", targetId: "great-wall" },
+        { name: "Nanjing City Wall", targetId: "nanjing-city-wall" }
+      ],
+      mausoleums: [
+        { name: "Sun Yat-sen Mausoleum", targetId: "sun-yat-sen-mausoleum" },
+        { name: "Ming Xiaoling Mausoleum", targetId: "ming-xiaoling" },
+        { name: "Western Xia Imperial Tombs", targetId: "western-xia-tombs" },
+        { name: "Terracotta Army", targetId: "terracotta-army" }
+      ],
+      engineering: [
+        { name: "Karez System of Turpan", targetId: "karez-system" },
+        { name: "Fujian Tulou (Yongding Tulou)", targetId: "fujian-tulou" },
+        { name: "Guangyue Tower", targetId: "guangyue-tower" },
+        { name: "Sanxingdui", targetId: "sanxingdui" }
+      ]
+    };
+
+    function openOverlay() {
+      overlay.style.display = "block";
+      setTimeout(() => {
+        overlay.style.opacity = "1";
+      }, 10);
+    }
+
+    function closeOverlay() {
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.style.display = "none";
+      }, 350);
+    }
+
+    categoryTrigger.addEventListener('mouseover', openOverlay);
+    categoryTrigger.addEventListener('click', openOverlay);
+
+    overlay.addEventListener('mouseleave', closeOverlay);
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeOverlay();
+      }
+    });
+
+    categoryItems.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        const catKey = item.dataset.category;
+        const sites = categoryMap[catKey] || [];
+
+        subPanel.innerHTML = "";
+        sites.forEach(site => {
+          const div = document.createElement("div");
+          div.textContent = site.name;
+          div.className = "subcategory-link";
+          div.addEventListener('click', () => {
+            const target = document.getElementById(site.targetId);
+            if (target) {
+              closeOverlay();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+          subPanel.appendChild(div);
+        });
+
+        subPanel.style.opacity = sites.length ? "1" : "0.4";
       });
     });
   </script>
