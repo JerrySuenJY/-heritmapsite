@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="mylogo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="msvalidate.01" content="29A0BD10E768F58281D02E4319968850" />
+
+  <title>Heritmap – 文化與故事</title>
+  <meta name="description" content="由學生講述的中國文化遺產故事。探索各地傳統、歷史遺址與跨越時代的文化觀察。">
+  <meta name="keywords" content="文化遺產, 文化, 中國, 中國文化, 學生故事, 歷史遺址, 世界遺產, 文化保存">
+  <meta name="robots" content="index, follow">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Heritmap",
+    "url": "https://heritmap.org",
+    "logo": "https://heritmap.org/mylogo.png"
+  }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', serif;
+      color: #fff;
+      background: #000;
+      overflow-x: hidden;
+      min-height: 100%;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 1rem 2rem;
+      position: relative;
+      top: 0;
+      z-index: 10;
+    }
+    .logo img { height: 40px; transform: scale(2); margin-top: -10px; }
+    .nav-links { list-style: none; display: flex; gap: 1.5rem; }
+    .nav-links a {
+      text-decoration: none; color: #fff; font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .nav-links a:hover { color: #ffcc00; transform: translateY(-2px); }
+
+    main { position: relative; }
+
+    .section-fade {
+      position: relative;
+      height: 120svh;              
+      display: block;
+    }
+    #text2 { 
+      margin-bottom: 60svh; 
+    }   
+    .section-fade .inner {
+      position: sticky;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      text-align: center;
+      opacity: 1;
+      transition: opacity 0.1s linear;
+    }
+    .hero-copy p {
+      font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+      line-height: 1.35;
+      margin: 0.4rem 0;
+      text-wrap: balance;
+    }
+    .hero-copy .subtext {
+      font-size: 1rem;
+      color: #ffcc00;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1rem;
+    }
+    .gallery-pin{
+      position: relative;
+      background:#000;
+    }
+
+    .gallery-track{
+      position: sticky;
+      top: 0;
+      height: 100svh;
+      display: flex;
+      align-items: center;
+      will-change: transform;
+    }
+
+    .panel{
+      position: relative;
+      flex: 0 0 90vw;           
+      height: 80svh;
+      overflow: hidden;
+      border-radius: 22px;       
+      margin: 0 clamp(12px, 2vw, 24px);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+    }
+    .panel img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .caption{
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: .8rem 1.2rem;
+      font-size: clamp(.9rem, 1.2vw, 1.05rem);
+      font-style: italic;
+      background: linear-gradient(transparent, rgba(0,0,0,.65));
+    }
+
+    .lang-switcher {
+      margin-left: 1.5rem;
+      font-size: 14px;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Times New Roman', serif;
+      color: #fff;
+    }
+
+    .lang-switcher a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 2px;
+      transition: color 0.2s ease;
+    }
+
+    .lang-switcher a:hover {
+      color: #ffcc00;
+    }
+
+    .lang-switcher .active-lang {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .zoom-section { position: relative; height: 200svh; background:#000; }
+    .zoom-sticky { position: sticky; top: 0; width: 100%; height: 100svh; display: grid; place-items: center; overflow: hidden; }
+    .zoom-image { width: 100vw; height: 100svh; border-radius: 22px; object-fit: cover; will-change: transform; transform-origin: center center; }
+    
+    .final { position: relative; height: 120svh; }
+    .final .final-inner {
+      position: sticky; top: 50%; transform: translateY(-50%);
+      max-width: 720px; margin: 0 auto; padding: 0 1rem; text-align: center;
+      opacity: 0; transition: opacity .18s ease-out; color: #fff;
+    }
+    .final h1 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 1.2rem; }
+    .final p { font-size: clamp(1rem, 1.5vw, 1.1rem); line-height: 1.45; margin: 0.8rem 0; }
+
+    @media (max-width: 480px) { .card { width: 86vw; } }
+    @media (prefers-reduced-motion: reduce) {
+      .section-fade .inner, .final .final-inner, .zoom-image { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index-zh.html" class="logo" aria-label="Heritmap 首頁">
+      <img src="logo.svg" alt="Heritmap 標誌" />
+    </a>
+    <ul class="nav-links" role="navigation" aria-label="主要導覽">
+      <li><a href="index-zh.html">首頁</a></li>
+      <li><a href="map-zh.html">地圖與探索</a></li>
+      <li><a href="share-zh.html">分享故事</a></li>
+      <li><a href="heritage-zh.html">文化遺產</a></li>
+      <li><a href="about-zh.html">關於</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <a href="index.html">EN</a> /
+      <a href="index-zh.html" class="active-lang">繁中</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section-fade" id="text1" data-holdvh="18" data-fadevh="45">
+      <div class="inner hero-copy">
+        <p>Heritmap 不是一本百科全書，而是一堆篝火。圍坐在火光周圍，學生以自己的語氣講述那些值得被記住的文化遺產故事。</p>
+        <div class="subtext">向下捲動以瞭解更多 ↓</div>
+      </div>
+    </section>
+
+    <section class="gallery-pin" id="galleryPin" aria-label="文化影像">
+      <div class="gallery-track" id="galleryTrack">
+        <figure class="panel">
+          <img src="pic1.jpg" alt="文化遺址 1">
+          <figcaption class="caption">歷史的回聲，從古老石材與記憶深處緩緩升起。（孫靖遠攝，故宮）</figcaption>
+        </figure>
+        <figure class="panel">
+          <img src="pic2.jpg" alt="文化遺址 2">
+          <figcaption class="caption">一座長城連結的，不只是久遠的過去，也是每一代人的身分認同。（Pexels，萬里長城）</figcaption>
+        </figure>
+        <figure class="panel">
+          <img src="pic3.jpg" alt="文化遺址 3">
+          <figcaption class="caption">沉靜的莊嚴，比數百年的變遷更能訴說歷史。（孫靖遠攝，中山陵）</figcaption>
+        </figure>
+        <figure class="panel">
+          <img src="pic4.jpg" alt="文化遺址 4">
+          <figcaption class="caption">文化在每一塊磚石、每一根梁柱與每一次呼吸之中延續。（孫靖遠攝，棲霞寺）</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-fade" id="text2" data-startvh="2.5" data-invh="11.1" data-outvh="120">
+      <div class="inner hero-copy">
+        <p>我們在意事實。</p>
+        <p>我們在意從世界各個角落傳來的真誠聲音。</p>
+        <p>我們存在於此，只為讓那些真正需要被聽見的人，得到屬於自己的一束光。</p>
+        <p>Heritmap，是故事發生、被記錄並繼續向前的地方。</p>
+      </div>
+    </section>
+
+    <section class="zoom-section" id="zoomSection" aria-label="作者照片">
+      <div class="zoom-sticky">
+        <img class="zoom-image" id="zoomImage" src="authorphoto.jpg" alt="作者照片">
+      </div>
+    </section>
+
+    <section class="final" id="final">
+      <div class="final-inner" id="finalInner">
+        <h1>本網站由孫靖遠創建，目標是保存文化與人文氣息。</h1>
+        <p>
+          <strong>
+            本頁面主要呈現對中國文化遺產的評論與主觀觀點；<br>
+            若您需要查驗客觀事實，建議再至
+            <a href="https://www.wikipedia.org" target="_blank" rel="noopener" style="color:#82c7ff;">維基百科</a>
+            進一步確認。
+          </strong>
+        </p>
+        <p>部分頁面仍在建置中，可能存在錯誤或疏漏，敬請見諒。</p>
+        <p>
+          <strong>
+            若您是學生、教育者，或熱愛文化遺產的讀者，並擁有想分享的故事，我們非常歡迎您的加入。<br>
+            可透過
+            <a href="mailto:Jerry.SunJingyuan@outlook.com" style="color:#82c7ff;">電子郵件</a>
+            與我們聯繫。
+          </strong>
+        </p>
+        <p style="opacity:.8;">
+          提示：本網站目前尚未完全針對手機螢幕進行優化。<br>
+          為獲得較佳瀏覽體驗，建議使用 Mac 或 iPad 瀏覽器開啟。
+          繁體中文翻譯為AI生成，請謹慎識別。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const clamp01 = v => Math.max(0, Math.min(1, v));
+
+    const hero = document.getElementById('text1');
+    const text2 = document.getElementById('text2');
+    const finalInner = document.getElementById('finalInner');
+    const zoomSection = document.getElementById('zoomSection');
+    const zoomImage = document.getElementById('zoomImage');
+
+    function heroOpacity(){
+      const rect = hero.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const holdvh = parseFloat(hero.dataset.holdvh || '0');   
+      const fadevh = parseFloat(hero.dataset.fadevh || '60');
+      const holdPx = vh * (holdvh/100);
+      const fadePx = Math.max(1, vh * (fadevh/100));
+
+      const y = Math.max(0, -rect.top); 
+      if (y <= holdPx) return 1;
+      const p = clamp01((y - holdPx) / fadePx);
+      return 1 - p;
+    }
+
+    function text2Opacity(){
+      const section = text2;
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const invh  = parseFloat(section.dataset.invh  || '30'); 
+      const outvh = parseFloat(section.dataset.outvh || '40'); 
+      const inPx  = Math.max(1, vh * (invh/100));
+      const outPx = Math.max(1, vh * (outvh/100));
+      const amountIn = clamp01((-rect.top) / inPx);
+      const amountOut = clamp01((vh - rect.bottom) / outPx);
+      return clamp01(amountIn * (1 - amountOut));
+    }
+
+    function onScroll(){
+      if (!prefersReduced){
+        const h = heroOpacity();
+        hero.querySelector('.inner').style.opacity = h;
+
+        const t2 = text2Opacity();
+        text2.querySelector('.inner').style.opacity = t2;
+      }
+
+      const zr = zoomSection.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const totalScrollable = zr.height - vh;
+      let progress = 0;
+      if (totalScrollable > 0) {
+        progress = clamp01((-zr.top) / totalScrollable);
+      }
+      const startScale = 1.25, endScale = 0.70;
+      const scale = prefersReduced ? 1 : (startScale + (endScale - startScale) * progress);
+      zoomImage.style.transform = `scale(${scale})`;
+
+      const finalRect = document.getElementById('final').getBoundingClientRect();
+      const finalTotal = finalRect.height - vh;
+      let fprog = 0;
+      if (finalTotal > 0) fprog = clamp01((-finalRect.top) / finalTotal);
+      const visible = clamp01((fprog - 0) / (1 - 0.9));
+      finalInner.style.opacity = prefersReduced ? 1 : visible;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', onScroll);
+  </script>
+
+  <script>
+    (function(){
+      const PAD_START_VH = 150;   
+      const PAD_END_VH   = 30;    
+      const pin   = document.getElementById('galleryPin');
+      const track = document.getElementById('galleryTrack');
+      if (!pin || !track) return;
+
+      const panels = Array.from(track.querySelectorAll('.panel'));
+
+      const DELAY_VH = 12; 
+      
+      function sizeSection(){
+        const base = Math.max(1, panels.length) * 100; 
+        pin.style.height = `${base + PAD_START_VH + PAD_END_VH}svh`;
+      }
+
+      const clamp01 = v => Math.max(0, Math.min(1, v));
+
+      function onScroll(){
+        const vh   = window.innerHeight;
+        const docY = window.scrollY || document.documentElement.scrollTop;
+
+        const pinTop = pin.offsetTop;
+        const pinH   = pin.offsetHeight;
+
+        const startY = pinTop - vh + vh * (PAD_START_VH/100);
+        const endY   = pinTop + pinH - vh - vh * (PAD_END_VH/100);
+        const span   = Math.max(1, endY - startY);
+
+        const progress = clamp01((docY - startY) / span);
+
+        const maxShift = Math.max(0, track.scrollWidth - window.innerWidth);
+        track.style.transform = `translateX(-${progress * maxShift}px)`;
+      }
+      function init(){
+        sizeSection();
+        onScroll();
+      }
+
+      window.addEventListener('resize', init);
+      window.addEventListener('load', init);
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      if (document.readyState === 'complete') init();
+      else setTimeout(init, 0);
+    })();
+  </script>
+</body>
+</html>
