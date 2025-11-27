@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="由學生講述的中國文化遺產故事。探索傳統、歷史遺址與跨越地域的文化觀察。">
+  <meta name="keywords" content="文化遺產, 文化, 中國, 中國文化, 學生故事, 歷史遺址, 世界遺產, 文化保存">
+  <meta name="robots" content="index, follow">
+  <title>Heritmap – 文化遺產一覽</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #f2f2f2;
+      font-family: 'Times New Roman', serif;
+      color: #000;
+      overflow-x: hidden;
+    }
+    /* ======= UPON FURTHER ADDITION OF CONTENT, PLEASE ADD categoryMap, JS, AND SECTION CONTENT (REMINDER)======= */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo img {
+      height: 100px;         
+      transform: scale(2); 
+      margin-top: -10px;     
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #ffcc00;
+      transform: translateY(-2px);
+    }
+    
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2.5rem 0 0.5rem 0;
+    }
+
+    .search-bar {
+      background-color: #2c2c2c;
+      color: white;
+      font-size: 1.2rem;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      border: none;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .search-bar::placeholder {
+      color: #ccc;
+    }
+    
+    .search-bar:focus {
+      outline: none;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    #searchInput {
+      width: 80%;
+      max-width: 400px;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .section {
+      padding: 6rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 1.5rem;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section p {
+      max-width: 700px;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .learn-more {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #0070f3;
+      text-decoration: none;
+    }
+    
+    .or-text {
+      text-align: center;
+      font-size: 30px;
+      margin-top: 1.2rem;
+      color: #555;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .category-trigger-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.3rem;
+      margin-bottom: 2rem;
+    }
+
+    #category-trigger {
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Times New Roman', serif;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0;               
+      border: none;            
+      border-radius: 0;          
+      background: transparent;   
+      box-shadow: none;          
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    #category-trigger:hover {
+      color: #007aff;
+      transform: translateY(-1px);
+    }
+
+    #category-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(12px);
+      display: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      z-index: 3000;
+    }
+
+    #category-panel {
+      width: 86%;
+      max-width: 1100px;
+      margin: 80px auto;
+      display: flex;
+      gap: 40px;
+      color: white;
+    }
+
+    #category-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .category-item {
+      font-size: 22px;
+      cursor: pointer;
+      padding: 4px 0;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .category-item:hover {
+      transform: translateX(6px);
+      opacity: 0.8;
+    }
+
+    #subcategory-panel {
+      flex: 2;
+      border-left: 1px solid rgba(255,255,255,0.15);
+      padding-left: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .subcategory-link {
+      cursor: pointer;
+      padding: 4px 0;
+      transition: transform 0.2s, opacity 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .subcategory-link:hover {
+      transform: translateX(4px);
+      opacity: 0.85;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      #category-panel {
+        flex-direction: column;
+        margin-top: 60px;
+      }
+
+      #subcategory-panel {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        padding-left: 0;
+        padding-top: 16px;
+      }
+
+      .category-item {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <nav class="navbar">
+    <a href="index-zh.html" class="logo">
+      <img src="logo.svg" alt="Heritmap Logo" style="height: 40px;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index-zh.html">首頁</a></li>
+      <li><a href="map-zh.html">地圖與探索</a></li>
+      <li><a href="share-zh.html">分享故事</a></li>
+      <li><a href="heritage-zh.html">文化遺產一覽</a></li>
+      <li><a href="about-zh.html">關於</a></li>
+    </ul>
+  </nav>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="在此搜尋文化遺產…" class="search-bar" />
+  </div>
+
+  <div class="or-text">或</div>
+
+  <div class="category-trigger-wrapper">
+    <div id="category-trigger">依類別瀏覽</div>
+  </div>
+
+  <div id="category-overlay">
+    <div id="category-panel">
+      <div id="category-list">
+        <div class="category-item" data-category="cities">古城與古鎮</div>
+        <div class="category-item" data-category="gardens">園林與湖泊</div>
+        <div class="category-item" data-category="temples">寺廟、石窟與聖地</div>
+        <div class="category-item" data-category="walls">城牆與防禦工事</div>
+        <div class="category-item" data-category="mausoleums">陵寢與紀念建築</div>
+        <div class="category-item" data-category="engineering">古代工程與技術</div>
+      </div>
+
+      <div id="subcategory-panel">
+      </div>
+    </div>
+  </div>
+  
+  <section class="section" id="terracotta-army">
+    <h2>秦始皇兵馬俑（Terracotta Army）</h2>
+    <p>位於陝西西安的著名考古遺址，於 1974 年被發現。數以千計等身兵馬俑隨秦始皇一同埋葬，展現當時軍陣與工藝水平。</p>
+    <img src="terracotta.jpg" alt="TerracottaArmy">
+    <a class="learn-more" href="terracottaarmy.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="forbidden-city">
+    <h2>故宮（The Forbidden City）</h2>
+    <p>位於北京的明清皇宮建築群，擁有九百餘座建築，紅牆金瓦之間承載著數百年的中國皇室歷史。</p>
+    <img src="forbidden.jpg" alt="ForbiddenCity">
+    <a class="learn-more" href="forbiddencity.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="mogao-caves">
+    <h2>敦煌莫高窟（Mogao Caves）</h2>
+    <p>位於甘肅敦煌的佛教石窟群，保存了上千年來的壁畫、彩塑與經卷，是東西方文化交流的重要見證。</p>
+    <img src="mogao.jpg" alt="MogaoCaves">
+    <a class="learn-more" href="mogaocaves.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="sanxingdui">
+    <h2>三星堆遺址（Sanxingdui）</h2>
+    <p>位於四川廣漢的青銅時代遺址，以神秘而精緻的青銅面具與器物聞名，見證古蜀文明的獨特風貌。</p>
+    <img src="sanxingdui.jpg" alt="Sanxingdui">
+    <a class="learn-more" href="sanxingdui.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="sun-yat-sen-mausoleum">
+    <h2>中山陵（Sun Yat-sen Mausoleum）</h2>
+    <p>孫中山先生的陵墓，坐落於南京紫金山南麓，是近代中國歷史與城市記憶的重要地標。</p>
+    <img src="SunYatsenMausoleum.jpg" alt="SunYatsenMausoleum">
+    <a class="learn-more" href="sunyatsenmausoleum.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="lion-grove-garden">
+    <h2>獅子林（Lion Grove Garden）</h2>
+    <p>元代古典園林之一，以錯綜複雜的假山聞名，宛如迷宮般的石景讓人流連其間。</p>
+    <img src="shizilin.jpg" alt="LionGroveGarden">
+    <a class="learn-more" href="shizilin.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="guangyue-tower">
+    <h2>光岳樓（Guangyue Tower）</h2>
+    <p>位於山東聊城的明代木樓，被譽為中國現存最北的一座古代木結構樓閣，始建於 1374 年。</p>
+    <img src="guangyuelou.jpg" alt="Guangyuelou">
+    <a class="learn-more" href="guangyuelou.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="huishan-ancient-town">
+    <h2>惠山古鎮（Huishan Ancient Town）</h2>
+    <p>一座歷史悠久的古鎮，以祠堂文化、園林藝術、泥塑工藝與江南水鄉風貌著稱。</p>
+    <img src="huishanguzhen.jpg" alt="HuishanAncientTown">
+    <a class="learn-more" href="huishanguzhen.html">了解更多 →</a>
+  </section>
+  
+  <section class="section" id="xuanwu-lake">
+    <h2>玄武湖（Xuanwu Lake）</h2>
+    <p>南京市中心的歷史湖泊公園，以湖光水色與夏季盛開的荷花聞名，是城市的「綠肺」之一。</p>
+    <img src="xuanwulake.jpg" alt="XuanwuLake">
+    <a class="learn-more" href="xuanwulake.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="fujian-tulou">
+    <h2>福建土樓（Fujian Tulou, 永定土樓）</h2>
+    <p>福建客家人傳統的聚落建築，以獨特的環形與方形土樓結構展現社群生活與防禦功能。</p>
+    <img src="fujiantulou.jpg" alt="FujianTulou">
+    <a class="learn-more" href="fujiantulou.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="great-wall">
+    <h2>萬里長城（The Great Wall of China）</h2>
+    <p>橫亙中國北方的大型防禦工程體系，歷代修築，用以防禦外敵入侵，也是中國象徵之一。</p>
+    <img src="greatwallbackground.jpg" alt="Great Wall of China">
+    <a class="learn-more" href="greatwall.html">了解更多 →</a>
+  </section>
+  
+  <section class="section" id="ming-xiaoling">
+    <h2>明孝陵（Ming Xiaoling Mausoleum）</h2>
+    <p>明太祖朱元璋的陵寢，位於南京紫金山麓，石像生與神道格局展現皇陵的莊嚴氣度。</p>
+    <img src="mingxiaolingmausoleumbackground.jpg" alt="Ming Xiaoling Mausoleum">
+    <a class="learn-more" href="mingxiaoling.html">了解更多 →</a>
+  </section>
+  
+  <section class="section" id="nanjing-city-wall">
+    <h2>南京城牆（Nanjing City Wall）</h2>
+    <p>世界上保存最完整、規模最大的古代城牆之一，建於明代初年，用以防禦並規劃首都空間。</p>
+    <img src="nanjingwall.jpg" alt="Nanjing City Wall">
+    <a class="learn-more" href="nanjingwall.html">了解更多 →</a>
+  </section>
+  
+  <section class="section" id="longmen-grottoes">
+    <h2>龍門石窟（Longmen Grottoes）</h2>
+    <p>位於洛陽附近的世界文化遺產，成千上萬尊佛像雕刻於石灰岩峭壁之上，凝聚信仰與藝術。</p>
+    <img src="longmen.jpg" alt="Longmen Grottoes">
+    <a class="learn-more" href="longmen.html">了解更多 →</a>
+  </section>
+  
+  <section class="section" id="western-xia-tombs">
+    <h2>西夏王陵（Western Xia Imperial Tombs）</h2>
+    <p>西夏歷代帝王陵寢群，結合唐、藏與地方建築風格，被稱為「東方金字塔」。</p>
+    <img src="xixiatombs.jpg" alt="Western Xia Imperial Tombs">
+    <a class="learn-more" href="xixiatombs.html">了解更多 →</a>
+  </section>
+  
+  <section class="section" id="zhan-garden">
+    <h2>瞻園（Zhan Garden, Nanjing）</h2>
+    <p>南京的古典園林，始建於明代，後經多次修葺，以精巧的江南園林設計呈現宅園合一的景致。</p>
+    <img src="zhanyuan.jpg" alt="Zhan Garden (Nanjing)">
+    <a class="learn-more" href="zhanyuan.html">了解更多 →</a>
+  </section>
+  
+  <section class="section" id="yellow-crane-tower">
+    <h2>黃鶴樓（Yellow Crane Tower）</h2>
+    <p>矗立於武漢長江之畔的歷史名樓，因歷代詩文歌詠而聞名，承載豐富的文化想像。</p>
+    <img src="yellowcrane.jpg" alt="Yellow Crane Tower">
+    <a class="learn-more" href="yellowcrane.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="karez-system">
+    <h2>坎兒井（Karez System of Turpan）</h2>
+    <p>中國古代三大工程之一，新疆吐魯番的地下水利系統，透過豎井與暗渠將天山雪水引入乾旱盆地，支撐絲路沿線的生活與商旅往來。</p>
+    <img src="karez.jpg" alt="Karez System of Turpan">
+    <a class="learn-more" href="karez.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="huanglou-pavilion">
+    <h2>黃樓（Huanglou Pavilion, Xuzhou）</h2>
+    <p>位於江蘇徐州的文化地標，其源頭可追溯至漢代。歷經多次重建，長久以來是文人聚會、題詩與城市記憶的所在，俯瞰徐州城景，見證世代變遷。</p>
+    <img src="huanglou.jpg" alt="Huanglou Pavilion in Xuzhou">
+    <a class="learn-more" href="huanglou.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="a-ma-temple">
+    <h2>媽閣廟（A-Ma Temple, Macau）</h2>
+    <p>建於 1488 年的澳門古廟，又稱「媽閣廟」，供奉海神媽祖。傳說「澳門」之名便源自此地。廟宇由殿堂、庭院、亭台與石刻組成，匯聚道教、儒家、佛教與民間信仰，是精神信仰與世界文化遺產雙重象徵。</p>
+    <img src="mage.jpg" alt="A-Ma Temple in Macau">
+    <a class="learn-more" href="maguetemple.html">了解更多 →</a>
+  </section>
+
+  <section class="section" id="yangzhou">
+    <h2>揚州（Yangzhou）</h2>
+    <p>
+      揚州位於中國大運河沿線，是一座以靜謐氣質與雅致文化聞名的歷史名城。
+      作為「園林與運河之城」，揚州擁有瘦西湖、修長橋影與古典園林，也孕育了淮揚菜這一中國四大菜系之一。
+      柳樹依依、水道縱橫，城市節奏緩慢而詩意，曾激發「煙花三月下揚州」的佳句。直到今日，揚州仍是一面映照江南風雅的鏡子——茶香、藝術與時間在此一同流動。
+    </p>
+    <img src="yangzhou.jpg" alt="Slender West Lake in Yangzhou">
+    <a class="learn-more" href="yangzhou.html">了解更多 →</a>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const options = { threshold: 0.3 };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    const input = document.getElementById('searchInput');
+    input.addEventListener('input', () => {
+      const filter = input.value.toLowerCase();
+      sections.forEach(section => {
+        const title = section.querySelector('h2').textContent.toLowerCase();
+        section.style.display = title.includes(filter) ? 'flex' : 'none';
+      });
+    });
+
+    const categoryTrigger = document.getElementById('category-trigger');
+    const overlay = document.getElementById('category-overlay');
+    const categoryItems = document.querySelectorAll('.category-item');
+    const subPanel = document.getElementById('subcategory-panel');
+
+    // Map for additional categorization upon addition
+    const categoryMap = {
+      cities: [
+        { name: "揚州（Yangzhou）", targetId: "yangzhou" },
+        { name: "惠山古鎮（Huishan Ancient Town）", targetId: "huishan-ancient-town" },
+        { name: "黃樓（Huanglou Pavilion, Xuzhou）", targetId: "huanglou-pavilion" }
+      ],
+      gardens: [
+        { name: "獅子林（Lion Grove Garden）", targetId: "lion-grove-garden" },
+        { name: "瞻園（Zhan Garden, Nanjing）", targetId: "zhan-garden" },
+        { name: "玄武湖（Xuanwu Lake）", targetId: "xuanwu-lake" },
+        { name: "揚州瘦西湖（Yangzhou, Slender West Lake）", targetId: "yangzhou" }
+      ],
+      temples: [
+        { name: "敦煌莫高窟（Mogao Caves）", targetId: "mogao-caves" },
+        { name: "龍門石窟（Longmen Grottoes）", targetId: "longmen-grottoes" },
+        { name: "媽閣廟（A-Ma Temple, Macau）", targetId: "a-ma-temple" }
+      ],
+      walls: [
+        { name: "萬里長城（The Great Wall of China）", targetId: "great-wall" },
+        { name: "南京城牆（Nanjing City Wall）", targetId: "nanjing-city-wall" }
+      ],
+      mausoleums: [
+        { name: "中山陵（Sun Yat-sen Mausoleum）", targetId: "sun-yat-sen-mausoleum" },
+        { name: "明孝陵（Ming Xiaoling Mausoleum）", targetId: "ming-xiaoling" },
+        { name: "西夏王陵（Western Xia Imperial Tombs）", targetId: "western-xia-tombs" },
+        { name: "秦始皇兵馬俑（Terracotta Army）", targetId: "terracotta-army" }
+      ],
+      engineering: [
+        { name: "坎兒井（Karez System of Turpan）", targetId: "karez-system" },
+        { name: "福建土樓（Fujian Tulou）", targetId: "fujian-tulou" },
+        { name: "光岳樓（Guangyue Tower）", targetId: "guangyue-tower" },
+        { name: "三星堆遺址（Sanxingdui）", targetId: "sanxingdui" }
+      ]
+    };
+
+    function openOverlay() {
+      overlay.style.display = "block";
+      setTimeout(() => {
+        overlay.style.opacity = "1";
+      }, 10);
+    }
+
+    function closeOverlay() {
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.style.display = "none";
+      }, 350);
+    }
+
+    categoryTrigger.addEventListener('mouseover', openOverlay);
+    categoryTrigger.addEventListener('click', openOverlay);
+
+    overlay.addEventListener('mouseleave', closeOverlay);
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeOverlay();
+      }
+    });
+
+    categoryItems.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        const catKey = item.dataset.category;
+        const sites = categoryMap[catKey] || [];
+
+        subPanel.innerHTML = "";
+        sites.forEach(site => {
+          const div = document.createElement("div");
+          div.textContent = site.name;
+          div.className = "subcategory-link";
+          div.addEventListener('click', () => {
+            const target = document.getElementById(site.targetId);
+            if (target) {
+              closeOverlay();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+          subPanel.appendChild(div);
+        });
+
+        subPanel.style.opacity = sites.length ? "1" : "0.4";
+      });
+    });
+  </script>
+</body>
+</html>
