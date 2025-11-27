@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heritmap — 分享故事</title>
+  <style>
+    body { margin:0; font-family:'Times New Roman', serif; background:#000; color:#fff; }
+    .navbar {
+      display:flex; justify-content:space-between; align-items:center;
+      background-color:#333; padding:1rem 2rem;
+    }
+    .logo img { height:40px; transform:scale(2); margin-top:-10px; }
+    .nav-links { list-style:none; display:flex; gap:1.5rem; }
+    .nav-links a {
+      text-decoration:none; color:#fff; font-weight:bold;
+      transition: color .3s ease, transform .3s ease;
+    }
+    .nav-links a:hover { color:#ffcc00; transform:translateY(-2px); }
+
+    .container {
+      max-width:880px; margin:2rem auto; padding:1.25rem;
+      background:#111; border-radius:14px; box-shadow:0 10px 24px rgba(0,0,0,.55);
+    }
+    h1 { text-align:center; margin:.2rem 0 1rem; }
+    p.lead { text-align:center; color:#bbb; margin-top:-.25rem; }
+
+    label { display:block; margin-top:1rem; margin-bottom:.5rem; font-weight:bold; color:#e5e7eb; }
+    input, textarea, select {
+      width:100%; padding:12px; border:1px solid #333; border-radius:10px; background:#0a0a0a; color:#fff; outline:none;
+    }
+    input:focus, textarea:focus, select:focus { border-color:#555; }
+
+    .files { margin-top:.5rem; color:#bbb; font-size:.95rem; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media (max-width:760px){ .row{ grid-template-columns:1fr; } }
+
+    .actions { display:flex; gap:10px; align-items:center; margin-top:16px; }
+    button {
+      padding:12px 18px; border:none; border-radius:10px;
+      background:#ffcc00; color:#000; font-weight:bold; cursor:pointer;
+      transition:transform .2s ease;
+    }
+    button:hover { transform:translateY(-2px); }
+    .secondary { background:#1f2937; color:#fff; }
+
+    .hint { color:#bbb; font-size:.9rem; margin-top:.5rem; }
+    .ok { color:#10b981; font-weight:700; }
+    .err { color:#ef4444; font-weight:700; }
+    *, *::before, *::after { box-sizing: border-box; }
+
+    .row > * { min-width: 0; }
+
+    .actions { flex-wrap: wrap; }
+
+    input[type="file"] { display: block; max-width: 100%; }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    #story {
+      resize: vertical;
+      min-height: 220px;
+      width: 100%;
+    }
+    @media (min-width: 980px) {
+      #story {
+        max-width: 150ch;
+        margin-right: auto;
+      }
+      label[for="story"] {
+        max-width: 15ch;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index-zh.html" class="logo">
+      <img src="logo.svg" alt="Heritmap Logo" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index-zh.html">首頁</a></li>
+      <li><a href="map-zh.html">地圖與探索</a></li>
+      <li><a href="share-zh.html">分享故事</a></li>
+      <li><a href="heritage-zh.html">文化遺產</a></li>
+      <li><a href="about-zh.html">關於</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>分享故事</h1>
+    <p class="lead">此頁面會將內容轉交至電子郵件。投稿時請確保為您親自撰寫的文字，我們不接受由 AI 生成的作品。</p>
+
+    <form id="mailtoForm" autocomplete="on">
+      <div class="row">
+        <div>
+          <label for="author">您的姓名／暱稱 *</label>
+          <input id="author" required placeholder="例如：Jerry，@ChrisLi" />
+        </div>
+        <div>
+          <label for="fromEmail">您的電子郵件（用於回覆） *</label>
+          <input id="fromEmail" type="email" required placeholder="you@example.com" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="site">地點名稱 *</label>
+          <input id="site" required placeholder="例如：玄武湖" />
+        </div>
+        <div>
+          <label for="coords">所在地點 *</label>
+          <input id="coords" required placeholder="城市／省份／州／國家" />
+        </div>
+      </div>
+
+      <label for="title">故事標題 *</label>
+      <input id="title" required placeholder="精準、約 6–12 個字的標題" />
+
+      <label for="story">您的故事 *</label>
+      <textarea id="story" rows="8" required placeholder="沒有字數上限。這個地方最令你印象深刻的是什麼？有什麼保存或保護的想法？"></textarea>
+
+      <label for="files">附件：請不要在這裡上傳檔案，請於開啟的電子郵件視窗中自行附加。</label>
+
+      <div class="actions">
+        <button type="submit">開啟郵件程式</button>
+        <button class="secondary" type="button" id="copyBtn">複製郵件文字</button>
+      </div>
+      <div id="status" class="hint"></div>
+    </form>
+
+    <p class="hint">提示：網頁本身無法自動替您附加檔案。當郵件視窗開啟後，請記得<b>自行附加照片或檔案</b>。</p>
+  </div>
+  
+  <script>
+    const form   = document.getElementById('mailtoForm');
+    const status = document.getElementById('status');
+    const copyBtn= document.getElementById('copyBtn');
+
+    function buildEmail() {
+      const to        = 'Jerry.SunJingyuan@outlook.com';
+      const author    = document.getElementById('author').value.trim();
+      const fromEmail = document.getElementById('fromEmail').value.trim();
+      const site      = document.getElementById('site').value.trim();
+      const coords    = document.getElementById('coords').value.trim();
+      const title     = document.getElementById('title').value.trim();
+      const story     = document.getElementById('story').value.trim();
+
+      if (!author || !fromEmail || !site || !title || !story) {
+        throw new Error('請填寫所有必填欄位。');
+      }
+
+      const subject = `[Heritmap Submission] ${title} — ${site}`;
+
+      let body =
+`Author: ${author}
+
+Reply-To: ${fromEmail}
+
+Site/Heritage: ${site}
+
+Location: ${coords || '(not provided)'}
+
+Title: ${title}
+
+Story:
+${story}
+
+——
+Heritmap submission via mailto
+`;
+
+      const MAX_URL_LEN = 1900; 
+      let href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (href.length > MAX_URL_LEN) {
+        const overBy = href.length - MAX_URL_LEN;
+        const safeTrim = Math.max(0, story.length - overBy - 200); 
+        const trimmed = story.slice(0, safeTrim) + '\n\n[...內容因郵件連結長度限制被截斷；我會在郵件中貼上全文]';
+        body =
+`Author: ${author}
+
+Reply-To: ${fromEmail}
+
+Site/Heritage: ${site}
+
+Location: ${coords || '(not provided)'}
+
+Title: ${title}
+
+Story:
+${trimmed}
+
+——
+Heritmap submission via mailto
+`;
+        href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
+
+      return { to, subject, body, href };
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      try {
+        const { href } = buildEmail();
+
+        window.location.href = href;
+
+        const a = document.createElement('a');
+        a.href = href;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        status.textContent = '若您的郵件程式沒有自動開啟，請點擊「複製郵件文字」，再貼上到寫給 Jerry 的新郵件中。';
+        status.className = 'hint';
+      } catch (err) {
+        status.textContent = err.message;
+        status.className = 'err';
+      }
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        const { to, subject, body } = buildEmail();
+        await navigator.clipboard.writeText(`To: ${to}\nSubject: ${subject}\n\n${body}`);
+        status.textContent = '已複製郵件文字。請開啟郵件程式貼上內容，並手動附加檔案。';
+        status.className = 'ok';
+      } catch (err) {
+        status.textContent = err.message;
+        status.className = 'err';
+      }
+    });
+  </script>
+  
+</body>
+</html>
