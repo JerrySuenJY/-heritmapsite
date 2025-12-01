@@ -52,15 +52,106 @@
     .reader h3{ margin:0 0 .5rem; font-size:1.25rem; }
     .reader p{ color:#cfcfcf; line-height:1.8 }
 
-    img.signature {
-      filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.4));
-      opacity: 0.95;
-    }
 
     .extra-section { max-width:900px; margin:4rem auto; padding:0 1rem; }
     .extra-section figure { margin:0; }
     .extra-section img { display:block; width:100%; height:auto; border-radius:12px; border:1px solid rgba(255,255,255,.12); box-shadow:0 12px 28px rgba(0,0,0,.35); }
     .extra-section figcaption { margin-top:.6rem; font-size:.95rem; color:#cfcfcf; text-align:center; font-style:italic; }
+
+    .envelope-wrapper {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:0; 
+    }
+
+    .envelope-link {
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .envelope-card {
+      position:relative;
+      width:320px;
+      height:200px;
+      background:linear-gradient(180deg, #111, #181818);
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:0 10px 30px rgba(0,0,0,.6);
+      padding:1.1rem 1.3rem 1.4rem;
+      overflow:hidden;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+      cursor:pointer;
+    }
+
+    .envelope-card::before {
+      content:"";
+      position:absolute;
+      top:-35%;
+      left:50%;
+      transform:translateX(-50%);
+      width:110%;
+      height:110%;
+      background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+      clip-path:polygon(50% 0, 0 60%, 100% 60%);
+      opacity:.9;
+    }
+
+    .envelope-card::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      border:1px solid rgba(255,255,255,.18);
+      mix-blend-mode:screen;
+      opacity:.18;
+      pointer-events:none;
+    }
+
+    .envelope-card:hover {
+      transform:translateY(-3px);
+      box-shadow:0 16px 40px rgba(0,0,0,.8);
+      border-color:rgba(255,255,255,.5);
+      background:linear-gradient(180deg, #151515, #1f1f1f);
+    }
+
+    .envelope-label {
+      position:relative;
+      z-index:1;
+      text-align:left;
+    }
+
+    .envelope-label-kicker {
+      font-size:.8rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#bbbbbb;
+      margin-bottom:.35rem;
+    }
+
+    .envelope-label-title {
+      font-size:1.2rem;
+      margin:0 0 .4rem;
+    }
+
+    .envelope-label-sub {
+      font-size:.95rem;
+      color:#cccccc;
+      line-height:1.6;
+      margin:0 0 .8rem;
+    }
+
+    .envelope-label-cta {
+      font-size:.9rem;
+      color:#ffcc66;
+      display:flex;
+      align-items:center;
+      gap:.35rem;
+    }
+
+    .envelope-label-cta span {
+      transform:translateY(1px);
+    }
   </style>
 </head>
 <body>
@@ -153,19 +244,26 @@
 
   <section class="reader">
     <div class="reader-inner">
-      <h3>From the founder</h3>
-      <p>Dear contributors, scholars, and visitors, …</p>
-      <p>Hello, I’m Jerry Sun, a high school student from Nanjing.</p>
-      <p>When I was little, my dad encouraged me to “jump as far as you can, and take a glance at the magnificent world we live in.” This website would not exist without his support and inspiration. It has now been ten years since I visited my first cultural heritage site (the Terracotta Army) and I still carry that same sense of wonder with me. Through Heritmap, I want to pass on that invitation: go out and explore the magnificent world we share.</p>
-      <p>In today’s world of overwhelming social media, government censorship, and propaganda, too many invaluable voices are at risk of being silenced. The purpose of this project is to protect those voices, not for advertisement, not for propaganda, and not for mainstream trends—but for preservation, truth, and memory.</p>
-      <p>Thank you for your contributions, trust, and determination to help make preservation possible. Together, we can keep cultural heritage alive for generations to come.</p>
-      <p style="margin-bottom:11rem;">Sincerely,</p>
+      <div class="envelope-wrapper">
+        <a class="envelope-link" href="founder-note-en.pdf" target="_blank" rel="noopener">
+          <div class="envelope-card">
+            <div class="envelope-label">
+              <div class="envelope-label-kicker">Founder's note</div>
+              <h3 class="envelope-label-title">From the founder</h3>
+              <p class="envelope-label-sub">
+                A personal letter about why Heritmap exists, what it hopes to protect, and the stories behind its first journeys.
+              </p>
+              <div class="envelope-label-cta">
+                <span>Open letter (PDF)</span>
+                <span>↗</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <figure style="margin-top: -320px; margin-left:320px; text-align:left;">
-    <img src="foundersignature.png" alt="Jerry Sun digital signature" style="height:430px; opacity:0.9;" />
-  </figure>
 
   <section class="extra-section">
     <figure><img src="founder.jpg" alt="Founder’s note (extended)"></figure>
