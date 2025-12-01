@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heritmap – 關於網站</title>
+  <title>Heritmap – 關於本站</title>
   <style>
     :root { color-scheme: dark; }
     * { font-family: 'Times New Roman', Times, serif !important; font-weight: 400; }
@@ -52,54 +52,144 @@
     .reader h3{ margin:0 0 .5rem; font-size:1.25rem; }
     .reader p{ color:#cfcfcf; line-height:1.8 }
 
-    img.signature {
-      filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.4));
-      opacity: 0.95;
-    }
-
     .extra-section { max-width:900px; margin:4rem auto; padding:0 1rem; }
     .extra-section figure { margin:0; }
     .extra-section img { display:block; width:100%; height:auto; border-radius:12px; border:1px solid rgba(255,255,255,.12); box-shadow:0 12px 28px rgba(0,0,0,.35); }
     .extra-section figcaption { margin-top:.6rem; font-size:.95rem; color:#cfcfcf; text-align:center; font-style:italic; }
+
+    .envelope-wrapper {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:0; 
+    }
+
+    .envelope-link {
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .envelope-card {
+      position:relative;
+      width:320px;
+      height:200px;
+      background:linear-gradient(180deg, #111, #181818);
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:0 10px 30px rgba(0,0,0,.6);
+      padding:1.1rem 1.3rem 1.4rem;
+      overflow:hidden;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+      cursor:pointer;
+    }
+
+    .envelope-card::before {
+      content:"";
+      position:absolute;
+      top:-35%;
+      left:50%;
+      transform:translateX(-50%);
+      width:110%;
+      height:110%;
+      background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+      clip-path:polygon(50% 0, 0 60%, 100% 60%);
+      opacity:.9;
+    }
+
+    .envelope-card::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      border:1px solid rgba(255,255,255,.18);
+      mix-blend-mode:screen;
+      opacity:.18;
+      pointer-events:none;
+    }
+
+    .envelope-card:hover {
+      transform:translateY(-3px);
+      box-shadow:0 16px 40px rgba(0,0,0,.8);
+      border-color:rgba(255,255,255,.5);
+      background:linear-gradient(180deg, #151515, #1f1f1f);
+    }
+
+    .envelope-label {
+      position:relative;
+      z-index:1;
+      text-align:left;
+    }
+
+    .envelope-label-kicker {
+      font-size:.8rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#bbbbbb;
+      margin-bottom:.35rem;
+    }
+
+    .envelope-label-title {
+      font-size:1.2rem;
+      margin:0 0 .4rem;
+    }
+
+    .envelope-label-sub {
+      font-size:.95rem;
+      color:#cccccc;
+      line-height:1.6;
+      margin:0 0 .8rem;
+    }
+
+    .envelope-label-cta {
+      font-size:.9rem;
+      color:#ffcc66;
+      display:flex;
+      align-items:center;
+      gap:.35rem;
+    }
+
+    .envelope-label-cta span {
+      transform:translateY(1px);
+    }
   </style>
 </head>
 <body>
   <nav class="navbar">
-    <a href="index-zh.html" class="logo">
+    <a href="index.html" class="logo">
       <img src="logo.svg" alt="Heritmap Logo" style="height: 40px;" />
     </a>
     <ul class="nav-links">
-      <li><a href="index-zh.html">首頁</a></li>
-      <li><a href="map-zh.html">地圖與探索</a></li>
-      <li><a href="share-zh.html">分享故事</a></li>
-      <li><a href="heritage-zh.html">文化遺產一覽</a></li>
-      <li><a href="about-zh.html">關於</a></li>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="map.html">地圖與探索</a></li>
+      <li><a href="share.html">分享故事</a></li>
+      <li><a href="heritage.html">文化遺產</a></li>
+      <li><a href="about.html">關於</a></li>
     </ul>
   </nav>
 
   <section class="hero">
-    <h1>關於 Heritmap 的一切，都在這裡。</h1>
+    <h1>這裡，介紹 Heritmap 的一切。</h1>
   </section>
 
   <section class="acknowledgment" style="max-width:900px; margin:2rem auto; padding:1.5rem; text-align:center; background:linear-gradient(180deg, #0c0c0c, #111); border:1px solid rgba(255,255,255,.08); border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.35);">
-    <h3 style="margin:0 0 1rem; font-size:1.4rem;">投稿與貢獻者致謝</h3>
+    <h3 style="margin:0 0 1rem; font-size:1.4rem;">投稿與貢獻致謝</h3>
     <p style="color:#cfcfcf; line-height:1.8; font-size:1.05rem;">
-      感謝所有曾為 Heritmap 投稿、分享照片與心得的朋友。你們的每一篇文字、每一次按下快門，都是這幅「文化地圖」中不可或缺的一部分。正是因為你們的參與，Heritmap 才能持續被填滿、被延伸。
+      感謝所有為 Heritmap 投稿的朋友們。你們的每一篇文章、每一張照片，都是這份文化地圖不可或缺的一部分。正是因為有你們的參與，Heritmap 才能不斷被充實與延伸。
     </p>
     <p style="color:#cfcfcf; line-height:1.8; font-size:1.05rem;">
-      We sincerely thank all contributors who have shared their articles and photos with Heritmap. Each submission is an indispensable part of this cultural map. It is through your participation that Heritmap continues to grow and flourish.
+      Thank you to every contributor who has shared an article or a photo with Heritmap. Each submission is an indispensable part of this cultural map, and it is through your participation that this project continues to grow.
     </p>
   </section>
 
   <div class="capsule-bar-wrap">
     <div class="capsule-bar" role="tablist" aria-label="About sections">
       <div class="capsule-scroll" id="capsuleScroll">
-        <button class="capsule" role="tab" aria-selected="true"  data-id="mission">使命與願景（Mission &amp; Vision）</button>
-        <button class="capsule" role="tab" aria-selected="false" data-id="edu">教育價值（Educational Value）</button>
-        <button class="capsule" role="tab" aria-selected="false" data-id="build">網站如何打造（How It’s Built）</button>
-        <button class="capsule" role="tab" aria-selected="false" data-id="plan">未來藍圖（The “BIG PLAN”）</button>
-        <button class="capsule" role="tab" aria-selected="false" data-id="cite">資料與引用（Source Citation）</button>
-        <button class="capsule" role="tab" aria-selected="false" data-id="credits">鳴謝與版權（Credits &amp; Copyrights）</button>
+        <button class="capsule" role="tab" aria-selected="true"  data-id="mission">使命與願景</button>
+        <button class="capsule" role="tab" aria-selected="false" data-id="edu">教育價值</button>
+        <button class="capsule" role="tab" aria-selected="false" data-id="build">網站如何建成</button>
+        <button class="capsule" role="tab" aria-selected="false" data-id="plan">未來「大計畫」</button>
+        <button class="capsule" role="tab" aria-selected="false" data-id="cite">資料與引用</button>
+        <button class="capsule" role="tab" aria-selected="false" data-id="credits">鳴謝與版權</button>
       </div>
     </div>
   </div>
@@ -108,48 +198,43 @@
     <div class="showcase-viewport">
       <article class="panel active" data-id="mission">
         <div class="panel-inner">
-          <p>Heritmap 的初衷，是以青少年的視角，用數位方式記錄中國的文化遺產與相關故事。我們希望透過地圖、照片與文字，讓更多人看見這些場域的美與重量，並在世俗宣傳之外，多一個由學生主動發聲的角度。</p>
-          <p>我們的使命，是為文化遺產的保存發聲；我們的願景，是讓每一位讀者，都能在這裡找到一個與自己記憶相連的地方。</p>
+          <p>Heritmap 希望用青少年的視角，記錄並講述中國文化遺產的故事。網站的使命，是倡導對文化遺產的保護，並藉由地圖、照片與文字，讓更多人看見這些地方的美與意義。</p>
         </div>
       </article>
 
       <article class="panel" data-id="edu">
         <div class="panel-inner">
-          <p>這個網站不只是數位檔案庫，也是學習工具。透過描述景點的優點、現況以及對管理與保存的建議，Heritmap 盡可能呈現多面向的觀點，而不是單一的宣傳口徑。</p>
-          <p>對學生而言，這是一個練習觀察、描述與批判思考的場域；對讀者而言，這是一個可以同時閱讀經驗與思考、並重新理解「文化遺產」意義的平台。</p>
+          <p>Heritmap 不只是線上資料庫，也是學習與思考的平台。透過對景點優點與問題的整理，以及提出改善建議，網站希望提供更完整的保存視角，並以真實經驗撰寫的遊記與評論，幫助讀者形成自己的觀點。</p>
         </div>
       </article>
 
       <article class="panel" data-id="build">
         <div class="panel-inner">
-          <p>本網站以 HTML、CSS 與 JavaScript 撰寫，並在部分環節獲得人工智慧工具的技術協助*。整體設計與內容維護由孫靖遠（Jerry Sun）負責，地圖互動功能使用 Leaflet，並透過 Vercel 部署與託管。</p>
-          <p>換句話說，這個網站既是一個文化專案，也是個人學習程式與前端設計的實驗場。</p>
+          <p>本網站以 HTML、CSS、JavaScript 製作，在部分環節借助人工智慧工具的協助*。由孫靖遠（Jerry Sun）設計與維護，並透過 Leaflet 實作互動地圖，目前部署於 Vercel 平台。</p>
         </div>
       </article>
 
       <article class="panel" data-id="plan">
         <div class="panel-inner">
-          <p>在我高中畢業（預計 2026 年 5 月）之前，目標是完成更多具有深度與細節的遺產介紹頁面，並讓整個網站在功能上更加完整與穩定。</p>
-          <p>未來規劃包括：新增由使用者投稿的圖文畫廊（分享個人經驗）、擴展更多語言介面（不僅限於中英）、以及可能的旅遊／參訪建議模組，讓有意前往現地的人能更好地規劃行程。</p>
+          <p>在預計畢業的時間（2026 年 5 月）之前，希望能完成更多細節豐富的遺產專頁，並讓整個網站功能更加完整。未來也計畫加入使用者投稿相片牆、多語言介面（中文與英文以外的語言）、以及結合文化遺產的旅遊與假期規劃等功能。</p>
         </div>
       </article>
 
       <article class="panel" data-id="cite">
         <div class="panel-inner">
-          <p>資料來源原則上會在各個獨立頁面或段落中標註；若有特別依賴之史料、網站或書籍，亦會在該頁面明確列出。</p>
-          <p>如果你在閱讀時對某個資訊來源有疑問，歡迎透過電子郵件聯繫我，一起對照、一起查證。</p>
+          <p>具體引用與資料來源，將於各篇文章或個別頁面中單獨標註。</p>
         </div>
       </article>
 
       <article class="panel" data-id="credits">
         <div class="panel-inner">
-          <p>本網站由孫靖遠（Jerry Sun）創建，並在部分技術與文字上獲得 ChatGPT<sup>*</sup>（OpenAI）的協助。</p>
+          <p>本網站由孫靖遠（Jerry Sun）製作，部分內容在 ChatGPT<sup>*</sup>（OpenAI）的協助下完成。</p>
           <ul>
-            <li>地圖工具／Mapping Credit：Leaflet</li>
-            <strong><li>文章貢獻／Article Contributions：將於各篇文章中具體標註【持續補充中】</li></strong>
-            <li>資訊與資料／Information &amp; Data：維基百科（Wikipedia）、Google 等（於個別段落中說明）</li>
-            <li>影像來源／Images：於各圖片下方或頁面內個別標註</li>
-            <li>標誌設計／Logo：由牛億雯（Corrine Niu）設計與優化</li>
+            <li>地圖技術：Leaflet</li>
+            <strong><li>文章貢獻：將於各篇文章中具體標註【持續更新中】</li></strong>
+            <li>資訊與資料：維基百科、Google 等（於個別頁面說明來源）</li>
+            <li>圖片來源：於各圖像下方個別標註</li>
+            <li>Logo 設計：由牛億雯（Corrine Niu）設計與優化</li>
           </ul>
         </div>
       </article>
@@ -158,25 +243,28 @@
 
   <section class="reader">
     <div class="reader-inner">
-      <h3>創建者的話 From the founder</h3>
-      <p>親愛的投稿者、研究者與每一位路過的讀者：</p>
-      <p>你好，我是孫靖遠（Jerry Sun），一名來自南京的高中生。</p>
-      <p>小時候，爸爸常鼓勵我：「盡可能跳得遠一點，去看一看這個世界有多壯闊。」沒有他的支持與推我一把，Heritmap 不會出現在這裡。距離我第一次參觀文化遺產（秦始皇兵馬俑）已經十多年了，那種震撼的感覺仍然還在。透過這個網站，我希望把那句話也傳給你：離開螢幕，走出去，看一看我們共同擁有的世界。</p>
-      <p>在這個資訊爆炸、社群媒體充斥、輿論容易被操控的時代，太多珍貴的聲音可能被淹沒、被誤讀，或者乾脆被消失。這個專案的目的，是盡力為那些真實的觀察和記憶留下一個空間——不是為了廣告、不是為了宣傳、也不是為了迎合主流，而是為了保存、為了真相，也為了記得。</p>
-      <p>謝謝你願意閱讀到這裡，也謝謝每一位選擇投稿、分享、指正或只是安靜看完一篇文章的人。因為有你們，文化遺產不只是歷史課本上的名詞，而是會說話、有情感的地方。</p>
-      <p>期待我們能一起，為未來多留下一些還能被聽見的故事。</p>
-      <p style="margin-bottom:11rem;">謹此，<br>靖遠</p>
+      <div class="envelope-wrapper">
+        <a class="envelope-link" href="founder-note-zh.pdf" target="_blank" rel="noopener">
+          <div class="envelope-card">
+            <div class="envelope-label">
+              <div class="envelope-label-kicker">創建者的話</div>
+              <h3 class="envelope-label-title">From the founder 創建者的話</h3>
+              <p class="envelope-label-sub">
+                一封關於 Heritmap 為何誕生、希望守護什麼，以及第一段旅程背後故事的個人書信。
+              </p>
+              <div class="envelope-label-cta">
+                <span>打開信件（PDF）</span>
+                <span>↗</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <figure style="margin-top: -320px; margin-left:320px; text-align:left;">
-    <img src="foundersignature.png" alt="Jerry Sun digital signature" style="height:430px; opacity:0.9;" />
-  </figure>
-
   <section class="extra-section">
-    <figure>
-      <img src="founder.jpg" alt="創建者照片（延伸說明）">
-    </figure>
+    <figure><img src="founder.jpg" alt="創建者延伸說明"></figure>
   </section>
 
   <script>
