@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>長城 – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="greatwallbackground.jpg" alt="Header photo of the heritage site">
+      </figure>
+
+      <a href="heritage-zh.html" class="return-home">← 回歸主頁</a>
+
+      <h1 class="hero-title">中國長城</h1>
+
+      <p class="hero-intro">
+        橫亙於中國北方的宏偉防禦工事群，用以抵禦外侮與守護疆土。
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">作者：范俊喆</h3>
+          <p class="card-intro">
+            <p>
+              我站在長城上，心中不禁油然而生一股崇敬之情，輕轉地撫摸長城的磚頭，那凹凸不平的石塊表現出歷史的厚重。四周的山峰起伏不斷，長城也在這之間綿延不絕，彷彿一條巨龍。放眼望去，蜿蜒曲折的長城，翻山越嶺，游向遠方的天邊，就像你那悠久的歷史，從過去走向未來。讓我們以敬畏之心承古物之重，以長久之力傳文明之火，讓文物在時光裡永續生輝。
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">作者：李梓軒</h3>
+          <p class="card-intro">
+            <p>
+              長城是中華民族的象徵，也是人類文明歷史上最偉大的建築工程之一。它不止是一道牆，而是一個複雜的軍事防禦體系。
+            </p>
+            <p>
+              長城是世界文化遺產，也是世界中古七大奇蹟之一，總長度長達2.1萬公里，分布於中國17個省區市，不僅見證了歷史的變遷，更承載著中華人民的自強不息。
+            </p>
+            <p>
+              我站在長城上，北京「一覽眾山小」，一切彷彿都如同塵埃。這雄偉的風景，猶如一條古龍盤旋在蒼山之巔，撫摸著斑駁的牆，體會當年的故事，孟姜女是如何哭倒的長城，山海關的傳說，王昭君出塞的情景，一幅幅在眼前浮現，這其中蘊含著什麼東西等待我們尋找呢。
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">作者：黃明輝</h3>
+          <p class="card-intro">
+            <p>
+              我從沒去過長城，卻常在課本中看見他的身影！
+            </p>
+            <p>
+              風從畫面裡吹來，伴著千年聲響——工匠鑿磚的叮噹聲，將士的腳步聲敲在心上。
+            </p>
+            <p>
+              想像長城上的景象，想像摸磚的觸感，想像著千年的回響。那粗糙的劃痕，像外婆的木梳，暖到心裡。我把長城的故事記在本子上，盼著寒假和姐姐一起去，講課本裡的故事。
+            </p>
+            <p>
+              我是個學生，不能做些什麼，我能做的就是不亂扔東西，將長城的歷史分享給同學、家人，讓大家重視長城、守護熱愛長城，將我們的文化遺址傳承宣揚出去！
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">作者：梁錦媽媽</h3>
+          <p class="card-intro">
+            <p>
+              長城，又稱「萬里長城」，是中國古代勞動人民智慧的結晶，更是一座血汗築成的軍事防禦奇蹟。守護著中華大地千年安寧。不僅是舉世聞名的文化遺產，更是中華民族精神與意志的象徵。
+            </p>
+            <p>
+              當我第一眼看到長城時，瞬間被它的雄偉氣勢所震撼——它彷彿一條沉睡又甦醒的巨龍，蜿蜒起伏於蒼茫山嶺之間。儘管歲月在它身上刻下斑駁痕跡，風雨侵蝕了磚石，但它依舊巍然聳立，傲視山河。
+            </p>
+            <p>
+              可惜的是，由於體力有限、時間匆匆，最終我沒能走完長城全程。但那一刻，我已深深感受到它磅礴的歷史力量與民族自豪。
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">作者：王悯軒</h3>
+          <p class="card-intro">
+            <p>
+              長城，它不是冰冷的磚石，而是鮮活的歷史，是無數先輩們用血肉之軀築成的屏障。
+            </p>
+            <p>
+              長城，不僅是中國歷史的見證，更是中華民族精神的象徵。它代表了中華民族的堅韌不拔和自強不息，展現了中國人民的智慧與勇氣。站在長城上，作為中國人的自豪與驕傲盡收心底！
+            </p>
+            <p>
+              沿著長城的臺階一步步向上攀登，觸摸古老的城磚，感受著歲月留下的痕跡。每一塊城磚都彷彿在訴說著一個故事，每一個烽火臺，都記錄著一段歷史。彷彿能聽到古戰場上的號角聲，看到英勇的士兵在長城上巡邏，守望。
+            </p>
+            <p>
+              長城，這條悠久的巨龍，將繼續在中華大地上騰飛，向世界展示著中華民族的風采。
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

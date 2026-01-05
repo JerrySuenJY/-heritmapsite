@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>澳門媽閣廟 – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="mage.jpg" alt="媽閣廟（澳門）">
+      </figure>
+
+      <a href="heritage-zh.html" class="return-home">← 回歸主頁</a>
+
+      <h1 class="hero-title">澳門媽閣廟</h1>
+
+      <p class="hero-intro">
+       澳門最古老的廟宇之一，供奉海神媽祖。相傳「澳門」之名亦與此相關，至今仍是中西文化交融的重要象徵。
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-media">
+          <img src="mage-1.jpg" alt="媽閣廟">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">作者：曾祥鑫</h3>
+          <div class="card-meta">照片提供：曾祥鑫</div>
+          <p class="card-intro clamp-3">
+            <p>
+              「你可知Macau，不知我真心」這句話說的就是位於祖國大陸南端的一座城市——澳門。澳門在大家的印象中是一座擁有殖民歷史、西方文化較為突出的城市，似乎少有中華文化的薰陶。但事實上，在澳門這片土地上，中華文化依然保存下來，並與世界各地文化交融，其中最具代表性的便是媽閣廟。
+            </p>
+            <p>
+              在澳門的許多地方都能看到媽閣廟的身影，比如在澳門幣中，1981年大西洋銀行發行的伍圓紙幣上，就印有媽閣廟側門的正面照。
+            </p>
+            <p>
+              媽閣廟包括四座古廟：正殿、弘仁殿、觀音閣和正覺禪林。媽閣廟的正門是一座由花崗岩砌成的牌樓，兩側立有石獅守護。門額上鐫刻「媽祖閣」三字，兩旁刻有對聯「德周化宇，澤潤生民」，寓意媽祖的恩德遍布天地，惠澤百姓。牌樓頂覆琉璃瓦脊，並以鰲魚托舉寶珠作裝飾。進入山門後，還可見另一座花崗石建造的三間四柱沖天式牌坊，上題「南國波恬」四字，兩側篆書分別刻有「珠光」和「寶氣」。其中「光」字特意採用異體字「炗」，在底部加「火」字，以強調火光之意，寓意廟內香火鼎盛，興旺不絕。
+            </p>
+            <p>
+              然而，在1988年2月的一個凌晨，媽閣廟突發火災，整個正覺禪林幾乎被燒塌，殿內大量珍貴文物毀於一旦，包括一口有約200年歷史的銅鐘被燒熔，20多個牌匾、布幔、香案，以及關帝和韋陀菩薩神像、神龕、雕刻精美的閩式貨船模型和百年大鼓等皆化為灰燼。更不幸的是，2016年又發生火災，正覺禪林再次遭受嚴重破壞。
+            </p>
+            <p>
+              在2006年，澳門也曾面臨一次景觀危機。特區政府計劃在媽閣廟正對面興建葡文學校新大樓，並透過填海修建酒店和交通設施，引發社會擔憂景觀受損。議員批評政府只顧利益，忽視媽閣廟「面海」這一傳統格局；而相比之下，當年澳葡政府興建海事博物館時尚能尊重廟宇景觀。輿論指出，這種做法與澳門積極申遺、強調媽閣廟「守護內港入口」的宣傳自相矛盾。最終，葡文學校搬遷計劃被取消，危機才暫時解除。
+            </p>
+            <p>
+              因此，我呼籲世界各界人士共同保護媽閣廟，尊重歷史格局，守護媽閣廟的「面海」景觀。發展與保護不能以商業利益（如2006年建葡文學校的計劃）犧牲文化遺產。讓媽祖信仰與古蹟得以延續，成為澳門世遺的永恆象徵。唯有特區政府、中央政府、社會與公眾齊心協力，方能共建文化傳承的屏障。媽閣廟不僅是一座廟宇，更是中西文化交匯的見證，理應世代守護。
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

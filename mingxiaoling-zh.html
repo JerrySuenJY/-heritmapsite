@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>南京明孝陵 – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="mingxiaolingmausoleumbackground.jpg" alt="明孝陵（南京）">
+      </figure>
+
+      <a href="heritage-zh.html" class="return-home">← 回歸主頁</a>
+
+      <h1 class="hero-title">南京明孝陵</h1>
+
+      <p class="hero-intro">
+        明太祖朱元璋（洪武帝）之陵寢，位於南京紫金山南麓，為明代皇家陵寢的重要代表。
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">作者：朱雨澤</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              南京是一座歷史文化名城，擁有眾多珍貴的古蹟，其中最為宏偉的建築之一便是明孝陵。
+            </p>
+            <p>
+              明孝陵已有六百多年的歷史，這裡安葬著明代開國皇帝朱元璋，相傳東吳的孫權也葬在此地。陵區內樹木蔥鬱，空氣清新，建築莊嚴典雅——金黃的琉璃瓦、朱紅的宮牆，處處體現著中國古代精湛的木結構技藝，整體氣勢十分壯觀。遺憾的是，孫權墓因年代久遠、缺乏修繕，如今已難以尋跡。
+            </p>
+            <p>
+              明城牆同樣是一項舉世矚目的奇蹟。砌築城牆的每塊磚石上都刻有工匠的姓名與籍貫，這種責任到人的制度令人讚嘆。我用手輕撫磚面，觸到濕潤的青苔，微微滲著涼意。磚隙間爬滿了爬山虎，宛如一幅滄桑古樸的畫卷在眼前展開，彷彿穿越時空，看見古代工匠正專注地鑿刻字跡、揮汗如雨。
+            </p>
+            <p>
+              在明孝陵內，我們應自覺遵守規定，不在室內吸菸，不觸摸、不破壞文物。歷史遺跡承載著民族的記憶與文化，保護它們，是我們每一個人的責任。讓我們從自身做起，共同守護這些珍貴的文化。
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">作者：郭瑞臨</h3>
+          <p class="card-intro">
+            <p>
+              明孝陵坐落於南京市玄武區紫金山南麓的獨龍阜玩珠峰下，是明太祖朱元璋與孝慈高皇后馬氏的合葬陵墓。它不僅素有「明清皇家第一陵」的盛譽，更在1987年被列入世界文化遺產名錄，承載著厚重的歷史分量。
+            </p>
+            <p>
+              作為一名南京人，我曾有幸走進這座陵寢。明孝陵的規制宏大，從下馬坊到大金門，再到深處的陵寢主體，一步步皆是歷史的印記。其中，最讓我難忘的便是石像路。
+            </p>
+            <p>
+              石像路位於大金門之後，整條路蜿蜒延伸，大致分為兩段。前一段的路側，整齊矗立著各類石獸雕像——駱駝昂首似欲遠行，駿馬昂首若待馳騁，鴕鳥姿態靈動，大象更是憨態莊重，每一尊都雕刻得栩栩如生，遠觀時竟讓人恍惚以為是真獸靜立。而後一段的兩側，則是文官與武官的石像：文官手持書卷，眉宇間透著溫文爾雅的氣度；武官腰挎寶劍，身姿挺拔，盡顯威風凜凜的凜然正氣。
+            </p>
+            <p>
+              我希望景區可以限制人流量，這樣可以減少景區環境的負擔，也可以更好地保護文物。
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>扬州 – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="yangzhou.jpg" alt="遗产地头图">
+      </figure>
+
+      <a href="heritage-zh.html" class="return-home">← 回归主页</a>
+
+      <h1 class="hero-title">扬州</h1>
+
+      <p class="hero-intro">
+        一座因瘦西湖、古典园林与淮扬菜而闻名的运河古城。
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">作者：Eric Lu</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              在我的记忆里，扬州，这个从我出生便生活到现在的地方，如果让我用一个词来形容这座城，那就是“慢”。这座城，好像天生就懂如何把时光泡得慢些，再慢些。
+            </p>
+            <p>
+              小时候跟着父母穿过东关街的青石板路时，我总忍不住放慢脚步。脚下的石板被岁月磨得发亮，手指缝隙里夹着老爷爷的独门糖画，偶尔有穿蓝布衫的老人提着菜篮走过，竹篮里躺着刚买的嫩藕，嘴里哼着两句扬剧的调子，尾音拖得长长的，像巷口那老海棠的花瓣，轻轻落在青瓦上。街边的茶社飘出绿杨春的香气，木质门窗吱呀作响，穿堂风里混着评弹艺人的三弦声，恍惚间竟不知是走在当下，还是跌进了以往“烟花三月下扬州”的时光中。
+            </p>
+            <p>
+              扬州的古意，从不是封存在博物馆里的冷硬文物，而是活在市井烟火里的温柔。去个园时，恰逢雨停，满园的竹子沾着水珠，在阳光下泛着翡翠般的光泽。沿着 “春夏秋冬” 四序假山而上，每一步都踩着不同的景致。春山的笋石鲜嫩如破土新芽，夏山的太湖石孔洞里藏着流云，秋山的黄石堆叠出苍劲风骨，冬山的宣石在墙角映出皑皑雪意。老一辈们都说：“看这园子得配着茶味品，急不得。”
+            </p>
+            <p>
+              是啊，扬州从没有 “急” 这个字。清晨去冶春吃早茶，才懂什么是 “慢食” 的真谛。烫干丝要切得细如发丝，用沸水反复浇烫三遍，再拌上虾仁与鸡丝。蟹黄汤包得先咬开一个小口，让鲜美的汤汁顺着勺子流进嘴里，烫得直呼气也舍不得放下。就连一盘简单的扬州炒饭，也要用隔夜饭慢慢炒出颗粒分明的口感，每一粒米都裹着鸡蛋的香气。邻桌的老夫妻慢慢喝着茶，聊着家里的琐事，阳光透过窗棂洒在金黄的干丝上，时光仿佛在这里凝固成了一首温柔的诗。
+            </p>
+            <p>
+              傍晚时分，沿着瘦西湖漫步将是老扬州人的生活调调。湖面泛着粼粼的波光，画舫缓缓驶过，留下一道道涟漪。二十四桥的栏杆上还沾着雨珠，远远望去，像一串晶莹的珍珠。岸边的柳树垂下万千枝条，随风轻轻摇曳，偶尔有花瓣落在湖面上，顺着水流漂向远方。当夜晚真正降临，五彩斑斓的灯光秀也拉开帷幕，在我小时候，还并没有如此夜景可以欣赏，而如今，随着时代的发展，扬州也逐渐成为江苏旅游城市的标杆。
+            </p>
+            <p>
+              在扬州的日子里，人们将渐渐爱上这里的慢节奏。不用赶早高峰的地铁，不用急着回复工作消息，晨起可以去公园听老人们唱昆曲，午后可以在茶馆里看一本闲书，傍晚可以沿着古运河散步，看夕阳将河水染成橘红色。这里的人们好像从不会为生活奔波忙碌，他们懂得在平淡的日子里寻找乐趣，懂得在慢时光里品味生活的美好。
+            </p>
+            <p>
+              离开扬州去南京的那天，依旧飘着细雨。我站在高铁站的站台上，望着窗外风景离去，心里满是不舍。这座城，没有大都市的繁华喧嚣，却有着独属于自己的温柔与诗意。这里的人们，没有行色匆匆的焦虑，却有着从容不迫的生活态度。扬州，就像一泡煮久的绿茶，初尝时或许平淡，细细品味后，才知其中的醇厚与绵长。
+            </p>
+            <p>
+              当我老了，我一定会将我的养老城市选在这里。回到东关街的青石板路上，再品一次那著名的糖画；回到瘦西湖的岸边，再看一次二十四桥的烟雨；回到茶馆里，再吃一次烫干丝与蟹黄汤包。因为在这里，我找到了久违的慢时光，找到了生活最本真的模样。扬州，这座藏在烟雨里的古城，早已深深印在了我的心底，成为了我心中最温柔的牵挂。
+            </p>
+          </p>
+        </div>
+      </article>
+
+    </section>
+  </main>
+</body>
+</html>

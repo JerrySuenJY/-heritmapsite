@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>中山陵 – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="Sunbackground.jpg" alt="中山陵背景圖片">
+      </figure>
+
+      <a href="heritage-zh.html" class="return-home">← 回歸主頁</a>
+
+      <h1 class="hero-title">中山陵</h1>
+
+      <p class="hero-intro">
+        位於南京紫金山腳下的中山陵，是中國近代偉大革命先行者孫中山先生的長眠之地。
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-media">
+          <img src="SunYatsenMausoleum.jpg" alt="中山陵">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">作者：Kirin Qi</h3>
+          <div class="card-meta">圖片來源：Arrival Guides，中山陵</div>
+          <p class="card-intro clamp-3">
+            <p>
+              當我來到中山陵時，腦海中浮現出網路上流傳的一句話：「一座中山陵，半部近代史。」過去我對孫中山先生的認識，僅止於歷史課本中的照片，而此刻親臨其境，不禁感嘆自己真的站在了中山陵前。
+            </p>
+            <p>
+              中山陵是我國國父孫中山先生的陵墓，整體形制自上俯瞰宛如一座立起的時鐘，寓意警醒民眾、砥礪前行。陵墓依紫金山而建，藍色琉璃瓦在光影中勾起歷史的煙塵。陵門上「天下為公」四字莊嚴肅穆，也讓人深刻感受到孫先生「革命尚未成功，同志仍需努力」的精神。層層石階與兩側松柏，共同營造出一種莊嚴而肅靜的氛圍。
+            </p>
+            <p>
+              然而，中山陵也存在一些問題。其一，文化解說深度不足，即使設有講解，對歷史背景的呈現仍停留在表層，若缺乏相關研究，遊客往往只能停留在拍照層面。其二，旅遊高峰期的交通壅塞問題嚴重，對整體參觀體驗造成不小影響。
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">作者：Charlie Yin</h3>
+          <p class="card-intro">
+            <p>
+              中山陵給我的印象是莊重而寧靜的。台階雖多，但在思索中行走並不覺得疲憊，反而像是在一步步接近一位值得敬重的人。四周色調素淨，沒有張揚的金碧輝煌，卻在整齊靜默的松柏映襯下，令人心生敬意。
+            </p>
+            <p>
+              站在孫中山先生的墓前，我沒有說話，內心卻異常充實。他並非遙不可及的人物，而彷彿一直靜靜注視著這個國家經歷風雨、興衰起伏。整個空間沒有強烈的感官刺激，卻讓人自然沉靜下來，去思考什麼才是真正重要的事物。
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">作者：宇涵</h3>
+          <p class="card-intro">
+            <p>
+              再遊中山陵，我在數到第八層平台時忽然停下——三百九十二級台階的數字在耳邊炸響，彷彿先生臨終心跳的倒數。抬頭望去，祭堂青瓦被秋雨洗得發亮，我忽然明白：這裡哪裡只是陵墓，分明是先生留給少年的一座「登天梯」。
+            </p>
+            <p>
+              最觸動我的，是碑亭中那塊無字碑。空白的石面，比任何悼詞都來得有力，彷彿在無聲訴說：「革命尚未成功」的接力棒，早已交到我們手中。
+            </p>
+            <p>
+              我建議將陵區側柏的認養計畫開放給學生，讓每個人認領一棵同齡的樹，用年輪記錄自己的環保行動；同時設立「少年護陵員」輪值制度，讓文明勸導成為青年參與公共空間治理的一部分。
+            </p>
+            <p>
+              保護中山陵，不只是守護古老的石階，而是讓每一代人都走完這三百九十二級台階，在喘息之際，聽見先生的提問：「少年，今日的你，是否讓中國變得更好了一點？」
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

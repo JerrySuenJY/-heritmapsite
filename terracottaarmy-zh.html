@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>秦始皇兵馬俑 – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="terracottabackground.jpg" alt="遺產地點頁首圖片">
+      </figure>
+
+      <a href="heritage-zh.html" class="return-home">← 回歸主頁</a>
+
+      <h1 class="hero-title">秦始皇兵馬俑</h1>
+
+      <p class="hero-intro">
+        位於陝西西安的著名考古遺址，於1974年被發現。數千尊等身大小的陶俑，陪葬於中國第一位皇帝秦始皇陵中。
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-media">
+          <img src="terracotta.jpg" alt="兵馬俑">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">作者：方怡然</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              兵馬俑，是中國著名文化遺址中最具代表性的遺址之一，它是秦始皇的陪葬品，展現了秦代軍隊的雄偉氣勢。
+            </p>
+            <p>
+              兵馬俑坑內有數千個陶製武士俑、戰馬俑等，佈局嚴謹，規模宏大。每個兵馬俑都是獨一無二的，面部表情、服飾細節都各不相同，生動地展現了秦軍的威武雄壯。
+            </p>
+            <p>
+              兵馬俑不僅是藝術的傑作，更是歷史的見證，凝聚了古代人的智慧與汗水。兵馬俑作為中華民族的瑰寶，讓我們看到了中國古代人的輝煌成就，感受到歷史的厚重，我們應該好好保護它們。
+            </p>
+            <p>
+              保護兵馬俑遺址，首先要嚴格限制參觀人數，避免過度擁擠而造成損害；其次，要加強溫度監測，控制濕度與溫度，防止風化；最後，可以用數位化的科技手段保存好文物資訊，以防資訊丟失。
+            </p>
+            <p>
+              讓我們共同保護好這份千年遺產，傳承中華文明！
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">作者：王若晨</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              站在秦始皇兵馬俑坑前，上千尊陶俑列陣而立，或昂首挺胸，盡顯秦代軍威，也凝聚著古代工匠的智慧，令人震撼。
+            </p>
+            <p>
+              但遊覽時我發現，部分陶俑有細微裂紋，仍有遊客伸手觸碰，展廳講解牌也過於簡略。
+            </p>
+            <p>
+              對此，我建議：一是在陶俑展區加裝透明防護玻璃，搭配紅外感應提醒，杜絕觸摸行為。二是開發掃碼講解功能，補充歷史故事與考古趣聞。
+            </p>
+            <p>
+              兵馬俑是珍貴的文化遺產，唯有細心守護、創新呈現，才能讓這份歷史厚重感代代相傳。
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-media">
+          <img src="terracotta3.jpg" alt="兵馬俑3">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">作者：張珈萱</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              秦始皇兵馬俑位於我國山西省西安市的秦始皇陵中。是我國著名的歷史文化遺址。
+            </p>
+            <p>
+              第一眼看到那成排聳立的陶俑時，我的眼中滿目震撼，仔細看去，他們神態各異，不僅高矮胖瘦各有不同，連面部輪廓都有各自的特點，彷若真有成千上萬的士兵跟隨著將領們守護著他們的君王，讓人感慨萬千。彷彿讓我們隨著歷史的洪流走到秦始皇身邊，看世事變遷。
+            </p>
+            <p>
+              這些歷史文化的瑰寶值得我們用心去守護，我呼籲，參觀時大家一定要按秩序文明參觀，人流量過大時一定要加強防護，必要時可限制參觀人數；對於這些歷史文物，需要專業人員定期維護和修復。真正做到愛護文物人人有責。
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">作者：洋洋</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              眾所周知，秦始皇陵兵馬俑是中國一大奇觀，也是世界八大奇觀之一。
+            </p>
+            <p>
+              但從建成後就總是遭到破壞，盜墓者也層出不窮，今天我們看到的只不過是大多數「倖存者」。雖說曾經被盜，但兵馬俑的數量還是非常可觀的，就比如數量最多的1號俑坑出土了3000多件俑器。
+            </p>
+            <p>
+              那麼該如何保護他們呢？我覺得我們應該這樣做：一是用鋼化玻璃進行隔離，防止熊孩子破壞文物，也可以防止文物氧化；二是定期巡查，發現文物有破損或玻璃受損的跡象，就及時進行修復。
+            </p>
+            <p>
+              保護文物，人人有責！
+            </p>
+          </p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">作者：胡菀璇</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              站在秦始皇陵兵馬俑坑前，坑內整齊排列著數千尊陶俑，每一尊都獨一無二。有的將士眉頭緊鎖，眼神銳利如刀，彷彿下一秒就要揮劍衝鋒；有的嘴角微抿，神色沉穩，似在思索戰術；還有的鎧甲上刻著細密紋路，連衣褶的走向都清晰可見。
+            </p>
+            <p>
+              最讓我難忘的是一尊跪射俑，他單膝跪地，左手按弓，右手拉弦，身體微微前傾。那一刻，我彷彿聽見了千年前的戰馬嘶鳴，感受到了大秦軍隊的赫赫軍威。這尊沉默的陶俑，是歷史最生動的見證。
+            </p>  
+          </p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">作者：徐梅帥</h3>
+          <p class="card-intro clamp-3">
+            <p>
+              秦始皇兵馬俑位於陝西西安城內，是秦始皇的陪葬坑，占地兩萬餘平方米，是我國首批重點文物保護單位，世界第八大奇跡。
+            </p>
+            <p>
+              兵馬俑共三個坑，八千餘件陶器，成「品」字形排列。1號坑是步兵方陣，六千餘件陶器，分為前軍、中軍和後軍。2號坑是戰車、騎兵和弓弩。3號坑是指揮中心，所有陶俑的平均身高約1.8米，將軍表情嚴肅，士兵目光堅毅，跪射俑雙手握拳、單膝跪地、嘴角上揚、目光炯炯有神，這些人俑的頭髮、盔甲清晰可見，可見秦代工匠的細心和技藝高超。
+            </p>
+            <p>
+              但這大奇跡也會因時間的流逝而退化，我們可以：1. 用三維掃描技術建立虛擬庫；2. 保持庫內恆溫恆濕，避免溫濕度過大；3. 限制人流量，減少人們跟它的接觸；4. 定期保養，避免顏料脫落或結構老化。
+            </p>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

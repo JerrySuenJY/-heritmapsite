@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>吐魯番坎兒井系統 – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;
+    break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden;
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-media{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+  .card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-meta{
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem;
+    color: var(--muted);
+  }
+
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="karez.jpg" alt="吐魯番坎兒井">
+      </figure>
+
+      <a href="heritage-zh.html" class="return-home">← 回歸主頁</a>
+
+      <h1 class="hero-title">吐魯番坎兒井系統</h1>
+
+      <p class="hero-intro">
+        坎兒井是分布於新疆吐魯番地區的古老地下水利工程，透過暗渠將天山融雪引入乾旱盆地，被譽為「地下長城」。
+      </p>
+    </header>
+
+    <section class="submissions">
+      <article class="card">
+        <div class="card-media">
+          <img src="karez1.jpg" alt="坎兒井暗渠細節">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">作者：朱語熙</h3>
+          <div class="card-meta">圖片來源：朱語熙｜坎兒井水利系統</div>
+          <div class="card-intro">
+            <p>
+              暑假期間，我沿著絲綢之路從河西走廊一路來到吐魯番，第一次親眼見到坎兒井。吐魯番炎熱少雨，夏季氣溫可達四十二度，火焰山更高達五十多度。在如此乾旱酷熱的環境中，卻能盛產聞名全國的葡萄，關鍵就在於坎兒井所引入的灌溉水源。
+            </p>
+            <p>
+              走進坎兒井景區，我搭乘電梯深入地下暗渠，濕潤涼爽的空氣撲面而來，耳邊伴隨著潺潺水聲。清澈的水流在暗渠中靜靜前行，先民巧妙利用地勢高差，將天山融雪引入農田，同時大幅減少水分蒸發，令人由衷敬佩其智慧。
+            </p>
+            <p>
+              沿途每隔數十公尺便可見一口豎井，用於運土、通風與採光。兩千多年前，掘井人必須在昏暗油燈下跪地挖掘，長年忍受酷暑嚴寒，歷經數代人的犧牲與付出，才造就這項奇蹟般的水利工程。
+            </p>
+            <p>
+              然而，坎兒井如今也面臨年久失修與自然、人為破壞的威脅。我期盼相關單位能加強修繕與環境監測，讓這項中國獨一無二的工程得以永續保存。同時，也希望透過更完善的旅遊規劃，讓更多人深入了解坎兒井背後的歷史與價值。
+            </p>
+            <p>
+              作為新疆勞動人民智慧與勤勞的結晶，坎兒井不僅是珍貴的文化遺產，更是中華民族共同的寶藏。這片西域土地孕育了豐富多元的文化與地貌，值得被更多人看見與珍惜。
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

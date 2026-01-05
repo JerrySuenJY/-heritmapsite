@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>龍門石窟 – Heritmap</title>
+<style>
+  :root{
+    --card-radius: 22px;
+    --page-max: 1100px;
+    --gap: 1.25rem;
+    --bg: #f7f7f7;
+    --surface: #ffffff;
+    --text: #141414;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+  }
+
+  .hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-media {
+    width: min(100%, 820px);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--card-radius);
+    background: #ddd;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  }
+  .hero-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-title{
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.2px;
+  }
+  .hero-intro{
+    max-width: 780px;
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .submissions {
+    display: block;
+    column-count: 3;
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .submissions .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 28px;                  
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; 
+    min-height: 280px;
+    text-align: center;
+  }
+
+  .card-body{
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  .card-title{
+    margin: 2px 0 0;
+    font-size: 1.25rem; 
+    line-height: 1.2;
+    letter-spacing: .2px;
+  }
+
+  .card-intro{
+    margin: 0;
+    padding-top: 6px;
+    font-size: .98rem; 
+    color: var(--muted);
+  }
+
+  .card.no-image .card-body{
+    padding-top: 18px;
+  }
+
+  .return-home {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .return-home:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <figure class="hero-media">
+        <img src="longmen.jpg" alt="龍門石窟">
+      </figure>
+
+      <a href="heritage-zh.html" class="return-home">← 回歸主頁</a>
+
+      <h1 class="hero-title">龍門石窟</h1>
+
+      <p class="hero-intro">
+        位於河南洛陽伊河兩岸的世界文化遺產，以規模宏大、造像數量眾多的佛教石刻藝術聞名於世。
+      </p>
+    </header>
+
+    <section class="submissions">
+
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">作者：吳近睿</h3>
+          <div class="card-intro">
+            <p>
+              洛陽有一處舉世聞名的文化瑰寶——龍門石窟。它依偎著波光粼粼的伊河，山水之間處處流露出中華文明獨有的韻味。
+            </p>
+            <p>
+              進入石窟前，一塊刻有「龍門」二字的匾額映入眼簾。走入其間，只見崖壁上密密麻麻分布著石窟，如同一顆顆嵌入岩壁的圓球。古陽洞內保存著最早的佛像，而其上方則坐落著規模最大的造像。
+            </p>
+            <p>
+              繼續前行，萬佛洞更令人嘆為觀止，無數佛像高低錯落，最大的與人等高，最小的僅如拇指般大小。
+            </p>
+            <p>
+              河風拂過，黃昏時分的石窟剪影愈發清晰，彷彿在靜靜訴說千年的歷史。
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card no-image">
+        <div class="card-body">
+          <h3 class="card-title">作者：張逸桐</h3>
+          <div class="card-intro">
+            <p>
+              龍門石窟位於河南省洛陽市，總面積達三十一點七平方公里，現存二千三百四十五座佛龕、十萬餘尊造像，以及兩千八百多方碑刻題記，是世界上造像最多、規模最大的石刻藝術寶庫。
+            </p>
+            <p>
+              其中最令我震撼的是盧舍那大佛，高達十七公尺，僅頭部便有四公尺高，雙耳長達一點九公尺。夕陽西下時，大佛彷彿披上一層金色光輝，慈祥的神情、微揚的嘴角與溫和的目光，向每一位來訪者傳遞著佛教的慈悲與善念。
+            </p>
+            <p>
+              那次龍門石窟之行，至今仍歷歷在目，是一段令人難以忘懷的文化記憶。
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+</body>
+</html>
